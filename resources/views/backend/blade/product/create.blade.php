@@ -80,9 +80,9 @@
                                                 <option value="" disabled>{{ __('admin_local.Please Select') }} *
                                                 </option>
                                                 <option value="standard" selected>Standard</option>
-                                                <option value="combo">Combo</option>
-                                                <option value="digital">Digital</option>
-                                                <option value="service">Service</option>
+                                                <option value="combo" disabled>Combo</option>
+                                                <option value="digital" disabled>Digital</option>
+                                                <option value="service" disabled>Service</option>
                                             </select>
                                             <span class="text-danger err-mgs-product_type"></span>
                                         </div>

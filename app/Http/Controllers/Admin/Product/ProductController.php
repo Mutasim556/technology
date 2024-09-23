@@ -105,7 +105,7 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        $editproduct = Product::with('brand','category','unit','warehousePrice','productVariant')->findOrFail($id);
+        $editproduct = Product::with('brand','parentCategory','category','subCategory','unit','warehousePrice','productVariant')->findOrFail($id);
         if($editproduct->is_diffPrice==1){
             foreach($editproduct->warehousePrice as $key=>$value){
                 $editproduct->warehousePrice[$key]->warehouse_name = $value->warehouse()->first()->name;
@@ -113,7 +113,7 @@ class ProductController extends Controller
         }
         
         $brands = Brand::where('brand_status',1)->get();
-        $categories = Category::where([['category_status',1],['category_delete',0]])->get();
+        $parent_categories = ParentCategory::where([['parent_category_status',1],['parent_category_delete',0]])->get();
         $units = Unit::where([['unit_status',1]])->get();
         $products = Product::where([['status',1],['delete',0]])->select('name','id','price','is_variant')->get();
         $product_name = [];
@@ -137,7 +137,7 @@ class ProductController extends Controller
             $combop_price_list = [];
         }
          
-        return view('backend.blade.product.edit',compact('editproduct','brands','categories','units','products','warehouses','product_name','product_prices','combop_id','combop_variant_id','combop_qty_list','combop_price_list'));
+        return view('backend.blade.product.edit',compact('editproduct','brands','parent_categories','units','products','warehouses','product_name','product_prices','combop_id','combop_variant_id','combop_qty_list','combop_price_list'));
     }
 
     /**

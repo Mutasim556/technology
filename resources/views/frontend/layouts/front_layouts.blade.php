@@ -250,17 +250,9 @@
                         <div class="search-style-2">
                             <form action="#">
                                 <select class="select-active">
-                                    <option>All Categories</option>
-                                    <option>Milks and Dairies</option>
-                                    <option>Wines & Alcohol</option>
-                                    <option>Clothing & Beauty</option>
-                                    <option>Pet Foods & Toy</option>
-                                    <option>Fast food</option>
-                                    <option>Baking material</option>
-                                    <option>Vegetables</option>
-                                    <option>Fresh Seafood</option>
-                                    <option>Noodles & Rice</option>
-                                    <option>Ice cream</option>
+                                    @foreach ($parent_categories as $parent_category)
+                                        <option value="{{ $parent_category->id }}">{{ $parent_category->parent_category_name }}</option>
+                                    @endforeach
                                 </select>
                                 <input type="text" placeholder="Search for items..." />
                             </form>
@@ -403,447 +395,19 @@
                                 <i class="fi-rs-angle-down"></i>
                             </a>
                             <div class="categories-dropdown-wrap categories-dropdown-active-large font-heading">
-                                <div class="d-flex categori-dropdown-inner">
-                                    <ul>
-                                        <li>
-                                            <a href="shop-grid-right.html"> <img
-                                                    src="{{ asset('public/assets/imgs/theme/icons/category-1.svg')}}"
-                                                    alt="" />Milks and Dairies</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-grid-right.html"> <img
-                                                    src="{{ asset('public/assets/imgs/theme/icons/category-2.svg')}}"
-                                                    alt="" />Clothing & beauty</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-grid-right.html"> <img
-                                                    src="{{ asset('public/assets/imgs/theme/icons/category-3.svg')}}" alt="" />Pet
-                                                Foods & Toy</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-grid-right.html"> <img
-                                                    src="{{ asset('public/assets/imgs/theme/icons/category-4.svg')}}"
-                                                    alt="" />Baking material</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-grid-right.html"> <img
-                                                    src="{{ asset('public/assets/imgs/theme/icons/category-5.svg')}}"
-                                                    alt="" />Fresh Fruit</a>
-                                        </li>
-                                    </ul>
-                                    <ul class="end">
-                                        <li>
-                                            <a href="shop-grid-right.html"> <img
-                                                    src="{{ asset('public/assets/imgs/theme/icons/category-6.svg')}}"
-                                                    alt="" />Wines & Drinks</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-grid-right.html"> <img
-                                                    src="{{ asset('public/assets/imgs/theme/icons/category-7.svg')}}"
-                                                    alt="" />Fresh Seafood</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-grid-right.html"> <img
-                                                    src="{{ asset('public/assets/imgs/theme/icons/category-8.svg')}}" alt="" />Fast
-                                                food</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-grid-right.html"> <img
-                                                    src="{{ asset('public/assets/imgs/theme/icons/category-9.svg')}}"
-                                                    alt="" />Vegetables</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-grid-right.html"> <img
-                                                    src="{{ asset('public/assets/imgs/theme/icons/category-10.svg')}}"
-                                                    alt="" />Bread and Juice</a>
-                                        </li>
-                                    </ul>
+                                <div class="d-flex categori-dropdown-inner p-0">
+                                    
+                                        @foreach ($parent_categories as $parent_category)
+                                            <div class="col-5 col-sm-5 col-lg-5 py-2 mx-1 rounded text-center" style="box-shadow: 0px 0px 5px;">
+                                                <a href="shop-grid-right.html">{{ $parent_category->parent_category_name }}</a>
+                                            </div>
+                                        @endforeach
+                                    
                                 </div>
-                                <div class="more_slide_open" style="display: none">
-                                    <div class="d-flex categori-dropdown-inner">
-                                        <ul>
-                                            <li>
-                                                <a href="shop-grid-right.html"> <img
-                                                        src="{{ asset('public/assets/imgs/theme/icons/icon-1.svg')}}"
-                                                        alt="" />Milks and Dairies</a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-grid-right.html"> <img
-                                                        src="{{ asset('public/assets/imgs/theme/icons/icon-2.svg')}}"
-                                                        alt="" />Clothing & beauty</a>
-                                            </li>
-                                        </ul>
-                                        <ul class="end">
-                                            <li>
-                                                <a href="shop-grid-right.html"> <img
-                                                        src="{{ asset('public/assets/imgs/theme/icons/icon-3.svg')}}"
-                                                        alt="" />Wines & Drinks</a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-grid-right.html"> <img
-                                                        src="{{ asset('public/assets/imgs/theme/icons/icon-4.svg')}}"
-                                                        alt="" />Fresh Seafood</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="more_categories"><span class="icon"></span> <span
-                                        class="heading-sm-1">Show more...</span></div>
                             </div>
                         </div>
                         <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block font-heading">
-                            <nav>
-                                <ul>
-                                    {{-- <li class="hot-deals"><img src="assets/imgs/theme/icons/icon-hot.svg"
-                                            alt="hot deals" /><a href="shop-grid-right.html">Deals</a></li> --}}
-                                    <li>
-                                        <a class="active" href="index.html">Home </a>
-                                    </li>
-                                    <li class="position-static">
-                                        <a href="#">Products <i class="fi-rs-angle-down"></i></a>
-                                        <ul class="mega-menu">
-                                            <div class="row">
-                                                <div class="col-3 px-0 " >
-                                                    <li class="sub-mega-menu col-12 px-0">
-                                                        {{-- <div class="menu-banner-wrap"> --}}
-                                                            <ul>
-                                                                <li>
-                                                                    <a  id="network_products" onclick="visible('network_products')">Network Products </a> 
-                                                                </li>
-                                                                <li>
-                                                                    <a  id="turbo_hd_products" onclick="visible('turbo_hd_products')">Turbo HD Products</a>
-                                                                </li>
-                                                            </ul>
-                                                        {{-- </div> --}}
-                                                    </li>
-                                                </div>
-                                                <div class="col-9">
-                                                    <div id="products_visibility">
-                                                        <li class="sub-mega-menu col-4 mb-4">
-                                                            <a class="menu-title" href="#">Network Cameras</a>
-                                                            <ul>
-                                                                <li><a href="shop-product-right.html">Pro Series All</a></li>
-                                                                <li><a href="shop-product-right.html">Pro Series With AcuSense</a></li>
-                                                                <li><a href="shop-product-right.html">Pro Series with ColorVu</a></li>
-                                                                <li><a href="shop-product-right.html">DeepinView Series</a></li>
-                                                                <li><a href="shop-product-right.html">Panaromic Series</a>
-                                                                </li>
-                                                                <li><a href="shop-product-right.html">Special Series</a></li>
-                                                                <li><a href="shop-product-right.html">Ultra Series</a></li>
-                                                                <li><a href="shop-product-right.html">Cable-Free Series</a></li>
-                                                                <li><a href="shop-product-right.html">Solar-powered Series</a></li>
-                                                                <li><a href="shop-product-right.html">PT Series</a></li>
-                                                                <li><a href="shop-product-right.html">Value Series</a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="sub-mega-menu col-4 mb-4">
-                                                            <a class="menu-title" href="#">PTZ Cameras</a>
-                                                            <ul>
-                                                                <li><a href="shop-product-right.html">TandemVu PTZ Cameras</a></li>
-                                                                <li><a href="shop-product-right.html">Ultra Series</a></li>
-                                                                <li><a href="shop-product-right.html">Pro Series</a></li>
-                                                                <li><a href="shop-product-right.html">PT Series</a></li>
-                                                                <li><a href="shop-product-right.html">Special Series</a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="sub-mega-menu col-4 mb-4">
-                                                            <a class="menu-title" href="#">Network Video Recorders</a>
-                                                            <ul>
-                                                                <li><a href="shop-product-right.html">Ultra Series</a></li>
-                                                                <li><a href="shop-product-right.html">Pro Series with AcuSense</a></li>
-                                                                <li><a href="shop-product-right.html">Pro Series (All)</a></li>
-                                                                <li><a href="shop-product-right.html">Value Series</a></li>
-                                                                <li><a href="shop-product-right.html">Special Series</a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="sub-mega-menu col-4 mb-4">
-                                                            <a class="menu-title" href="#">DeepinMind Intelligence</a>
-                                                            <ul>
-                                                                <li><a href="shop-product-right.html">DeepinMind Edge</a></li>
-                                                            </ul>
-                                                        </li>
-                                    
-                                                        <li class="sub-mega-menu col-4 mb-4">
-                                                            <a class="menu-title" href="#">Explosion-Proof and Anti-Corrosion Series</a>
-                                                            <ul>
-                                                                <li><a href="shop-product-right.html">Explosion-Proof Series</a></li>
-                                                                <li><a href="shop-product-right.html">Anti-Corrosion Series</a></li>
-                                                                <li><a href="shop-product-right.html">Accessories</a></li>
-                                                            </ul>
-                                                        </li>
-                                    
-                                                        <li class="sub-mega-menu col-4 mb-4">
-                                                            <a class="menu-title" href="#">Servers</a>
-                                                            <ul>
-                                                                <li><a href="shop-product-right.html">General Purpose Server</a></li>
-                                                                <li><a href="shop-product-right.html">VMS Server</a></li>
-                                                            </ul>
-                                                        </li>
-                                    
-                                                        <li class="sub-mega-menu col-4 mb-4">
-                                                            <a class="menu-title" href="#">Storage</a>
-                                                            <ul>
-                                                                <li><a href="shop-product-right.html">Hybrid SAN</a></li>
-                                                                <li><a href="shop-product-right.html">Cluster Storage</a></li>
-                                                            </ul>
-                                                        </li>
-                                    
-                                                         <li class="sub-mega-menu col-4 mb-4">
-                                                            <a class="menu-title" href="#">Kits</a>
-                                                            <ul>
-                                                                <li><a href="shop-product-right.html">PoE Kits</a></li>
-                                                                <li><a href="shop-product-right.html">Wi-Fi Kits</a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
-                                            
-                                        </ul>
-                                    </li>
-                                    
-                                    <li class="position-static">
-                                        <a href="#">Solutions <i class="fi-rs-angle-down"></i></a>
-                                        <ul class="mega-menu">
-                                            <div class="row">
-                                                <div class="col-3 px-0 " >
-                                                    <li class="sub-mega-menu col-12 px-0">
-                                                        {{-- <div class="menu-banner-wrap"> --}}
-                                                            <ul>
-                                                                <li>
-                                                                    <a  >Network Products </a> 
-                                                                </li>
-                                                                <li>
-                                                                    <a  >Turbo HD Products</a>
-                                                                </li>
-                                                            </ul>
-                                                        {{-- </div> --}}
-                                                    </li>
-                                                </div>
-                                                <div class="col-9">
-                                                    <div id="solution_visibility">
-                                                        <li class="sub-mega-menu col-4 mb-4">
-                                                            <a class="menu-title" href="#">Network Cameras</a>
-                                                            <ul>
-                                                                <li><a href="shop-product-right.html">Pro Series All</a></li>
-                                                                <li><a href="shop-product-right.html">Pro Series With AcuSense</a></li>
-                                                                <li><a href="shop-product-right.html">Pro Series with ColorVu</a></li>
-                                                                <li><a href="shop-product-right.html">DeepinView Series</a></li>
-                                                                <li><a href="shop-product-right.html">Panaromic Series</a>
-                                                                </li>
-                                                                <li><a href="shop-product-right.html">Special Series</a></li>
-                                                                <li><a href="shop-product-right.html">Ultra Series</a></li>
-                                                                <li><a href="shop-product-right.html">Cable-Free Series</a></li>
-                                                                <li><a href="shop-product-right.html">Solar-powered Series</a></li>
-                                                                <li><a href="shop-product-right.html">PT Series</a></li>
-                                                                <li><a href="shop-product-right.html">Value Series</a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="sub-mega-menu col-4 mb-4">
-                                                            <a class="menu-title" href="#">PTZ Cameras</a>
-                                                            <ul>
-                                                                <li><a href="shop-product-right.html">TandemVu PTZ Cameras</a></li>
-                                                                <li><a href="shop-product-right.html">Ultra Series</a></li>
-                                                                <li><a href="shop-product-right.html">Pro Series</a></li>
-                                                                <li><a href="shop-product-right.html">PT Series</a></li>
-                                                                <li><a href="shop-product-right.html">Special Series</a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="sub-mega-menu col-4 mb-4">
-                                                            <a class="menu-title" href="#">Network Video Recorders</a>
-                                                            <ul>
-                                                                <li><a href="shop-product-right.html">Ultra Series</a></li>
-                                                                <li><a href="shop-product-right.html">Pro Series with AcuSense</a></li>
-                                                                <li><a href="shop-product-right.html">Pro Series (All)</a></li>
-                                                                <li><a href="shop-product-right.html">Value Series</a></li>
-                                                                <li><a href="shop-product-right.html">Special Series</a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="sub-mega-menu col-4 mb-4">
-                                                            <a class="menu-title" href="#">DeepinMind Intelligence</a>
-                                                            <ul>
-                                                                <li><a href="shop-product-right.html">DeepinMind Edge</a></li>
-                                                            </ul>
-                                                        </li>
-                                    
-                                                        <li class="sub-mega-menu col-4 mb-4">
-                                                            <a class="menu-title" href="#">Explosion-Proof and Anti-Corrosion Series</a>
-                                                            <ul>
-                                                                <li><a href="shop-product-right.html">Explosion-Proof Series</a></li>
-                                                                <li><a href="shop-product-right.html">Anti-Corrosion Series</a></li>
-                                                                <li><a href="shop-product-right.html">Accessories</a></li>
-                                                            </ul>
-                                                        </li>
-                                    
-                                                        <li class="sub-mega-menu col-4 mb-4">
-                                                            <a class="menu-title" href="#">Servers</a>
-                                                            <ul>
-                                                                <li><a href="shop-product-right.html">General Purpose Server</a></li>
-                                                                <li><a href="shop-product-right.html">VMS Server</a></li>
-                                                            </ul>
-                                                        </li>
-                                    
-                                                        <li class="sub-mega-menu col-4 mb-4">
-                                                            <a class="menu-title" href="#">Storage</a>
-                                                            <ul>
-                                                                <li><a href="shop-product-right.html">Hybrid SAN</a></li>
-                                                                <li><a href="shop-product-right.html">Cluster Storage</a></li>
-                                                            </ul>
-                                                        </li>
-                                    
-                                                         <li class="sub-mega-menu col-4 mb-4">
-                                                            <a class="menu-title" href="#">Kits</a>
-                                                            <ul>
-                                                                <li><a href="shop-product-right.html">PoE Kits</a></li>
-                                                                <li><a href="shop-product-right.html">Wi-Fi Kits</a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
-                                            
-                                        </ul>
-                                    </li>
-
-                                    <li class="position-static">
-                                        <a href="#">Support <i class="fi-rs-angle-down"></i></a>
-                                        <ul class="mega-menu">
-                                            <div class="row">
-                                                <div class="col-3 px-0 " >
-                                                    <li class="sub-mega-menu col-12 px-0">
-                                                        {{-- <div class="menu-banner-wrap"> --}}
-                                                            <ul>
-                                                                <li>
-                                                                    <a  >Network Products </a> 
-                                                                </li>
-                                                                <li>
-                                                                    <a  >Turbo HD Products</a>
-                                                                </li>
-                                                            </ul>
-                                                        {{-- </div> --}}
-                                                    </li>
-                                                </div>
-                                                <div class="col-9">
-                                                    <div id="solution_visibility">
-                                                        <li class="sub-mega-menu col-4 mb-4">
-                                                            <a class="menu-title" href="#">Network Cameras</a>
-                                                            <ul>
-                                                                <li><a href="shop-product-right.html">Pro Series All</a></li>
-                                                                <li><a href="shop-product-right.html">Pro Series With AcuSense</a></li>
-                                                                <li><a href="shop-product-right.html">Pro Series with ColorVu</a></li>
-                                                                <li><a href="shop-product-right.html">DeepinView Series</a></li>
-                                                                <li><a href="shop-product-right.html">Panaromic Series</a>
-                                                                </li>
-                                                                <li><a href="shop-product-right.html">Special Series</a></li>
-                                                                <li><a href="shop-product-right.html">Ultra Series</a></li>
-                                                                <li><a href="shop-product-right.html">Cable-Free Series</a></li>
-                                                                <li><a href="shop-product-right.html">Solar-powered Series</a></li>
-                                                                <li><a href="shop-product-right.html">PT Series</a></li>
-                                                                <li><a href="shop-product-right.html">Value Series</a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="sub-mega-menu col-4 mb-4">
-                                                            <a class="menu-title" href="#">PTZ Cameras</a>
-                                                            <ul>
-                                                                <li><a href="shop-product-right.html">TandemVu PTZ Cameras</a></li>
-                                                                <li><a href="shop-product-right.html">Ultra Series</a></li>
-                                                                <li><a href="shop-product-right.html">Pro Series</a></li>
-                                                                <li><a href="shop-product-right.html">PT Series</a></li>
-                                                                <li><a href="shop-product-right.html">Special Series</a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="sub-mega-menu col-4 mb-4">
-                                                            <a class="menu-title" href="#">Network Video Recorders</a>
-                                                            <ul>
-                                                                <li><a href="shop-product-right.html">Ultra Series</a></li>
-                                                                <li><a href="shop-product-right.html">Pro Series with AcuSense</a></li>
-                                                                <li><a href="shop-product-right.html">Pro Series (All)</a></li>
-                                                                <li><a href="shop-product-right.html">Value Series</a></li>
-                                                                <li><a href="shop-product-right.html">Special Series</a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
-                                            
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a class="active" href="index.html">Customize Switches </a>
-                                    </li>
-                                    <li class="position-static">
-                                        <a href="#">Partners <i class="fi-rs-angle-down"></i></a>
-                                        <ul class="mega-menu">
-                                            <div class="row">
-                                                <div class="col-3 px-0 " >
-                                                    <li class="sub-mega-menu col-12 px-0">
-                                                        {{-- <div class="menu-banner-wrap"> --}}
-                                                            <ul>
-                                                                <li>
-                                                                    <a  >Channel Partners</a> 
-                                                                </li>
-                                                                <li>
-                                                                    <a  >Technology Partners</a>
-                                                                </li>
-                                                            </ul>
-                                                        {{-- </div> --}}
-                                                    </li>
-                                                </div>
-                                                <div class="col-9">
-                                                    <div id="solution_visibility">
-                                                        <li class="sub-mega-menu col-4 mb-4">
-                                                            <a class="menu-title" href="#">Network Cameras</a>
-                                                            <ul>
-                                                                <li><a href="shop-product-right.html">Pro Series All</a></li>
-                                                                <li><a href="shop-product-right.html">Pro Series With AcuSense</a></li>
-                                                                <li><a href="shop-product-right.html">Pro Series with ColorVu</a></li>
-                                                                <li><a href="shop-product-right.html">DeepinView Series</a></li>
-                                                                <li><a href="shop-product-right.html">Panaromic Series</a>
-                                                                </li>
-                                                                <li><a href="shop-product-right.html">Special Series</a></li>
-                                                                <li><a href="shop-product-right.html">Ultra Series</a></li>
-                                                                <li><a href="shop-product-right.html">Cable-Free Series</a></li>
-                                                                <li><a href="shop-product-right.html">Solar-powered Series</a></li>
-                                                                <li><a href="shop-product-right.html">PT Series</a></li>
-                                                                <li><a href="shop-product-right.html">Value Series</a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="sub-mega-menu col-4 mb-4">
-                                                            <a class="menu-title" href="#">PTZ Cameras</a>
-                                                            <ul>
-                                                                <li><a href="shop-product-right.html">TandemVu PTZ Cameras</a></li>
-                                                                <li><a href="shop-product-right.html">Ultra Series</a></li>
-                                                                <li><a href="shop-product-right.html">Pro Series</a></li>
-                                                                <li><a href="shop-product-right.html">PT Series</a></li>
-                                                                <li><a href="shop-product-right.html">Special Series</a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="sub-mega-menu col-4 mb-4">
-                                                            <a class="menu-title" href="#">Network Video Recorders</a>
-                                                            <ul>
-                                                                <li><a href="shop-product-right.html">Ultra Series</a></li>
-                                                                <li><a href="shop-product-right.html">Pro Series with AcuSense</a></li>
-                                                                <li><a href="shop-product-right.html">Pro Series (All)</a></li>
-                                                                <li><a href="shop-product-right.html">Value Series</a></li>
-                                                                <li><a href="shop-product-right.html">Special Series</a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
-                                            
-                                        </ul>
-                                    </li>
-
-                                    <li>
-                                        <a class="active" href="index.html">Vendors </a>
-                                    </li>
-                                </ul>
-                            </nav>
+                            @include('frontend.layouts.nav.menu_desktop')
                         </div>
                     </div>
                     <div class="hotline d-none d-lg-flex">
@@ -938,141 +502,7 @@
                 </div>
                 <div class="mobile-menu-wrap mobile-header-border">
                     <!-- mobile menu start -->
-                    <nav>
-                        <ul class="mobile-menu font-heading">
-                            <li class="menu-item-has-children">
-                                <a href="index.html">Home</a>
-                                <ul class="dropdown">
-                                    <li><a href="index.html">Home 1</a></li>
-                                    <li><a href="index-2.html">Home 2</a></li>
-                                    <li><a href="index-3.html">Home 3</a></li>
-                                    <li><a href="index-4.html">Home 4</a></li>
-                                    <li><a href="index-5.html">Home 5</a></li>
-                                    <li><a href="index-6.html">Home 6</a></li>
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="shop-grid-right.html">shop</a>
-                                <ul class="dropdown">
-                                    <li><a href="shop-grid-right.html">Shop Grid – Right Sidebar</a></li>
-                                    <li><a href="shop-grid-left.html">Shop Grid – Left Sidebar</a></li>
-                                    <li><a href="shop-list-right.html">Shop List – Right Sidebar</a></li>
-                                    <li><a href="shop-list-left.html">Shop List – Left Sidebar</a></li>
-                                    <li><a href="shop-fullwidth.html">Shop - Wide</a></li>
-                                    <li class="menu-item-has-children">
-                                        <a href="#">Single Product</a>
-                                        <ul class="dropdown">
-                                            <li><a href="shop-product-right.html">Product – Right Sidebar</a></li>
-                                            <li><a href="shop-product-left.html">Product – Left Sidebar</a></li>
-                                            <li><a href="shop-product-full.html">Product – No sidebar</a></li>
-                                            <li><a href="shop-product-vendor.html">Product – Vendor Infor</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="shop-filter.html">Shop – Filter</a></li>
-                                    <li><a href="shop-wishlist.html">Shop – Wishlist</a></li>
-                                    <li><a href="shop-cart.html">Shop – Cart</a></li>
-                                    <li><a href="shop-checkout.html">Shop – Checkout</a></li>
-                                    <li><a href="shop-compare.html">Shop – Compare</a></li>
-                                    <li class="menu-item-has-children">
-                                        <a href="#">Shop Invoice</a>
-                                        <ul class="dropdown">
-                                            <li><a href="shop-invoice-1.html">Shop Invoice 1</a></li>
-                                            <li><a href="shop-invoice-2.html">Shop Invoice 2</a></li>
-                                            <li><a href="shop-invoice-3.html">Shop Invoice 3</a></li>
-                                            <li><a href="shop-invoice-4.html">Shop Invoice 4</a></li>
-                                            <li><a href="shop-invoice-5.html">Shop Invoice 5</a></li>
-                                            <li><a href="shop-invoice-6.html">Shop Invoice 6</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="#">Vendors</a>
-                                <ul class="dropdown">
-                                    <li><a href="vendors-grid.html">Vendors Grid</a></li>
-                                    <li><a href="vendors-list.html">Vendors List</a></li>
-                                    <li><a href="vendor-details-1.html">Vendor Details 01</a></li>
-                                    <li><a href="vendor-details-2.html">Vendor Details 02</a></li>
-                                    <li><a href="vendor-dashboard.html">Vendor Dashboard</a></li>
-                                    <li><a href="vendor-guide.html">Vendor Guide</a></li>
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="#">Mega menu</a>
-                                <ul class="dropdown">
-                                    <li class="menu-item-has-children">
-                                        <a href="#">Women's Fashion</a>
-                                        <ul class="dropdown">
-                                            <li><a href="shop-product-right.html">Dresses</a></li>
-                                            <li><a href="shop-product-right.html">Blouses & Shirts</a></li>
-                                            <li><a href="shop-product-right.html">Hoodies & Sweatshirts</a></li>
-                                            <li><a href="shop-product-right.html">Women's Sets</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item-has-children">
-                                        <a href="#">Men's Fashion</a>
-                                        <ul class="dropdown">
-                                            <li><a href="shop-product-right.html">Jackets</a></li>
-                                            <li><a href="shop-product-right.html">Casual Faux Leather</a></li>
-                                            <li><a href="shop-product-right.html">Genuine Leather</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item-has-children">
-                                        <a href="#">Technology</a>
-                                        <ul class="dropdown">
-                                            <li><a href="shop-product-right.html">Gaming Laptops</a></li>
-                                            <li><a href="shop-product-right.html">Ultraslim Laptops</a></li>
-                                            <li><a href="shop-product-right.html">Tablets</a></li>
-                                            <li><a href="shop-product-right.html">Laptop Accessories</a></li>
-                                            <li><a href="shop-product-right.html">Tablet Accessories</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="blog-category-fullwidth.html">Blog</a>
-                                <ul class="dropdown">
-                                    <li><a href="blog-category-grid.html">Blog Category Grid</a></li>
-                                    <li><a href="blog-category-list.html">Blog Category List</a></li>
-                                    <li><a href="blog-category-big.html">Blog Category Big</a></li>
-                                    <li><a href="blog-category-fullwidth.html">Blog Category Wide</a></li>
-                                    <li class="menu-item-has-children">
-                                        <a href="#">Single Product Layout</a>
-                                        <ul class="dropdown">
-                                            <li><a href="blog-post-left.html">Left Sidebar</a></li>
-                                            <li><a href="blog-post-right.html">Right Sidebar</a></li>
-                                            <li><a href="blog-post-fullwidth.html">No Sidebar</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="#">Pages</a>
-                                <ul class="dropdown">
-                                    <li><a href="page-about.html">About Us</a></li>
-                                    <li><a href="page-contact.html">Contact</a></li>
-                                    <li><a href="page-account.html">My Account</a></li>
-                                    <li><a href="page-login.html">Login</a></li>
-                                    <li><a href="page-register.html">Register</a></li>
-                                    <li><a href="page-forgot-password.html">Forgot password</a></li>
-                                    <li><a href="page-reset-password.html">Reset password</a></li>
-                                    <li><a href="page-purchase-guide.html">Purchase Guide</a></li>
-                                    <li><a href="page-privacy-policy.html">Privacy Policy</a></li>
-                                    <li><a href="page-terms.html">Terms of Service</a></li>
-                                    <li><a href="page-404.html">404 Page</a></li>
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="#">Language</a>
-                                <ul class="dropdown">
-                                    <li><a href="#">English</a></li>
-                                    <li><a href="#">French</a></li>
-                                    <li><a href="#">German</a></li>
-                                    <li><a href="#">Spanish</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </nav>
+                    @include('frontend.layouts.nav.menu_mobile')
                     <!-- mobile menu end -->
                 </div>
                 <div class="mobile-header-info-wrap">
@@ -1370,119 +800,54 @@
     <script src="{{ asset('public/assets/js/main.js')}}"></script>
     <script src="{{ asset('public/assets/js/shop.js')}}"></script>
 
-    <script>
+    <script>    
+        $(document).ready(function(){
+            localStorage.clear();
+            visible({{ str_replace(' ', '_',strtolower($parent_categories[0]->id)) }})
+        })
         function visible(x){
-            if(x=='network_products'){
-                $('#products_visibility').empty().append(`
-                    <li class="sub-mega-menu col-4 mb-4">
-                        <a class="menu-title" href="#">Network Cameras</a>
-                        <ul>
-                            <li><a href="shop-product-right.html">Pro Series All</a></li>
-                            <li><a href="shop-product-right.html">Pro Series With AcuSense</a></li>
-                            <li><a href="shop-product-right.html">Pro Series with ColorVu</a></li>
-                            <li><a href="shop-product-right.html">DeepinView Series</a></li>
-                            <li><a href="shop-product-right.html">Panaromic Series</a>
-                            </li>
-                            <li><a href="shop-product-right.html">Special Series</a></li>
-                            <li><a href="shop-product-right.html">Ultra Series</a></li>
-                            <li><a href="shop-product-right.html">Cable-Free Series</a></li>
-                            <li><a href="shop-product-right.html">Solar-powered Series</a></li>
-                            <li><a href="shop-product-right.html">PT Series</a></li>
-                            <li><a href="shop-product-right.html">Value Series</a></li>
-                        </ul>
-                    </li>
-                    <li class="sub-mega-menu col-4 mb-4">
-                        <a class="menu-title" href="#">PTZ Cameras</a>
-                        <ul>
-                            <li><a href="shop-product-right.html">TandemVu PTZ Cameras</a></li>
-                            <li><a href="shop-product-right.html">Ultra Series</a></li>
-                            <li><a href="shop-product-right.html">Pro Series</a></li>
-                            <li><a href="shop-product-right.html">PT Series</a></li>
-                            <li><a href="shop-product-right.html">Special Series</a></li>
-                        </ul>
-                    </li>
-                    <li class="sub-mega-menu col-4 mb-4">
-                        <a class="menu-title" href="#">Network Video Recorders</a>
-                        <ul>
-                            <li><a href="shop-product-right.html">Ultra Series</a></li>
-                            <li><a href="shop-product-right.html">Pro Series with AcuSense</a></li>
-                            <li><a href="shop-product-right.html">Pro Series (All)</a></li>
-                            <li><a href="shop-product-right.html">Value Series</a></li>
-                            <li><a href="shop-product-right.html">Special Series</a></li>
-                        </ul>
-                    </li>
-                    <li class="sub-mega-menu col-4 mb-4">
-                        <a class="menu-title" href="#">DeepinMind Intelligence</a>
-                        <ul>
-                            <li><a href="shop-product-right.html">DeepinMind Edge</a></li>
-                        </ul>
-                    </li>
+            if(localStorage.getItem('product_item_'+x)){
+                    var scat='';
+                    $.each(JSON.parse(localStorage.getItem('product_item_'+x)),function(cat_key,cat_val){
+                        scat = scat+`<li class="sub-mega-menu col-4 mb-4"><a class="menu-title" href="#"><u>${cat_val.name}</u></a><ul>`;
+                        $.each(cat_val.sub_category,function(scat_key,scat_val){
+                            scat = scat+'<li><a href="#">'+scat_val.name+'</a></li>'
+                        })
 
-                    <li class="sub-mega-menu col-4 mb-4">
-                        <a class="menu-title" href="#">Explosion-Proof and Anti-Corrosion Series</a>
-                        <ul>
-                            <li><a href="shop-product-right.html">Explosion-Proof Series</a></li>
-                            <li><a href="shop-product-right.html">Anti-Corrosion Series</a></li>
-                            <li><a href="shop-product-right.html">Accessories</a></li>
-                        </ul>
-                    </li>
+                        scat = scat + '</ul></li>';
+                    });
 
-                    <li class="sub-mega-menu col-4 mb-4">
-                        <a class="menu-title" href="#">Servers</a>
-                        <ul>
-                            <li><a href="shop-product-right.html">General Purpose Server</a></li>
-                            <li><a href="shop-product-right.html">VMS Server</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="sub-mega-menu col-4 mb-4">
-                        <a class="menu-title" href="#">Storage</a>
-                        <ul>
-                            <li><a href="shop-product-right.html">Hybrid SAN</a></li>
-                            <li><a href="shop-product-right.html">Cluster Storage</a></li>
-                        </ul>
-                    </li>
-
-                     <li class="sub-mega-menu col-4 mb-4">
-                        <a class="menu-title" href="#">Kits</a>
-                        <ul>
-                            <li><a href="shop-product-right.html">PoE Kits</a></li>
-                            <li><a href="shop-product-right.html">Wi-Fi Kits</a></li>
-                        </ul>
-                    </li>
-                    
-                `);
+                    $('#products_visibility').empty().append(scat);
             }else{
-                $('#products_visibility').empty().append(`
-                    <li class="sub-mega-menu col-4 mb-4">
-                        <a class="menu-title" href="#">Turbo HD Cameras</a>
-                        <ul>
-                            <li><a href="shop-product-right.html">Turbo HD Cameras with ColorVu</a></li>
-                            <li><a href="shop-product-right.html">Value Series</a></li>
-                            <li><a href="shop-product-right.html">Pro Series</a></li>
-                            <li><a href="shop-product-right.html">Ultra Series</a></li>
-                            <li><a href="shop-product-right.html">IOT Series</a></li>
-                        </ul>
-                    </li>
-                    <li class="sub-mega-menu col-4 mb-4">
-                        <a class="menu-title" href="#">DVR</a>
-                        <ul>
-                            <li><a href="shop-product-right.html">eDVR Series</a></li>
-                            <li><a href="shop-product-right.html">Pro Series With AcuSense</a></li>
-                            <li><a href="shop-product-right.html">Value Series</a></li>
-                            <li><a href="shop-product-right.html">Ultra Series</a></li>
-                            <li><a href="shop-product-right.html">Special Series</a>
-                            </li>
-                            <li><a href="shop-product-right.html">Back-end Accessories</a></li>
-                        </ul>
-                    </li>
-                    <li class="sub-mega-menu col-4 mb-4">
-                        <a class="menu-title" href="#">PTZ Cameras</a>
-                        <ul>
-                            <li><a href="shop-product-right.html">Pro Series</a></li>
-                        </ul>
-                    </li>
-                `);
+               
+
+                $.ajax({
+                type: "get",
+                url: "{{ route('frontend.getCategoryDetails') }}?id="+x,
+                success: function (data) {
+                    localStorage.setItem('product_item_'+x,JSON.stringify(data.categories))
+                    var scat = '';
+                    $.each(data.categories,function(cat_key,cat_val){
+                        scat = scat+`<li class="sub-mega-menu col-4 mb-4"><a class="menu-title" href="#"><u>${cat_val.name}</u></a><ul>`;
+                        $.each(cat_val.sub_category,function(scat_key,scat_val){
+                            scat = scat+'<li><a href="#">'+scat_val.name+'</a></li>'
+                        })
+
+                        scat = scat + '</ul></li>';
+                    });
+
+                    $('#products_visibility').empty().append(scat);
+                },
+                error: function (err) {
+                    var err_message = err.responseJSON.message.split("(");
+                    swal({
+                        icon: "warning",
+                        title: "Warning !",
+                        text: err_message[0],
+                        confirmButtonText: "Ok",
+                    });
+                }
+            });
             }
             
             

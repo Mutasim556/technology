@@ -23,8 +23,8 @@ class AdminSeeder extends Seeder
         // $admin->save();
         // $admin->assignRole('Super Admin');
 
-        $admin->name = 'Admin';
-        $admin->email = 'ad@ad.com';
+        $admin->name = 'Mutasim';
+        $admin->email = 'admin@admin.com';
         $admin->phone = '01724698393';
         $admin->username = 'ad';
         $admin->password = Hash::make('admin');

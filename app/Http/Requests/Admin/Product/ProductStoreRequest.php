@@ -28,11 +28,13 @@ class ProductStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'product_type' => ['required'],
+            // 'product_type' => ['required'],
             'product_name' => ['required', 'max:255'],
             'product_code' => ['required', 'integer'],
             'barcode_symbology' => ['required'],
+            'parent_category' => ['required'],
             'category' => ['required'],
+            'sub_category' => ['required'],
             'product_unit' => ['required_if:product_type,standard'],
             'sale_unit' => ['required_if:product_type,standard'],
             'purchase_unit' => ['required_if:product_type,standard'],
@@ -62,7 +64,9 @@ class ProductStoreRequest extends FormRequest
         $product->code = $this->product_code;
         $product->barcode_symbology = $this->barcode_symbology;
         $product->brand_id = $this->brand;
+        $product->parent_category_id = $this->parent_category;
         $product->category_id = $this->category;
+        $product->sub_category_id = $this->sub_category;
         $product->unit_id = $this->product_unit;
         $product->sale_unit_id = $this->product_unit;
         $product->purchase_unit_id = $this->product_unit;
@@ -85,8 +89,8 @@ class ProductStoreRequest extends FormRequest
             foreach ($images as $key => $image) {
                 $imageName = $image->getClientOriginalName();
                 $manager = new ImageManager(new Driver());
-                $manager->read($image)->resize(300, 300)->save('admin/inventory/file/product/' . $imageName);
-                $imageName  = 'admin/inventory/file/product/' . $imageName;
+                $manager->read($image)->resize(300, 300)->save(env('ASSET_DIRECTORY').'admin/inventory/file/product/' . $imageName);
+                $imageName  = env('ASSET_DIRECTORY').'admin/inventory/file/product/' . $imageName;
                 $image_names[] = $imageName;
             }
             $product_images = implode(",", $image_names);
@@ -127,8 +131,8 @@ class ProductStoreRequest extends FormRequest
             if($this->attatch_file){
                 $file = $this->attatch_file;
                 $fileName = "DIGITAL_PRODUCT_FILE_".time().'.'.$file->getClientOriginalExtension();
-                $this->attatch_file->move('admin/inventory/file/product/file/',$fileName);
-                $product->file = 'admin/inventory/file/product/file/'.$fileName;
+                $this->attatch_file->move(env('ASSET_DIRECTORY').'admin/inventory/file/product/file/',$fileName);
+                $product->file = env('ASSET_DIRECTORY').'admin/inventory/file/product/file/'.$fileName;
             }else{
                 $product->file = null;
             }

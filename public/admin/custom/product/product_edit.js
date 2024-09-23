@@ -494,3 +494,28 @@ var myDropzone = new Dropzone("div#dropzoneDragArea", {
         this.removeAllFiles(true);
     }
 });
+
+function getCategoryDetails(x,target){
+    $.ajax({
+        type: "GET",
+        url: base_url+'/admin/product/category/get/category-details/' + x +"/"+target,
+        dataType: "JSON",
+        success: function (data) {
+            console.log(data);
+            $('#'+target).empty();
+            var options = '<option>Select Please</option>';
+            $.each(data,function(key,val){
+                options = options + '<option value="' + val.id + '">' + val.category_name + '</option>';
+            })
+            // $('#add-category-modal #category');
+            $('#'+target).append(options).trigger('change');
+            // $('#sale_unit').empty().append('<option value="' + data.unit_id + '">' + data.unit_name + '</option>');
+            // $('#purchase_unit').empty().append('<option value="' + data.unit_id + '">' + data.unit_name + '</option>');
+            // $('#sale_unit').trigger('change');
+            // $('#purchase_unit').trigger('change');
+        },
+        error: function () {
+
+        }
+    })
+}

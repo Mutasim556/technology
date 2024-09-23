@@ -22,9 +22,14 @@ class Product extends Model
     public function brand(){
         return $this->belongsTo(Brand::class,'brand_id','id');
     }
-
+    public function parentCategory(){
+        return $this->belongsTo(ParentCategory::class,'parent_category_id','id');
+    }
     public function category(){
         return $this->belongsTo(Category::class,'category_id','id');
+    }
+    public function subCategory(){
+        return $this->belongsTo(SubCategory::class,'sub_category_id','id');
     }
 
     public function unit(){

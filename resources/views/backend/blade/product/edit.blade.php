@@ -82,9 +82,9 @@
                                             <select class="form-select" id="product_type" name="product_type">
                                                 <option value="" disabled>{{ __('admin_local.Please Select') }} * </option>
                                                 <option value="standard" {{ $editproduct->type=="standard"?'selected':'' }}>Standard</option>
-                                                <option value="combo" {{ $editproduct->type=="combo"?'selected':'' }}>Combo</option>
-                                                <option value="digital" {{ $editproduct->type=="digital"?'selected':'' }}>Digital</option>
-                                                <option value="service" {{ $editproduct->type=="service"?'selected':'' }}>Service</option>
+                                                <option value="combo" {{ $editproduct->type=="combo"?'selected':'' }} disabled>Combo</option>
+                                                <option value="digital" {{ $editproduct->type=="digital"?'selected':'' }} disabled>Digital</option>
+                                                <option value="service" {{ $editproduct->type=="service"?'selected':'' }} disabled>Service</option>
                                             </select>
                                             <span class="text-danger err-mgs-product_type"></span>
                                         </div>
@@ -134,14 +134,32 @@
                                             </select>
                                             <span class="text-danger err-mgs-brand"></span>
                                         </div>
+                                        <div class="form-group col-md-4" id="parent_category_div">
+                                            <label for="category">{{ __('admin_local.Parent Category') }} *</label>
+                                            <select class="js-example-basic-single form-control" id="parent_category"
+                                                name="parent_category" onchange="getCategoryDetails(this.value,'category')">
+                                                <option value="">{{ __('admin_local.Please Select') }}</option>
+                                                @foreach ($parent_categories as $parent_category)
+                                                    <option value="{{ $parent_category->id }}" {{ $editproduct->parent_category_id==$parent_category->id?'selected':'' }}>
+                                                        {{ $parent_category->parent_category_name }}</option> 
+                                                @endforeach
+                                            </select>
+                                            <span class="text-danger err-mgs-category"></span>
+                                        </div>
                                         <div class="form-group col-md-4" id="category_div">
                                             <label for="category">{{ __('admin_local.Category') }} *</label>
                                             <select class="js-example-basic-single form-control" id="category"
-                                                name="category">
+                                                name="category" onchange="getCategoryDetails(this.value,'sub_category')">
                                                 <option value="">{{ __('admin_local.Please Select') }}</option>
-                                                @foreach ($categories as $category)
-                                                    <option value="{{ $category->id }}" {{ $editproduct->category_id==$category->id?'selected':'' }}>{{ $category->category_name }}</option>
-                                                @endforeach
+                                                    <option value="{{ $editproduct->category_id }}" selected>{{ $editproduct->category->category_name }}</option>
+                                            </select>
+                                            <span class="text-danger err-mgs-category"></span>
+                                        </div>
+                                        <div class="form-group col-md-4" id="sub_category_div">
+                                            <label for="category">{{ __('admin_local.Sub Category') }} *</label>
+                                            <select class="js-example-basic-single form-control" id="sub_category"
+                                                name="sub_category">
+                                                <option value="{{ $editproduct->sub_category_id?$editproduct->sub_category_id:'' }}" selected>{{ $editproduct->sub_category_id?$editproduct->subCategory->sub_category_name:__('admin_local.Please Select') }}</option>
                                             </select>
                                             <span class="text-danger err-mgs-category"></span>
                                         </div>
@@ -529,6 +547,7 @@
         });
 
         var form_url = "{{ route('admin.product.update',$editproduct->id) }}";
+        var base_url = "{{ URL::to('/') }}";
         var submit_btn_after = `{{ __('admin_local.Submitting') }}`;
         var submit_btn_before = `{{ __('admin_local.Submit') }}`;
         var no_permission_mgs = `{{ __('admin_local.No Permission') }}`;

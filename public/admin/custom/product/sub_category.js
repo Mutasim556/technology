@@ -26,7 +26,6 @@ $('#add_sub_category_form').submit(function (e) {
                 confirmButtonText: rdata.confirmButtonText,
             }).then(function(){
                 let data = rdata.sub_category;
-                console.log(data);
                 let update_status_btn = `<span class="badge badge-danger">${no_permission_mgs}</span>`;
                 if(rdata.hasEditPermission){
                     update_status_btn = `<span class="mx-2">${data.sub_category_status==0?'Inactive':'Active'}</span><input
@@ -49,7 +48,7 @@ $('#add_sub_category_form').submit(function (e) {
 
 
                 let cat_image = data.sub_category_image?'<img src="/'+data.sub_category_image+'">':no_file;
-                $('#basic-1 tbody').append(`<tr id="trid-${data.id}" data-id="${data.id}"><td>${data.sub_category_name}</td><td>${data.parent_sub_category_id?data.parent_sub_category.parent_sub_category_name:'N/A'}</td><td>${cat_image}</td><td>${data.admin.name}</td>
+                $('#basic-1 tbody').append(`<tr id="trid-${data.id}" data-id="${data.id}"><td>${data.sub_category_name}</td><td>${data.category_id?data.category.category_name:'N/A'}</td><td>${data.parent_category_id?data.parent_category.parent_category_name:'N/A'}</td><td>${cat_image}</td><td>${data.admin.name}</td>
                 <td class="text-center">${update_status_btn}</td>
                 <td>${action_option}</td></tr>`);
 
