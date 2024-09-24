@@ -873,7 +873,7 @@
 
                 $.ajax({
                 type: "get",
-                url: "{{ route('getSolutionCategoryDetails') }}?id="+x,
+                url: "{{ route('frontend.getSolutionCategoryDetails') }}?id="+x,
                 success: function (data) {
                     localStorage.setItem('solution_item_'+x,JSON.stringify(data.categories))
                     var scat = '';
