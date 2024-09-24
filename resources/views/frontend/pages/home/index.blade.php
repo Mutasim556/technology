@@ -5201,7 +5201,7 @@
                             </figure>
                             <div class="col-md-8 mb-0">
                                 <h6>
-                                    <a href="shop-product-right.html">Angie’s Boomchickapop Sweet & Salty Kettle
+                                    <a href="shop-product-right.html">Angie’s Boomchickapop Sweet & Salty Kettle 
                                         Corn</a>
                                 </h6>
                                 <div class="product-rate-cover">

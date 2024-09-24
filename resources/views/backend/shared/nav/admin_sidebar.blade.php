@@ -113,6 +113,37 @@
         </li>
         
     @endif
+    @if (hasPermission(['solution-parent-category-index','solution-category-index','solution-sub-category-index']))
+        <li class="sidebar-list">
+            <a class="sidebar-link sidebar-title" href="javascript:void(0)" aria-expanded="false">
+                <i data-feather="check-circle"></i>
+                <span class="lan-3">{{ __('admin_local.Solutions') }}</span>
+            </a>
+            <ul class="sidebar-submenu">
+                @if (hasPermission(['solution-parent-category-index', 'solution-parent-category-create', 'solution-parent-category-update', 'solution-parent-category-delete']))
+                    <li>
+                        <a href="{{ route('admin.solution.parent-category.index') }}" class="sidebar-link">
+                            <span> {{ __('admin_local.Parent Category') }} </span>
+                        </a>
+                    </li>
+                @endif
+                @if (hasPermission(['solution-category-index', 'solution-category-create', 'solution-category-update', 'solution-category-delete']))
+                    <li>
+                        <a href="{{ route('admin.solution.category.index') }}" class="sidebar-link">
+                            <span> {{ __('admin_local.Category') }} </span>
+                        </a>
+                    </li>
+                @endif
+                @if (hasPermission(['solution-sub-category-index', 'solution-sub-category-create', 'solution-sub-category-update', 'solution-sub-category-delete']))
+                    <li>
+                        <a href="{{ route('admin.solution.sub-category.index') }}" class="sidebar-link">
+                            <span> {{ __('admin_local.Sub Category') }} </span>
+                        </a>
+                    </li>
+                @endif
+            </ul>
+        </li>
+    @endif
     @if (hasPermission(['role-permission-index', 'role-permission-create', 'role-permission-update','role-permission-delete']))
         <li class="sidebar-list">
             <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin.role.index') }}"

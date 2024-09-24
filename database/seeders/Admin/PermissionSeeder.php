@@ -71,10 +71,10 @@ class PermissionSeeder extends Seeder
         // Permission::create(['guard_name'=>'admin','name'=>'category-delete','group_name'=>'Product Category Permissions']);
 
         // sub category permission
-        Permission::create(['guard_name'=>'admin','name'=>'sub-category-index','group_name'=>'Product Sub Category Permissions']);
-        Permission::create(['guard_name'=>'admin','name'=>'sub-category-store','group_name'=>'Product Sub Category Permissions']);
-        Permission::create(['guard_name'=>'admin','name'=>'sub-category-update','group_name'=>'Product Sub Category Permissions']);
-        Permission::create(['guard_name'=>'admin','name'=>'sub-category-delete','group_name'=>'Product Sub Category Permissions']);
+        // Permission::create(['guard_name'=>'admin','name'=>'sub-category-index','group_name'=>'Product Sub Category Permissions']);
+        // Permission::create(['guard_name'=>'admin','name'=>'sub-category-store','group_name'=>'Product Sub Category Permissions']);
+        // Permission::create(['guard_name'=>'admin','name'=>'sub-category-update','group_name'=>'Product Sub Category Permissions']);
+        // Permission::create(['guard_name'=>'admin','name'=>'sub-category-delete','group_name'=>'Product Sub Category Permissions']);
 
         //products
         // Permission::create(['guard_name'=>'admin','name'=>'product-index','group_name'=>'Product Permissions']);
@@ -98,6 +98,28 @@ class PermissionSeeder extends Seeder
         // Permission::create(['guard_name'=>'admin','name'=>'warehouse-store','group_name'=>'Warehouse Permissions']);
         // Permission::create(['guard_name'=>'admin','name'=>'warehouse-update','group_name'=>'Warehouse Permissions']);
         // Permission::create(['guard_name'=>'admin','name'=>'warehouse-delete','group_name'=>'Warehouse Permissions']);
+
+
+        //solution permissions 
+
+
+        // parent category permission
+        // Permission::create(['guard_name'=>'admin','name'=>'solution-parent-category-index','group_name'=>'Product Solution Parent Category Permissions']);
+        // Permission::create(['guard_name'=>'admin','name'=>'solution-parent-category-store','group_name'=>'Product Solution Parent Category Permissions']);
+        // Permission::create(['guard_name'=>'admin','name'=>'solution-parent-category-update','group_name'=>'Product Solution Parent Category Permissions']);
+        // Permission::create(['guard_name'=>'admin','name'=>'solution-parent-category-delete','group_name'=>'Product Solution Parent Category Permissions']);
+
+        //category permission
+        // Permission::create(['guard_name'=>'admin','name'=>'solution-category-index','group_name'=>'Product Solution Category Permissions']);
+        // Permission::create(['guard_name'=>'admin','name'=>'solution-category-store','group_name'=>'Product Solution Category Permissions']);
+        // Permission::create(['guard_name'=>'admin','name'=>'solution-category-update','group_name'=>'Product Solution Category Permissions']);
+        // Permission::create(['guard_name'=>'admin','name'=>'solution-category-delete','group_name'=>'Product Solution Category Permissions']);
+
+        // sub category permission
+        // Permission::create(['guard_name'=>'admin','name'=>'solution-sub-category-index','group_name'=>'Product Solution Sub Category Permissions']);
+        // Permission::create(['guard_name'=>'admin','name'=>'solution-sub-category-store','group_name'=>'Product Solution Sub Category Permissions']);
+        // Permission::create(['guard_name'=>'admin','name'=>'solution-sub-category-update','group_name'=>'Product Solution Sub Category Permissions']);
+        // Permission::create(['guard_name'=>'admin','name'=>'solution-sub-category-delete','group_name'=>'Product Solution Sub Category Permissions']);
 
     }
 }
