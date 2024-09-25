@@ -121,5 +121,21 @@ class PermissionSeeder extends Seeder
         // Permission::create(['guard_name'=>'admin','name'=>'solution-sub-category-update','group_name'=>'Product Solution Sub Category Permissions']);
         // Permission::create(['guard_name'=>'admin','name'=>'solution-sub-category-delete','group_name'=>'Product Solution Sub Category Permissions']);
 
+
+        //support permissions 
+
+
+        //parent category permission
+        // Permission::create(['guard_name'=>'admin','name'=>'support-parent-category-index','group_name'=>'Support Parent Category Permissions']);
+        // Permission::create(['guard_name'=>'admin','name'=>'support-parent-category-store','group_name'=>'Support Parent Category Permissions']);
+        // Permission::create(['guard_name'=>'admin','name'=>'support-parent-category-update','group_name'=>'Support Parent Category Permissions']);
+        // Permission::create(['guard_name'=>'admin','name'=>'support-parent-category-delete','group_name'=>'Support Parent Category Permissions']);
+
+        //category permission
+        // Permission::create(['guard_name'=>'admin','name'=>'support-category-index','group_name'=>'Support Category Permissions']);
+        // Permission::create(['guard_name'=>'admin','name'=>'support-category-store','group_name'=>'Support Category Permissions']);
+        // Permission::create(['guard_name'=>'admin','name'=>'support-category-update','group_name'=>'Support Category Permissions']);
+        // Permission::create(['guard_name'=>'admin','name'=>'support-category-delete','group_name'=>'Support Category Permissions']);
+
     }
 }

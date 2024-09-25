@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Frontend\ParentCategoryresource;
 use App\Models\Admin\Product\ParentCategory;
 use App\Models\Admin\Solution\SolutionParentCategory;
+use App\Models\Admin\Support\SupportParentCategory;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -17,6 +18,7 @@ class HomeController extends Controller
     {   
         $parent_categories = ParentCategory::with('category')->where([['parent_category_status',1],['parent_category_delete',0]])->get();
         $solution_parent_categories = SolutionParentCategory::with('category')->where([['parent_category_status',1],['parent_category_delete',0]])->get();
-        return view('frontend.pages.home.index',compact('parent_categories','solution_parent_categories'));
+        $support_parent_categories = SupportParentCategory::with('category')->where([['parent_category_status',1],['parent_category_delete',0]])->get();
+        return view('frontend.pages.home.index',compact('parent_categories','solution_parent_categories','support_parent_categories'));
     }
 }

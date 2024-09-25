@@ -10,4 +10,5 @@ Route::get('/',HomeController::class)->name('index');
 Route::controller(CategoryDetailsContorller::class)->name('frontend.')->group(function(){
     Route::get('/frontend/getCategoryDeatils','categoryDetails')->name('getCategoryDetails');
     Route::get('/frontend/getSolutionCategoryDeatils','solutionCategoryDetails')->name('getSolutionCategoryDetails');
+    Route::get('/frontend/getSupportCategoryDeatils','supportCategoryDetails')->name('getSupportCategoryDetails');
 });

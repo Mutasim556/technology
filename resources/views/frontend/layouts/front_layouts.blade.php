@@ -167,79 +167,7 @@
         </div>
     </div>
     <header class="header-area header-style-1 header-style-5 header-height-2">
-        <div class="mobile-promotion">
-            <span>Grand opening, <strong>up to 15%</strong> off all items. Only <strong>3 days</strong> left</span>
-        </div>
-        <div class="header-top header-top-ptb-1 d-none d-lg-block">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-xl-3 col-lg-4">
-                        <div class="header-info">
-                            <ul>
-                                <li><a href="page-about.htlm">About Us</a></li>
-                                <li><a href="page-account.html">My Account</a></li>
-                                <li><a href="shop-wishlist.html">Wishlist</a></li>
-                                <li><a href="shop-order.html">Order Tracking</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-4">
-                        <div class="text-center">
-                            <div id="news-flash" class="d-inline-block">
-                                <ul>
-                                    <li>100% Secure delivery without contacting the courier</li>
-                                    <li>Supper Value Deals - Save more with coupons</li>
-                                    <li>Trendy 25silver jewelry, save up 35% off today</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4">
-                        <div class="header-info header-info-right">
-                            <ul>
-                                <li>Need help? Call Us: <strong class="text-brand"> + 1800 900</strong></li>
-                                <li>
-                                    <a class="language-dropdown-active" href="#">English <i
-                                            class="fi-rs-angle-small-down"></i></a>
-                                    <ul class="language-dropdown">
-                                        <li>
-                                            <a href="#"><img src="assets/imgs/theme/flag-fr.png"
-                                                    alt="" />Français</a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><img src="assets/imgs/theme/flag-dt.png"
-                                                    alt="" />Deutsch</a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><img src="assets/imgs/theme/flag-ru.png"
-                                                    alt="" />Pусский</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a class="language-dropdown-active" href="#">USD <i
-                                            class="fi-rs-angle-small-down"></i></a>
-                                    <ul class="language-dropdown">
-                                        <li>
-                                            <a href="#"><img src="assets/imgs/theme/flag-fr.png"
-                                                    alt="" />INR</a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><img src="assets/imgs/theme/flag-dt.png"
-                                                    alt="" />MBP</a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><img src="assets/imgs/theme/flag-ru.png"
-                                                    alt="" />EU</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
         <div class="header-middle header-middle-ptb-1 d-none d-lg-block">
             <div class="container">
                 <div class="header-wrap">
@@ -279,7 +207,7 @@
                                         </select>
                                     </form>
                                 </div>
-                                <div class="header-action-icon-2">
+                                {{-- <div class="header-action-icon-2">
                                     <a href="shop-compare.html">
                                         <img class="svgInject" alt="Nest"
                                             src="{{ asset('public/assets/imgs/theme/icons/icon-compare.svg') }}" />
@@ -340,7 +268,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="header-action-icon-2">
                                     <a href="page-account.html">
                                         <img class="svgInject" alt="Nest"
@@ -805,6 +733,7 @@
             localStorage.clear();
             visible({{ str_replace(' ', '_',strtolower($parent_categories[0]->id)) }})
             visible_solution({{ str_replace(' ', '_',strtolower($solution_parent_categories[0]->id)) }})
+            visible_support({{ str_replace(' ', '_',strtolower($support_parent_categories[0]->id)) }})
         })
         function visible(x){
             if(localStorage.getItem('product_item_'+x)){
@@ -887,6 +816,44 @@
                     });
 
                     $('#solution_visibility').empty().append(scat);
+                },
+                error: function (err) {
+                    var err_message = err.responseJSON.message.split("(");
+                    swal({
+                        icon: "warning",
+                        title: "Warning !",
+                        text: err_message[0],
+                        confirmButtonText: "Ok",
+                    });
+                }
+            });
+            }
+            
+            
+        }
+
+        function visible_support(x){
+            if(localStorage.getItem('support_item_'+x)){
+                    var scat='';
+                    $.each(JSON.parse(localStorage.getItem('support_item_'+x)),function(cat_key,cat_val){
+                        scat = scat+`<li><a href="#">${cat_val.name}</a></li>`;
+                    });
+
+                    $('#support_visibility li ul').empty().append(scat);
+            }else{
+               
+
+                $.ajax({
+                type: "get",
+                url: "{{ route('frontend.getSupportCategoryDetails') }}?id="+x,
+                success: function (data) {
+                    localStorage.setItem('support_item_'+x,JSON.stringify(data.categories))
+                    var scat = '';
+                    $.each(data.categories,function(cat_key,cat_val){
+                        scat = scat+`<li><a href="#">${cat_val.name}</a></li>`;
+                    });
+
+                    $('#support_visibility li ul').empty().append(scat);
                 },
                 error: function (err) {
                     var err_message = err.responseJSON.message.split("(");

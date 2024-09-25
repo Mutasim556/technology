@@ -144,6 +144,30 @@
             </ul>
         </li>
     @endif
+    @if (hasPermission(['support-parent-category-index','support-category-index','support-sub-category-index']))
+        <li class="sidebar-list">
+            <a class="sidebar-link sidebar-title" href="javascript:void(0)" aria-expanded="false">
+                <i data-feather="clipboard"></i>
+                <span class="lan-3">{{ __('admin_local.Support') }}</span>
+            </a>
+            <ul class="sidebar-submenu">
+                @if (hasPermission(['support-parent-category-index', 'support-parent-category-create', 'support-parent-category-update', 'support-parent-category-delete']))
+                    <li>
+                        <a href="{{ route('admin.support.parent-category.index') }}" class="sidebar-link">
+                            <span> {{ __('admin_local.Parent Category') }} </span>
+                        </a>
+                    </li>
+                @endif
+                @if (hasPermission(['support-category-index', 'support-category-create', 'support-category-update', 'support-category-delete']))
+                    <li>
+                        <a href="{{ route('admin.support.category.index') }}" class="sidebar-link">
+                            <span> {{ __('admin_local.Category') }} </span>
+                        </a>
+                    </li>
+                @endif
+            </ul>
+        </li>
+    @endif
     @if (hasPermission(['role-permission-index', 'role-permission-create', 'role-permission-update','role-permission-delete']))
         <li class="sidebar-list">
             <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin.role.index') }}"
