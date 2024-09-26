@@ -80,15 +80,7 @@
                     </div>
                     <div class="col-9">
                         <div id="support_visibility">
-                            <li class="sub-mega-menu col-4 my-0">
-                                <ul>
-                                    <li><a href="shop-product-right.html">TandemVu PTZ Cameras</a></li>
-                                    <li><a href="shop-product-right.html">Ultra Series</a></li>
-                                    <li><a href="shop-product-right.html">Pro Series</a></li>
-                                    <li><a href="shop-product-right.html">PT Series</a></li>
-                                    <li><a href="shop-product-right.html">Special Series</a></li>
-                                </ul>
-                            </li>
+                            
                             
                         </div>
                     </div>
