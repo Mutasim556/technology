@@ -3485,7 +3485,7 @@ table .product-thumbnail img {
 .banner-img.style-2 {
   border-radius: 15px;
   overflow: hidden;
-  height: 520px;
+  /* height: 520px; */
   background: url(../imgs/banner/banner-4.png) no-repeat center bottom;
   background-size: cover;
   width: 100%;
@@ -11802,7 +11802,7 @@ footer .hotline img {
     font-size: 64px;
   }
   .banner-img.style-2 {
-    height: 483px;
+    /* height: 483px; */
   }
   .slider-nav-thumbnails button.slick-arrow.slick-prev {
     left: 10px;
