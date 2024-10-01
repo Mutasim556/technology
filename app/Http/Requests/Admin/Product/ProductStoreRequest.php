@@ -66,6 +66,8 @@ class ProductStoreRequest extends FormRequest
         $product->brand_id = $this->brand;
         $product->parent_category_id = $this->parent_category;
         $product->category_id = $this->category;
+        $product->product_group = $this->product_group;
+        $product->short_description = $this->short_description;
         $product->sub_category_id = $this->sub_category;
         $product->unit_id = $this->product_unit;
         $product->sale_unit_id = $this->product_unit;

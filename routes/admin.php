@@ -75,6 +75,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
         require __DIR__.'/inventory/product.php';
         require __DIR__.'/inventory/solution.php';
         require __DIR__.'/inventory/support.php';
+        require __DIR__.'/inventory/partners.php';
     });
 
 

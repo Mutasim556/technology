@@ -79,7 +79,6 @@ class ProductUpdateRequest extends FormRequest
         if ($this->image) {
             $images = $this->image;
             $image_names = [];
-          
             if($product->image){
                 $prev_img = explode(',',$product->image);
                 foreach($prev_img as $prev_img_val){
@@ -89,8 +88,8 @@ class ProductUpdateRequest extends FormRequest
             foreach ($images as $key => $image) {
                 $imageName = $image->getClientOriginalName();
                 $manager = new ImageManager(new Driver());
-                $manager->read($image)->resize(300, 300)->save('admin/inventory/file/product/' . $imageName);
-                $imageName  = 'admin/inventory/file/product/' . $imageName;
+                $manager->read($image)->resize(300, 300)->save(env('ASSET_DIRECTORY')."/".'admin/inventory/file/product/' . $imageName);
+                $imageName  = env('ASSET_DIRECTORY')."/".'admin/inventory/file/product/' . $imageName;
                 $image_names[] = $imageName;
             }
             $product_images = implode(",", $image_names);

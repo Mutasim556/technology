@@ -162,7 +162,26 @@
                                             </select>
                                             <span class="text-danger err-mgs-category"></span>
                                         </div>
+
+                                        <div class="form-group col-md-4" id="product_group_div">
+                                            <label for="product_group">{{ __('admin_local.Product Group') }} *</label>
+                                            <select class="js-example-basic-single form-control" id="product_group"
+                                                name="product_group">
+                                                <option value="">{{ __('admin_local.Please Select') }}</option>
+                                                <option value="Popular">Popular</option>
+                                                <option value="New" selected>New</option>
+                                                <option value="Featured">Featured</option>
+                                            </select>
+                                            <span class="text-danger err-mgs-category"></span>
+                                        </div>
+                                        <div class="form-group col-md-4" id="short_description_div">
+                                            <label for="short_description">{{ __('admin_local.Short Description') }} </label>
+                                            <textarea class="form-control" id="short_description"
+                                                name="short_description"></textarea>
+                                            <span class="text-danger err-mgs-short-description"></span>
+                                        </div>
                                     </div>
+                                    <hr>
                                     <div class="row" id="combo">
                                         <div class="form-group col-md-8">
                                             <label for="add_combo_product">{{ __('admin_local.Add Combo Product') }} *</label>

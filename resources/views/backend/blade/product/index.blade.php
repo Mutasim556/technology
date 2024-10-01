@@ -254,7 +254,7 @@
                 }
             ],
             columnDefs: [{
-                width: 20,
+                width: 20, 
                 targets: 0
             }, {
                 width: 250,
@@ -277,6 +277,7 @@
         var submit_btn_after = `{{ __('admin_local.Submitting') }}`;
         var submit_btn_before = `{{ __('admin_local.Submit') }}`;
         var no_permission_mgs = `{{ __('admin_local.No Permission') }}`;
+        var base_url = `{{ URL::to('/') }}`;
 
 
         var delete_swal_title = `{{ __('admin_local.Are you sure?') }}`;

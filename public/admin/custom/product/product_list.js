@@ -34,7 +34,7 @@ $(document).on('click','#basic-1 #product_row',function(){
                 let image = product.image.split(',');
                 let cursor_image = '';
                 $.each(image,function(imgid,img){
-                    cursor_image = cursor_image + `<div class="item"><img src="/${img}" alt=""></div>`;
+                    cursor_image = cursor_image + `<div class="item"><img src="${base_url+"/"+img}" alt=""></div>`;
                 })
                
                 $('#slider_body').empty().append(`<div class="owl-carousel owl-theme" id="owl-carousel-13">${cursor_image}</div>`);
@@ -116,6 +116,14 @@ $(document).on('click','#basic-1 #product_row',function(){
                     <tr>
                         <th style="width:30%;background-color:azure;" class="py-1">Alert Quantity</th>
                         <td class="py-1">${product.alert_quantity?product.alert_quantity:0}</td>
+                    </tr>
+                    <tr>
+                        <th style="width:30%;background-color:azure;" class="py-1">Product Group</th>
+                        <td class="py-1">${product.product_group?product.product_group:'N/A'}</td>
+                    </tr>
+                    <tr>
+                        <th style="width:30%;background-color:azure;" class="py-1">Short Description</th>
+                        <td class="py-1">${product.short_description?product.short_description:'N/A'}</td>
                     </tr>
                     <tr>
                         <th style="width:30%;background-color:azure;" class="py-1">Details</th>

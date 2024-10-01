@@ -5,7 +5,7 @@ use App\Http\Controllers\Admin\Partner\ParentCategoryController;
 use Illuminate\Support\Facades\Route;
 
 //solution route
-Route::prefix('support')->name('support.')->group(function () {
+Route::prefix('partner')->name('partner.')->group(function () {
     //parent category
     Route::resource('parent-category', ParentCategoryController::class)->except('create', 'show');
     Route::controller(ParentCategoryController::class)->prefix('parent-category')->group(function () {

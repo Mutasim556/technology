@@ -100,55 +100,18 @@
                         <li class="sub-mega-menu col-12 px-0">
                             {{-- <div class="menu-banner-wrap"> --}}
                                 <ul>
+                                    @foreach ($partner_parent_categories as $partner_parent_category)
                                     <li>
-                                        <a  >Channel Partners</a> 
+                                        <a  id="{{ str_replace(' ', '_',strtolower($partner_parent_category->parent_category_name)) }}" onclick="visible_partner({{ str_replace(' ', '_',strtolower($partner_parent_category->id)) }})">{{ $partner_parent_category->parent_category_name }}</a> 
                                     </li>
-                                    <li>
-                                        <a  >Technology Partners</a>
-                                    </li>
+                                    @endforeach
                                 </ul>
                             {{-- </div> --}}
                         </li>
                     </div>
                     <div class="col-9">
-                        <div id="solution_visibility">
-                            <li class="sub-mega-menu col-4 mb-4">
-                                <a class="menu-title" href="#">Network Cameras</a>
-                                <ul>
-                                    <li><a href="shop-product-right.html">Pro Series All</a></li>
-                                    <li><a href="shop-product-right.html">Pro Series With AcuSense</a></li>
-                                    <li><a href="shop-product-right.html">Pro Series with ColorVu</a></li>
-                                    <li><a href="shop-product-right.html">DeepinView Series</a></li>
-                                    <li><a href="shop-product-right.html">Panaromic Series</a>
-                                    </li>
-                                    <li><a href="shop-product-right.html">Special Series</a></li>
-                                    <li><a href="shop-product-right.html">Ultra Series</a></li>
-                                    <li><a href="shop-product-right.html">Cable-Free Series</a></li>
-                                    <li><a href="shop-product-right.html">Solar-powered Series</a></li>
-                                    <li><a href="shop-product-right.html">PT Series</a></li>
-                                    <li><a href="shop-product-right.html">Value Series</a></li>
-                                </ul>
-                            </li>
-                            <li class="sub-mega-menu col-4 mb-4">
-                                <a class="menu-title" href="#">PTZ Cameras</a>
-                                <ul>
-                                    <li><a href="shop-product-right.html">TandemVu PTZ Cameras</a></li>
-                                    <li><a href="shop-product-right.html">Ultra Series</a></li>
-                                    <li><a href="shop-product-right.html">Pro Series</a></li>
-                                    <li><a href="shop-product-right.html">PT Series</a></li>
-                                    <li><a href="shop-product-right.html">Special Series</a></li>
-                                </ul>
-                            </li>
-                            <li class="sub-mega-menu col-4 mb-4">
-                                <a class="menu-title" href="#">Network Video Recorders</a>
-                                <ul>
-                                    <li><a href="shop-product-right.html">Ultra Series</a></li>
-                                    <li><a href="shop-product-right.html">Pro Series with AcuSense</a></li>
-                                    <li><a href="shop-product-right.html">Pro Series (All)</a></li>
-                                    <li><a href="shop-product-right.html">Value Series</a></li>
-                                    <li><a href="shop-product-right.html">Special Series</a></li>
-                                </ul>
-                            </li>
+                        <div id="partner_visibility">
+                            
                         </div>
                     </div>
                 </div>

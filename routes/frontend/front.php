@@ -11,4 +11,5 @@ Route::controller(CategoryDetailsContorller::class)->name('frontend.')->group(fu
     Route::get('/frontend/getCategoryDeatils','categoryDetails')->name('getCategoryDetails');
     Route::get('/frontend/getSolutionCategoryDeatils','solutionCategoryDetails')->name('getSolutionCategoryDetails');
     Route::get('/frontend/getSupportCategoryDeatils','supportCategoryDetails')->name('getSupportCategoryDetails');
+    Route::get('/frontend/getPartnerCategoryDeatils','partnerCategoryDetails')->name('getPartnerCategoryDetails');
 });

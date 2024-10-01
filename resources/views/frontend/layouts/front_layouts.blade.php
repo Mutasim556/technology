@@ -625,6 +625,7 @@
             visible({{ str_replace(' ', '_',strtolower($parent_categories[0]->id)) }})
             visible_solution({{ str_replace(' ', '_',strtolower($solution_parent_categories[0]->id)) }})
             visible_support({{ str_replace(' ', '_',strtolower($support_parent_categories[0]->id)) }})
+            visible_partner({{ str_replace(' ', '_',strtolower($partner_parent_categories[0]->id)) }})
         })
         function visible(x){
             if(localStorage.getItem('product_item_'+x)){
@@ -743,6 +744,42 @@
                     });
                     scat = scat + '</ul></li>';
                     $('#support_visibility').empty().append(scat);
+                },
+                error: function (err) {
+                    var err_message = err.responseJSON.message.split("(");
+                    swal({
+                        icon: "warning",
+                        title: "Warning !",
+                        text: err_message[0],
+                        confirmButtonText: "Ok",
+                    });
+                }
+            });
+            }
+            
+            
+        }
+
+        function visible_partner(x){
+            if(localStorage.getItem('partner_item_'+x)){
+                    var scat=`<li class="sub-mega-menu col-4 mb-4"><a class="menu-title" href="#"></a><ul>`;
+                    $.each(JSON.parse(localStorage.getItem('partner_item_'+x)),function(cat_key,cat_val){
+                        scat = scat+'<li><a href="#">'+cat_val.name+'</a></li>';
+                    });
+                    scat = scat + '</ul></li>';
+                    $('#partner_visibility').empty().append(scat);
+            }else{
+                $.ajax({
+                type: "get",
+                url: "{{ route('frontend.getPartnerCategoryDetails') }}?id="+x,
+                success: function (data) {
+                    localStorage.setItem('partner_item_'+x,JSON.stringify(data.categories))
+                    var scat = `<li class="sub-mega-menu col-4 mb-4"><a class="menu-title" href="#"></a><ul>`;
+                    $.each(data.categories,function(cat_key,cat_val){
+                        scat = scat+`<li><a href="#">${cat_val.name}</a></li>`;
+                    });
+                    scat = scat + '</ul></li>';
+                    $('#partner_visibility').empty().append(scat);
                 },
                 error: function (err) {
                     var err_message = err.responseJSON.message.split("(");

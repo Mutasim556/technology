@@ -168,6 +168,30 @@
             </ul>
         </li>
     @endif
+    @if (hasPermission(['partner-parent-category-index','partner-category-index','partner-sub-category-index']))
+        <li class="sidebar-list">
+            <a class="sidebar-link sidebar-title" href="javascript:void(0)" aria-expanded="false">
+                <i data-feather="command"></i>
+                <span class="lan-3">{{ __('admin_local.Partner') }}</span>
+            </a>
+            <ul class="sidebar-submenu">
+                @if (hasPermission(['partner-parent-category-index', 'partner-parent-category-create', 'partner-parent-category-update', 'partner-parent-category-delete']))
+                    <li>
+                        <a href="{{ route('admin.partner.parent-category.index') }}" class="sidebar-link">
+                            <span> {{ __('admin_local.Parent Category') }} </span>
+                        </a>
+                    </li>
+                @endif
+                @if (hasPermission(['partner-category-index', 'partner-category-create', 'partner-category-update', 'partner-category-delete']))
+                    <li>
+                        <a href="{{ route('admin.partner.category.index') }}" class="sidebar-link">
+                            <span> {{ __('admin_local.Category') }} </span>
+                        </a>
+                    </li>
+                @endif
+            </ul>
+        </li>
+    @endif
     @if (hasPermission(['role-permission-index', 'role-permission-create', 'role-permission-update','role-permission-delete']))
         <li class="sidebar-list">
             <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin.role.index') }}"

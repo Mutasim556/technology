@@ -173,7 +173,7 @@
                                                 <a href="shop-grid-right.html">Hodo Foods</a>
                                             </div>
                                             <h2><a href="shop-product-right.html">Seeds of Change Organic Quinoa,
-                                                    Brown</a></h2>
+                                                    Brown</a></h2> 
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 80%"></div>
                                             </div>
