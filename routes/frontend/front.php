@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FrontendControllers\CategoryDetailsContorller;
 use App\Http\Controllers\FrontendControllers\HomeController;
+use App\Http\Controllers\FrontendControllers\ProdcutController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/',HomeController::class)->name('index');
@@ -12,4 +13,9 @@ Route::controller(CategoryDetailsContorller::class)->name('frontend.')->group(fu
     Route::get('/frontend/getSolutionCategoryDeatils','solutionCategoryDetails')->name('getSolutionCategoryDetails');
     Route::get('/frontend/getSupportCategoryDeatils','supportCategoryDetails')->name('getSupportCategoryDetails');
     Route::get('/frontend/getPartnerCategoryDeatils','partnerCategoryDetails')->name('getPartnerCategoryDetails');
+});
+
+
+Route::controller(ProdcutController::class)->name('forntend.')->group(function(){
+    Route::get('/products','index')->name('product');
 });

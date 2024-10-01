@@ -19,6 +19,18 @@
 </head>
 
 <body>
+
+    @php
+        use App\Http\Resources\Frontend\ParentCategoryresource;
+        use App\Models\Admin\Partner\PartnerParentCategory;
+        use App\Models\Admin\Product\ParentCategory;
+        use App\Models\Admin\Solution\SolutionParentCategory;
+        use App\Models\Admin\Support\SupportParentCategory;
+        $parent_categories = ParentCategory::with('category')->where([['parent_category_status',1],['parent_category_delete',0]])->get();
+        $solution_parent_categories = SolutionParentCategory::with('category')->where([['parent_category_status',1],['parent_category_delete',0]])->get();
+        $support_parent_categories = SupportParentCategory::with('category')->where([['parent_category_status',1],['parent_category_delete',0]])->get();
+        $partner_parent_categories = PartnerParentCategory::with('category')->where([['parent_category_status',1],['parent_category_delete',0]])->get();
+    @endphp
     <!-- Modal -->
     <div class="modal fade custom-modal" id="onloadModal" tabindex="-1" aria-labelledby="onloadModalLabel"
         aria-hidden="true">
@@ -167,7 +179,7 @@
         </div>
     </div>
     <header class="header-area header-style-1 header-style-5 header-height-2">
-        
+
         <div class="header-middle header-middle-ptb-1 d-none d-lg-block">
             <div class="container">
                 <div class="header-wrap">
@@ -324,13 +336,13 @@
                             </a>
                             <div class="categories-dropdown-wrap categories-dropdown-active-large font-heading">
                                 <div class="d-flex categori-dropdown-inner p-0">
-                                    
+
                                         @foreach ($parent_categories as $parent_category)
                                             <div class="col-5 col-sm-5 col-lg-5 py-2 mx-1 rounded text-center" style="box-shadow: 0px 0px 5px;">
                                                 <a href="shop-grid-right.html">{{ $parent_category->parent_category_name }}</a>
                                             </div>
                                         @endforeach
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -462,8 +474,8 @@
     <!--End header-->
     @yield('body')
     <footer class="main">
-        
-        
+
+
         <section class="section-padding footer-mid">
             <div class="container pt-15 pb-20">
                 <div class="row" style="border-top:1px solid #198754">
@@ -619,7 +631,7 @@
     <script src="{{ asset('public/assets/js/main.js')}}"></script>
     <script src="{{ asset('public/assets/js/shop.js')}}"></script>
 
-    <script>    
+    <script>
         $(document).ready(function(){
             localStorage.clear();
             visible({{ str_replace(' ', '_',strtolower($parent_categories[0]->id)) }})
@@ -631,7 +643,7 @@
             if(localStorage.getItem('product_item_'+x)){
                     var scat='';
                     $.each(JSON.parse(localStorage.getItem('product_item_'+x)),function(cat_key,cat_val){
-                        scat = scat+`<li class="sub-mega-menu col-4 mb-4"><a class="menu-title" href="#"><u>${cat_val.name}</u></a><ul>`;
+                        scat = scat+`<li class="sub-mega-menu col-4 mb-4"><a class="menu-title" href="{{ URL::to('/') }}/products?category=${cat_val.name}&id=${cat_val.id}"><u>${cat_val.name}</u></a><ul>`;
                         $.each(cat_val.sub_category,function(scat_key,scat_val){
                             scat = scat+'<li><a href="#">'+scat_val.name+'</a></li>'
                         })
@@ -641,7 +653,7 @@
 
                     $('#products_visibility').empty().append(scat);
             }else{
-               
+
 
                 $.ajax({
                 type: "get",
@@ -650,7 +662,7 @@
                     localStorage.setItem('product_item_'+x,JSON.stringify(data.categories))
                     var scat = '';
                     $.each(data.categories,function(cat_key,cat_val){
-                        scat = scat+`<li class="sub-mega-menu col-4 mb-4"><a class="menu-title" href="#"><u>${cat_val.name}</u></a><ul>`;
+                        scat = scat+`<li class="sub-mega-menu col-4 mb-4"><a class="menu-title" href="{{ URL::to('/') }}/products?category=${cat_val.name}&id=${cat_val.id}"><u>${cat_val.name}</u></a><ul>`;
                         $.each(cat_val.sub_category,function(scat_key,scat_val){
                             scat = scat+'<li><a href="#">'+scat_val.name+'</a></li>'
                         })
@@ -671,8 +683,8 @@
                 }
             });
             }
-            
-            
+
+
         }
 
 
@@ -690,7 +702,7 @@
 
                     $('#solution_visibility').empty().append(scat);
             }else{
-               
+
 
                 $.ajax({
                 type: "get",
@@ -720,8 +732,8 @@
                 }
             });
             }
-            
-            
+
+
         }
 
         function visible_support(x){
@@ -756,8 +768,8 @@
                 }
             });
             }
-            
-            
+
+
         }
 
         function visible_partner(x){
@@ -792,8 +804,8 @@
                 }
             });
             }
-            
-            
+
+
         }
     </script>
 </body>
