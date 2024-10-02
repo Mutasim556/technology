@@ -240,7 +240,7 @@
                                             </td>
                                             <td>
                                                 @if ($sub_category->sub_category_image)
-                                                    <img src="{{ asset(env('ASSET_DIRECTORY').'/'.$sub_category->sub_category_image) }}" alt=""
+                                                    <img style="height: 50px;width:50px;" src="{{ asset($sub_category->sub_category_image) }}" alt=""
                                                         style="height:">
                                                 @else
                                                     {{ __('admin_local.No File') }}
@@ -375,6 +375,7 @@
         });
 
         var form_url = "{{ route('admin.product.sub-category.store') }}";
+        var base_url = "{{ URL::to('/') }}";
         var submit_btn_after = `{{ __('admin_local.Submitting') }}`;
         var submit_btn_before = `{{ __('admin_local.Submit') }}`;
         var no_permission_mgs = `{{ __('admin_local.No Permission') }}`;

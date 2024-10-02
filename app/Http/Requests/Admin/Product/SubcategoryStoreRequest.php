@@ -35,9 +35,9 @@ class SubcategoryStoreRequest extends FormRequest
         if($this->sub_category_image){
             $files = $this->sub_category_image;
             $file = $this->sub_category_name.time().'.'.$files->getClientOriginalExtension();
-            $file_name = 'admin/inventory/file/sub-category/'.$file;
+            $file_name =  env('ASSET_DIRECTORY').'/admin/inventory/file/sub-category/'.$file;
             $manager = new ImageManager(new Driver);
-            $manager->read($this->sub_category_image)->resize(50,50)->save('admin/inventory/file/sub-category/'.$file);
+            $manager->read($this->sub_category_image)->save( env('ASSET_DIRECTORY').'/admin/inventory/file/sub-category/'.$file);
         }else{
             $file_name = "";
         }

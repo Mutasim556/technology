@@ -34,9 +34,9 @@ class CategoryStoreRequest extends FormRequest
         if($this->category_image){
             $files = $this->category_image;
             $file = $this->parent_category_name.time().'.'.$files->getClientOriginalExtension();
-            $file_name = 'admin/inventory/file/category/'.$file;
+            $file_name = env('ASSET_DIRECTORY').'/admin/inventory/file/category/'.$file;
             $manager = new ImageManager(new Driver);
-            $manager->read($this->category_image)->resize(50,50)->save('admin/inventory/file/category/'.$file);
+            $manager->read($this->category_image)->resize(50,50)->save(env('ASSET_DIRECTORY').'/admin/inventory/file/category/'.$file);
         }else{
             $file_name = "";
         }

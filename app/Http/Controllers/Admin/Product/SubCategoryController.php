@@ -80,16 +80,15 @@ class SubCategoryController extends Controller
             'sub_category_image' => 'mimes:png,jpg,jpeg|max:2000',
         ]);
         $sub_category = SubCategory::findOrFail($id);
-
         if($data->sub_category_image){
             $files = $data->sub_category_image;
             $file = $data->sub_category_name.time().'.'.$files->getClientOriginalExtension();
-            $file_name = 'admin/inventory/file/sub_category/'.$file;
+            $file_name =  env('ASSET_DIRECTORY').'/admin/inventory/file/sub_category/'.$file;
             if($sub_category->sub_category_image){
                 unlink($sub_category->sub_category_image);
             }
             $manager = new ImageManager(new Driver());
-            $manager->read($data->sub_category_image)->resize(50,50)->save('admin/inventory/file/sub_category/'.$file);
+            $manager->read($data->sub_category_image)->save( env('ASSET_DIRECTORY').'/admin/inventory/file/sub_category/'.$file);
 
             $sub_category->sub_category_name=$data->sub_category_name;
             $sub_category->parent_category_id=$data->parent_category;

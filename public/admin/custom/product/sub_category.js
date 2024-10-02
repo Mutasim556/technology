@@ -121,7 +121,7 @@ $(document).on('click', '#edit_button', function () {
             if(data.sub_category_image==''){
                 $('#edit_sub_category_form #image_preview').empty().append(no_file);
             }else{
-                $('#edit_sub_category_form #image_preview').empty().append(`<img src="/${data.sub_category_image}">`);
+                $('#edit_sub_category_form #image_preview').empty().append(`<img style="height:120px;" src="${base_url+"/"+data.sub_category_image}">`);
             }
         },
         error: function (err) {
@@ -177,7 +177,7 @@ $('#edit_sub_category_form').submit(function (e) {
             $('td:nth-child(1)',trid).html(data.sub_category.sub_category_name);
             $('td:nth-child(2)',trid).html(data.sub_category.category_id?data.sub_category.category.category_name:'N/A');
             $('td:nth-child(3)',trid).html(data.sub_category.parent_category_id?data.sub_category.parent_category.parent_category_name:'N/A');
-            $('td:nth-child(4)',trid).html(data.sub_category.sub_category_image?`<img src="/${data.sub_category.sub_category_image}">`:no_file);
+            $('td:nth-child(4)',trid).html(data.sub_category.sub_category_image?`<img src="/${base_url+"/"+data.sub_category.sub_category_image}">`:no_file);
             $('td:nth-child(5)',trid).html(data.sub_category.admin.name);
             swal({
                 icon: "success",

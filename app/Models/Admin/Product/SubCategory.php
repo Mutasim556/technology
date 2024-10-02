@@ -22,5 +22,8 @@ class SubCategory extends Model
     public function parentCategory(){
         return $this->belongsTo(ParentCategory::class,'parent_category_id','id');
     }
-    
+
+    public function product(){
+        return $this->hasMany(Product::class,'sub_category_id','id');
+    }
 }

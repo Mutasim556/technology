@@ -89,12 +89,12 @@ class CategoryController extends Controller
         if($data->category_image){
             $files = $data->category_image;
             $file = $data->category_name.time().'.'.$files->getClientOriginalExtension();
-            $file_name = 'admin/inventory/file/category/'.$file;
+            $file_name = env('ASSET_DIRECTORY').'/admin/inventory/file/category/'.$file;
             if($category->category_image){
                 unlink($category->category_image);
             }
             $manager = new ImageManager(new Driver());
-            $manager->read($data->category_image)->resize(50,50)->save('admin/inventory/file/category/'.$file);
+            $manager->read($data->category_image)->resize(50,50)->save(env('ASSET_DIRECTORY').'/admin/inventory/file/category/'.$file);
 
             $category->category_name=$data->category_name;
             $category->parent_category_id=$data->parent_category;

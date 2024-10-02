@@ -31,7 +31,7 @@
         $support_parent_categories = SupportParentCategory::with('category')->where([['parent_category_status',1],['parent_category_delete',0]])->get();
         $partner_parent_categories = PartnerParentCategory::with('category')->where([['parent_category_status',1],['parent_category_delete',0]])->get();
     @endphp
-    <!-- Modal -->
+    {{-- <!-- Modal -->
     <div class="modal fade custom-modal" id="onloadModal" tabindex="-1" aria-labelledby="onloadModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
@@ -83,7 +83,7 @@
             </div>
         </div>
     </div>
-    <!-- Quick view -->
+    <!-- Quick view --> --}}
     <div class="modal fade custom-modal" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
@@ -645,7 +645,7 @@
                     $.each(JSON.parse(localStorage.getItem('product_item_'+x)),function(cat_key,cat_val){
                         scat = scat+`<li class="sub-mega-menu col-4 mb-4"><a class="menu-title" href="{{ URL::to('/') }}/products?category=${cat_val.name}&id=${cat_val.id}"><u>${cat_val.name}</u></a><ul>`;
                         $.each(cat_val.sub_category,function(scat_key,scat_val){
-                            scat = scat+'<li><a href="#">'+scat_val.name+'</a></li>'
+                            scat = scat+'<li><a href="{{ URL::to('/') }}/products?subcategory='+scat_val.name+'&id='+scat_val.id+'">'+scat_val.name+'</a></li>'
                         })
 
                         scat = scat + '</ul></li>';
@@ -664,7 +664,7 @@
                     $.each(data.categories,function(cat_key,cat_val){
                         scat = scat+`<li class="sub-mega-menu col-4 mb-4"><a class="menu-title" href="{{ URL::to('/') }}/products?category=${cat_val.name}&id=${cat_val.id}"><u>${cat_val.name}</u></a><ul>`;
                         $.each(cat_val.sub_category,function(scat_key,scat_val){
-                            scat = scat+'<li><a href="#">'+scat_val.name+'</a></li>'
+                            scat = scat+'<li><a href="{{ URL::to('/') }}/products?subcategory='+scat_val.name+'&id='+scat_val.id+'">'+scat_val.name+'</a></li>'
                         })
 
                         scat = scat + '</ul></li>';
@@ -808,6 +808,7 @@
 
         }
     </script>
+    @yield('js')
 </body>
 
 </html>
