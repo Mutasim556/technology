@@ -377,7 +377,7 @@
                                             <span style="font-size:12px;">{{ $product->short_description }}</span>
                                             
                                             <div class="product-card-bottom">
-                                                <a class="btn w-100" href="shop-cart.html"><i class="fi-rs-shopping-cart mr-5"></i>View details </a>
+                                                <a class="btn w-100" href="{{ route('frontend.product.details',[$product->id,$product->name]) }}"><i class="fi-rs-shopping-cart mr-5"></i>View details </a>
                                             </div>
                                         </div>
                                     </div>

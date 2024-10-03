@@ -16,6 +16,7 @@ Route::controller(CategoryDetailsContorller::class)->name('frontend.')->group(fu
 });
 
 
-Route::controller(ProdcutController::class)->name('forntend.')->group(function(){
+Route::controller(ProdcutController::class)->name('frontend.')->group(function(){
     Route::get('/products','index')->name('product');
+    Route::get('/product/details/{product_id?}/{product_name?}','details')->name('product.details');
 });
