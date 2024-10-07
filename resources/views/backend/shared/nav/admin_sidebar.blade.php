@@ -113,7 +113,7 @@
         </li>
         
     @endif
-    @if (hasPermission(['solution-parent-category-index','solution-category-index','solution-sub-category-index']))
+    @if (hasPermission(['solution-parent-category-index','solution-category-index','solution-sub-category-index','solution-index']))
         <li class="sidebar-list">
             <a class="sidebar-link sidebar-title" href="javascript:void(0)" aria-expanded="false">
                 <i data-feather="check-circle"></i>
@@ -138,6 +138,13 @@
                     <li>
                         <a href="{{ route('admin.solution.sub-category.index') }}" class="sidebar-link">
                             <span> {{ __('admin_local.Sub Category') }} </span>
+                        </a>
+                    </li>
+                @endif
+                @if (hasPermission(['solution-index', 'solution-create', 'solution-update', 'solution-delete']))
+                    <li>
+                        <a href="{{ route('admin.solution.create') }}" class="sidebar-link">
+                            <span> {{ __('admin_local.Add Solution') }} </span>
                         </a>
                     </li>
                 @endif

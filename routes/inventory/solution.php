@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\Solution\CategoryController;
 use App\Http\Controllers\Admin\Solution\ParentCategoryController;
+use App\Http\Controllers\Admin\Solution\SolutionController;
 use App\Http\Controllers\Admin\Solution\SubCategoryController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,4 +26,10 @@ Route::prefix('solution')->name('solution.')->group(function () {
    Route::controller(SubCategoryController::class)->prefix('sub-category')->group(function () {
       Route::get('/update/status/{id}/{status}', 'updateStatus');
    });
+
+
+   
 });
+
+//solutions 
+Route::resource('solution',SolutionController::class);

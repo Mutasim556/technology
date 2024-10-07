@@ -26,6 +26,7 @@ class SolutionCategoryStoreRequest extends FormRequest
     {
         return [
             'category_name' => 'required',
+            'sub_category' => 'required',
             'category_image' => 'mimes:png,jpg,jpeg|max:2000',
         ];
     }
