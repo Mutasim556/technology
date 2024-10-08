@@ -694,7 +694,7 @@
                     $.each(JSON.parse(localStorage.getItem('solution_item_'+x)),function(cat_key,cat_val){
                         scat = scat+`<li class="sub-mega-menu col-4 mb-4"><a class="menu-title" href="#"><u>${cat_val.name}</u></a><ul>`;
                         $.each(cat_val.sub_category,function(scat_key,scat_val){
-                            scat = scat+'<li><a href="#">'+scat_val.name+'</a></li>'
+                            scat = scat+'<li><a href="{{ URL::to('/') }}/solutions?solution_name='+scat_val.name+'&solution_id='+scat_val.id+'">'+scat_val.name+'</a></li>'
                         })
 
                         scat = scat + '</ul></li>';
@@ -713,7 +713,7 @@
                     $.each(data.categories,function(cat_key,cat_val){
                         scat = scat+`<li class="sub-mega-menu col-4 mb-4"><a class="menu-title" href="#"><u>${cat_val.name}</u></a><ul>`;
                         $.each(cat_val.sub_category,function(scat_key,scat_val){
-                            scat = scat+'<li><a href="#">'+scat_val.name+'</a></li>'
+                            scat = scat+'<li><a href="{{ URL::to('/') }}/solutions?solution_name='+scat_val.name+'&solution_id='+scat_val.id+'">'+scat_val.name+'</a></li>'
                         })
 
                         scat = scat + '</ul></li>';

@@ -107,31 +107,31 @@
                                     </div>
                                     <div class="row my-3">
                                         <div class="form-group col-md-3">
-                                            <input type="checkbox" name="solution_tags" id="solution_tag" value="What_We_Offer"> {{ __('admin_local.What We Offer ?') }}
+                                            <input type="checkbox" name="solution_tags[]" id="solution_tag" value="What_We_Offer"> {{ __('admin_local.What We Offer ?') }}
                                         </div>
                                         <div class="form-group col-md-3">
-                                            <input type="checkbox" name="solution_tags" id="solution_tag" value="Success_Stories"> {{ __('admin_local.Success Stories') }}
+                                            <input type="checkbox" name="solution_tags[]" id="solution_tag" value="Success_Stories"> {{ __('admin_local.Success Stories') }}
                                         </div>
                                         <div class="form-group col-md-3">
-                                            <input type="checkbox" name="solution_tags" id="solution_tag" value="Downloads"> {{ __('admin_local.Downloads') }}
+                                            <input type="checkbox" name="solution_tags[]" id="solution_tag" value="Downloads"> {{ __('admin_local.Downloads') }}
                                         </div>
                                         <div class="form-group col-md-3">
-                                            <input type="checkbox" name="solution_tags" id="solution_tag" value="Security_Practices"> {{ __('admin_local.Security Practices') }}
+                                            <input type="checkbox" name="solution_tags[]" id="solution_tag" value="Security_Practices"> {{ __('admin_local.Security Practices') }}
                                         </div>
                                         <div class="form-group col-md-3">
-                                            <input type="checkbox" name="solution_tags" id="solution_tag" value="Improved_Services"> {{ __('admin_local.Improved Services') }}
+                                            <input type="checkbox" name="solution_tags[]" id="solution_tag" value="Improved_Services"> {{ __('admin_local.Improved Services') }}
                                         </div>
                                         <div class="form-group col-md-3">
-                                            <input type="checkbox" name="solution_tags" id="solution_tag" value="Digital_Management"> {{ __('admin_local.Digital Management') }}
+                                            <input type="checkbox" name="solution_tags[]" id="solution_tag" value="Digital_Management"> {{ __('admin_local.Digital Management') }}
                                         </div>
                                         <div class="form-group col-md-3">
-                                            <input type="checkbox" name="solution_tags" id="solution_tag" value="Overview"> {{ __('admin_local.Overview') }}
+                                            <input type="checkbox" name="solution_tags[]" id="solution_tag" value="Overview"> {{ __('admin_local.Overview') }}
                                         </div>
                                         {{-- <div class="form-group col-md-3">
                                             <input type="checkbox" name="solution_tags" id="solution_tag" value="Related_Links"> {{ __('admin_local.Related Links') }}
                                         </div> --}}
                                         <div class="form-group col-md-3">
-                                            <input type="checkbox" name="solution_tags" id="solution_tag" value="Wharehouses"> {{ __('admin_local.Wharehouses') }}
+                                            <input type="checkbox" name="solution_tags[]" id="solution_tag" value="Warehouses"> {{ __('admin_local.Warehouses') }}
                                         </div>
                                     </div>
                                     <div class="row mb-4" id="What_We_Offer" style="display: none">
@@ -164,18 +164,18 @@
                                         <h5 class="text-center"><u>{{ __('admin_local.Downloads') }}</u></h5>
                                         <div class="form-group col-md-3">
                                             <label for="">{{ __('admin_local.Icon') }}</label>
-                                            <input type="file" class="form-control" name="downloads_icon[]">
-                                            <span class="text-danger err-mgs"></span>
+                                            <input type="file" class="form-control" id="downloads_icon_0" name="downloads_icon[]">
+                                            <span class="text-danger err-mgs" id="downloads_icon_0_err"></span>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="">{{ __('admin_local.Title') }}</label>
-                                            <input type="text" class="form-control" name="downloads_title[]">
-                                            <span class="text-danger err-mgs"></span>
+                                            <input type="text" class="form-control" id="downloads_title_0" name="downloads_title[]">
+                                            <span class="text-danger err-mgs" id="downloads_title_0_err"></span>
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="">{{ __('admin_local.File') }}</label>
-                                            <input type="file" class="form-control" name="downloads_file[]">
-                                            <span class="text-danger err-mgs"></span>
+                                            <input type="file" class="form-control" id="downloads_file_0" name="downloads_file[]">
+                                            <span class="text-danger err-mgs" id="downloads_file_0_err"></span>
                                         </div>
                                         <div class="form-group col-md-2" style="padding-top:30px;">
                                             <button type="button"  class="btn btn-primary form-control" id="add_new_download_btn">+ {{ __('admin_local.Add New') }}</button>
@@ -188,65 +188,65 @@
                                         <h5 class="text-center"><u>{{ __('admin_local.Security Practice') }}</u></h5>
                                         <div class="form-group col-md-12">
                                             <label for="">{{ __('admin_local.Title') }}</label>
-                                            <input type="text" class="form-control" name="security_practices_title">
-                                            <span class="text-danger err-mgs"></span>
+                                            <input type="text" class="form-control" name="security_practices_title" id="security_practices_title">
+                                            <span class="text-danger err-mgs" ></span>
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label for="">{{ __('admin_local.Description') }}</label>
                                             <textarea id="editor3" class="form-control" name="security_practices_description"></textarea>
-                                            <span class="text-danger err-mgs"></span>
+                                            <span class="text-danger err-mgs" id="security_practices_description_err"></span>
                                         </div>
                                     </div>
                                     <div class="row mb-4" id="Improved_Services" style="display: none">
                                         <h5 class="text-center"><u>{{ __('admin_local.Improved Services') }}</u></h5>
                                         <div class="form-group col-md-12">
                                             <label for="">{{ __('admin_local.Title') }}</label>
-                                            <input type="text" class="form-control" name="improved_services_title">
+                                            <input type="text" class="form-control" name="improved_services_title" id="improved_services_title">
                                             <span class="text-danger err-mgs"></span>
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label for="">{{ __('admin_local.Description') }}</label>
                                             <textarea id="editor4" class="form-control" name="improved_services_description"></textarea>
-                                            <span class="text-danger err-mgs"></span>
+                                            <span class="text-danger err-mgs" id="improved_services_description_err"></span>
                                         </div>
                                     </div>
                                     <div class="row mb-4" id="Digital_Management" style="display: none">
                                         <h5 class="text-center"><u>{{ __('admin_local.Digital Management') }}</u></h5>
                                         <div class="form-group col-md-12">
                                             <label for="">{{ __('admin_local.Title') }}</label>
-                                            <input type="text" class="form-control" name="digital_management_title">
+                                            <input type="text" class="form-control" name="digital_management_title" id="digital_management_title">
                                             <span class="text-danger err-mgs"></span>
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label for="">{{ __('admin_local.Description') }}</label>
                                             <textarea id="editor5" class="form-control" name="digital_management_description"></textarea>
-                                            <span class="text-danger err-mgs"></span>
+                                            <span class="text-danger err-mgs" id="digital_management_description_err"></span>
                                         </div>
                                     </div>
                                     <div class="row mb-4" id="Overview" style="display: none">
                                         <h5 class="text-center"><u>{{ __('admin_local.Overview') }}</u></h5>
                                         <div class="form-group col-md-12">
                                             <label for="">{{ __('admin_local.Title') }}</label>
-                                            <input type="text" class="form-control" name="overview_title">
+                                            <input type="text" class="form-control" name="overview_title" id="overview_title">
                                             <span class="text-danger err-mgs"></span>
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label for="">{{ __('admin_local.Description') }}</label>
                                             <textarea id="editor6" class="form-control" name="overview_description"></textarea>
-                                            <span class="text-danger err-mgs"></span>
+                                            <span class="text-danger err-mgs" id="overview_description_err"></span>
                                         </div>
                                     </div>
-                                    <div class="row mb-4" id="Wharehouses" style="display: none">
+                                    <div class="row mb-4" id="Warehouses" style="display: none">
                                         <h5 class="text-center"><u>{{ __('admin_local.Wharehouses') }}</u></h5>
                                         <div class="form-group col-md-12">
                                             <label for="">{{ __('admin_local.Title') }}</label>
-                                            <input type="text" class="form-control" name="warehouses_title">
+                                            <input type="text" class="form-control" name="warehouses_title" id="warehouses_title">
                                             <span class="text-danger err-mgs"></span>
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label for="">{{ __('admin_local.Description') }}</label>
                                             <textarea id="editor7" class="form-control" name="warehouses_description"></textarea>
-                                            <span class="text-danger err-mgs"></span>
+                                            <span class="text-danger err-mgs" id="warehouses_description_err"></span>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -316,7 +316,7 @@
                 }
             }
         });
-
+        var download_count = 0;
         var form_url = "{{ route('admin.solution.store') }}";
         var submit_btn_after = `{{ __('admin_local.Submitting') }}`;
         var submit_btn_before = `{{ __('admin_local.Submit') }}`;

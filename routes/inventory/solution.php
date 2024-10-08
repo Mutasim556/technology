@@ -33,3 +33,4 @@ Route::prefix('solution')->name('solution.')->group(function () {
 
 //solutions 
 Route::resource('solution',SolutionController::class);
+Route::get('/solution-details',[SolutionController::class,'solutionDetails']);

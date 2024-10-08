@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin\Solution;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Solution\SolutionStoreRequest;
+use App\Models\Admin\Solution\Solution;
 use App\Models\Admin\Solution\SolutionCategory;
+use App\Models\Admin\Solution\SolutionDetail;
 use App\Models\Admin\Solution\SolutionParentCategory;
 use App\Models\Admin\Solution\SolutionSubCategory;
 use Illuminate\Http\Request;
@@ -16,7 +18,8 @@ class SolutionController extends Controller
      */
     public function index()
     {
-        
+        $solutions = Solution::with('parentCategory','category','subCategory','solutionDetails')->where([['status',1],['delete',0]])->get();
+        return view('backend.blade.solution.index',compact('solutions'));
     }
 
     /**
@@ -33,7 +36,19 @@ class SolutionController extends Controller
      */
     public function store(SolutionStoreRequest $data)
     {
-        $data->store();
+        if($data->store()){
+            return  response([
+                'title'=>__('admin_local.Congratulations !'),
+                'text'=>__('admin_local.Solution added successfully.'),
+                'confirmButtonText'=>__('admin_local.Ok'),
+            ],200);
+        }else{
+            return  response([
+                'title'=>__('admin_local.Warning !'),
+                'text'=>__('admin_local.Server Error'),
+                'confirmButtonText'=>__('admin_local.Ok'),
+            ],403);
+        }
     }
 
     /**
@@ -74,6 +89,24 @@ class SolutionController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $solution = Solution::findOrFail($id);
+        $solution->delete=1;
+        $solution->save();
+        return response([
+            'title'=>__('admin_local.Congratulations !'),
+            'text'=>__('admin_local.Solution deleted successfully.'),
+            'confirmButtonText'=>__('admin_local.Ok'),
+        ]);
+    }
+
+
+    public function solutionDetails(){
+        $solution_details =SolutionDetail::where('solution_id',request()->solution_id)->first();
+        return response([
+            'solution_details'=>$solution_details,
+            'download_title'=>explode('|',$solution_details->download_title),
+            'download_icon'=>explode(',',$solution_details->download_icon),
+            'download_file'=>explode(',',$solution_details->download_file),
+        ]);
     }
 }

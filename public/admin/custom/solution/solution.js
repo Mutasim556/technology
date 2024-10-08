@@ -7,22 +7,23 @@ $(document).on('change','#solution_tag',function(){
     }
 })
 $(document).on('click','#add_new_download_btn',function(){
+    download_count++;
     $('#another_download').append(`
             <div class="row">
                 <div class="form-group col-md-3">
                     <label for="">${download_icon}</label>
-                    <input type="file" class="form-control" name="downloads_icon[]">
-                    <span class="text-danger err-mgs-downloads-icon"></span>
+                    <input type="file" class="form-control" id="downloads_icon_${download_count}" name="downloads_icon[]">
+                    <span class="text-danger err-mgs" id="downloads_icon_${download_count}_err"></span>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="">${download_title}</label>
-                    <input type="text" class="form-control" name="downloads_title[]">
-                    <span class="text-danger err-mgs-downloads-title"></span>
+                    <input type="text" class="form-control" id="downloads_title_${download_count}" name="downloads_title[]">
+                    <span class="text-danger err-mg" id="downloads_title_${download_count}_err"></span>
                 </div>
                 <div class="form-group col-md-3">
                     <label for="">${download_file}</label>
-                    <input type="file" class="form-control" name="downloads_file[]">
-                    <span class="text-danger err-mgs-downloads-file"></span>
+                    <input type="file" class="form-control" id="downloads_file_${download_count}" name="downloads_file[]">
+                    <span class="text-danger err-mgs" id="downloads_file_${download_count}_err"></span>
                 </div>
                 <div class="form-group col-md-2" style="padding-top:30px;">
                     <button type="button" class="btn btn-danger form-control" id="add_new_download_remove_btn">${download_remove}</button>
@@ -37,6 +38,7 @@ $(document).on('click','#reset_btn',function(){
 })
 
 $(document).on('click','#add_new_download_remove_btn',function(){
+    download_count--;
     $(this).closest('div').parent().remove();
 })
 function getCategoryDetails(value,target_id){
@@ -75,8 +77,18 @@ $(document).on('submit','#add_solution_form',function(e){
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') 
         },
-        success: function (rdata) {
-
+        success: function (data) {
+            $('button[type=submit]', '#add_solution_form').html(submit_btn_before);
+            $('button[type=submit]', '#add_solution_form').removeClass('disabled');
+            swal({
+                icon: "success",
+                title: data.title,
+                text: data.text,
+                confirmButtonText: data.confirmButtonText,
+            }).then(function(){
+                // this.removeAllFiles(true);
+                window.location.reload()
+            })
         },
         error: function (err) {
             $('button[type=submit]', '#add_solution_form').html(submit_btn_before);
@@ -100,11 +112,13 @@ $(document).on('submit','#add_solution_form',function(e){
                 $(this).empty();
             })
             $.each(err.responseJSON.errors,function(idx,val){
-                console.log('#add_solution_form #'+idx);
-                
-                $('#add_solution_form #'+idx).addClass('border-danger is-invalid')
-                $('#add_solution_form #'+idx).next('.err-mgs').empty().append(val);
-                $('#add_solution_form #'+idx+"_err").empty().append(val);
+                // console.log('#add_solution_form #'+idx);
+                var exp = idx.replace('.','_');
+                $('#add_solution_form #'+exp).addClass('border-danger is-invalid')
+                $('#add_solution_form #'+exp).addClass('border-danger is-invalid')
+                $('#add_solution_form #'+exp).next('.err-mgs').empty().append(val);
+           
+                $('#add_solution_form #'+exp+"_err").empty().append(val);
             })
         }
     })

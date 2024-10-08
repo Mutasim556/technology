@@ -141,10 +141,17 @@
                         </a>
                     </li>
                 @endif
-                @if (hasPermission(['solution-index', 'solution-create', 'solution-update', 'solution-delete']))
+                @if (hasPermission(['solution-create']))
                     <li>
                         <a href="{{ route('admin.solution.create') }}" class="sidebar-link">
                             <span> {{ __('admin_local.Add Solution') }} </span>
+                        </a>
+                    </li>
+                @endif
+                @if (hasPermission(['solution-index', 'solution-update', 'solution-delete']))
+                    <li>
+                        <a href="{{ route('admin.solution.index') }}" class="sidebar-link">
+                            <span> {{ __('admin_local.View Solution') }} </span>
                         </a>
                     </li>
                 @endif
