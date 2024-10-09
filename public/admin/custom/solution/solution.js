@@ -123,3 +123,67 @@ $(document).on('submit','#add_solution_form',function(e){
         }
     })
 });
+
+
+$(document).on('submit','#edit_solution_form',function(e){
+    e.preventDefault();
+    $('#edit_solution_form #submit_btn').html(submit_btn_after+'....');
+    $('#edit_solution_form #submit_btn').addClass('disabled');
+    var formData = new FormData(this);
+    $.ajax({
+        type: "POST",
+        url: base_url+'/admin/solution/'+$('#solution_id').val(),
+        data: formData,
+        dataType: 'JSON',
+        contentType: false,
+        cache: false,
+        processData: false,
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') 
+        },
+        success: function (data) {
+            $('button[type=submit]', '#edit_solution_form').html(submit_btn_before);
+            $('button[type=submit]', '#edit_solution_form').removeClass('disabled');
+            swal({
+                icon: "success",
+                title: data.title,
+                text: data.text,
+                confirmButtonText: data.confirmButtonText,
+            }).then(function(){
+                // this.removeAllFiles(true);
+                window.location.reload()
+            })
+        },
+        error: function (err) {
+            $('button[type=submit]', '#edit_solution_form').html(submit_btn_before);
+            $('button[type=submit]', '#edit_solution_form').removeClass('disabled');
+            if(err.status===403){
+                var err_message = err.responseJSON.message.split("(");
+                swal({
+                    icon: "warning",
+                    title: "Warning !",
+                    text: err_message[0],
+                    confirmButtonText: "Ok",
+                }).then(function(){
+                    $('button[type=button]', '##edit_solution_form').click();
+                });
+                
+            }
+
+            $('#edit_solution_form .err-mgs').each(function(id,val){
+                $(this).prev('input').removeClass('border-danger is-invalid')
+                $(this).prev('textarea').removeClass('border-danger is-invalid')
+                $(this).empty();
+            })
+            $.each(err.responseJSON.errors,function(idx,val){
+                // console.log('#edit_solution_form #'+idx);
+                var exp = idx.replace('.','_');
+                $('#edit_solution_form #'+exp).addClass('border-danger is-invalid')
+                $('#edit_solution_form #'+exp).addClass('border-danger is-invalid')
+                $('#edit_solution_form #'+exp).next('.err-mgs').empty().append(val);
+           
+                $('#edit_solution_form #'+exp+"_err").empty().append(val);
+            })
+        }
+    })
+});

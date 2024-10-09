@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('solution')->name('solution.')->group(function () {
     //parent category
     Route::resource('parent-category', ParentCategoryController::class)->except('create', 'show');
-    Route::controller(ParentCategoryController::class)->prefix('parent-category')->group(function () {
+    Route::controller(ParentCategoryController::class)->prefix('parent-category')->group(function () { 
        Route::get('/update/status/{id}/{status}', 'updateStatus');
     });
 

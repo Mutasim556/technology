@@ -42,146 +42,94 @@
                                             aria-labelledby="tab-{{ $digits[$tagKey] }}-1">
                                             <div class="row">
                                                 
-                                                @if ($tagKey==0)
+                                                @if ($tag=='What_We_Offer')
+                                                <div class="col-md-12 mb-4">
                                                     <h4 class="text-center">{{ $solution->solutionDetails->offer_title }}</h4>
-                                                    {!! $solution->solutionDetails->offer_description !!}
-                                                @elseif ($tagKey==1)
-                                                <div class="col-lg-1-5 col-md-4 col-12 col-sm-6 mb-md-4 mb-xl-0">
-                                                    <div class="banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp"
-                                                        data-wow-delay="0">
-                                                        <div class="banner-icon">
-                                                            <img src="{{ asset('public/assets/imgs/theme/icons/icon-1.svg') }}"
-                                                                alt="" />
-                                                        </div>
-                                                        <div class="banner-text">
-                                                            <h3 class="icon-box-title">Blog</h3>
-                                                        </div>
-                                                    </div>
                                                 </div>
+                                                <div class="col-md-12 mb-4">
+                                                    {!! $solution->solutionDetails->offer_description !!}
+                                                </div>
+                                                @elseif ($tag=='Downloads')
+                                                @php
+                                                    $download_icons = explode(',',$solution->solutionDetails->download_icon);
+                                                    $download_titles = explode('|',$solution->solutionDetails->download_title);
+                                                    $download_files = explode(',',$solution->solutionDetails->download_file);
+                                                @endphp
+                                                @foreach ($download_titles as $dwkey=>$download_title)
+                                                
+                                                <div class="col-lg-3-4 col-md-4 col-12 col-sm-6 mb-md-4 mb-xl-0" >
+                                                    <a target="__blank" href="{{ asset($download_files[$dwkey]) }}">
+                                                        <div class="banner-left-icon d-flex align-items-center py-1">
+                                                            <div class="banner-icon">
+                                                                <img height="40px" src="{{ asset($download_icons[$dwkey]) }}"
+                                                                    alt="" />
+                                                            </div>
+                                                            <div class="banner-text text-center">
+                                                                <h3 class="icon-box-title text-center">{{ $download_title }}</h3>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                @endforeach
+                                                
+                                                @elseif ($tag=='Success_Stories')
+                                                <div class="col-md-12 mb-4">
+                                                    <h4 class="text-center">{{ $solution->solutionDetails->success_story }}</h4>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    {!! $solution->solutionDetails->success_description !!}
+                                                </div>
+                                                @elseif ($tag=='Security_Practices')
+                                                
+                                                <div class="col-md-12">
+                                                    <h4 class="text-center mb-4" >{{ $solution->solutionDetails->security_practices_title }}</h4>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <span>{!! $solution->solutionDetails->security_practices_description !!}</span>
+                                                </div>
+
+                                                @elseif ($tag=='Improved_Services')
+                                                
+                                                <div class="col-md-12">
+                                                    <h4 class="text-center mb-4" >{{ $solution->solutionDetails->improved_services_title }}</h4>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <span>{!! $solution->solutionDetails->improved_services_description !!}</span>
+                                                </div>
+                                                @elseif ($tag=='Digital_Management')
+                                                
+                                                <div class="col-md-12">
+                                                    <h4 class="text-center mb-4" >{{ $solution->solutionDetails->digital_management_title }}</h4>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <span>{!! $solution->solutionDetails->digital_management_description !!}</span>
+                                                </div>
+
+                                                @elseif ($tag=='Overview')
+                                                
+                                                <div class="col-md-12">
+                                                    <h4 class="text-center mb-4" >{{ $solution->solutionDetails->overview_title }}</h4>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <span>{!! $solution->solutionDetails->overview_description !!}</span>
+                                                </div>
+
+                                                @elseif ($tag=='Warehouses')
+                                                
+                                                <div class="col-md-12">
+                                                    <h4 class="text-center mb-4" >{{ $solution->solutionDetails->warehouse_title }}</h4>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <span>{!! $solution->solutionDetails->warehouse_description !!}</span>
+                                                </div>
+
+
+
                                                 @endif
             
                                             </div>
                                         </div>
                                         @endforeach
-                                        <!--End tab-pane-->
-                                        {{-- <div class="tab-pane fade" id="tab-two-1" role="tabpanel" aria-labelledby="tab-two-1">
-                                            <div class="row text-center mt-2">
-                                                <div class="col-12" style="font-size: 18px;font-weight:700">
-                                                    Security requirements and application settings vary. That's why Hikvision designs
-                                                    and tailors network cameras to meet various needs, from general video monitoring to
-                                                    video content analytics with deep learning algorithms and beyond.
-            
-            
-            
-                                                    By rendering high-quality images across a range of lighting conditions, minimizing
-                                                    storage and bandwidth requirements and providing data-powered situational awareness,
-                                                    Hikvision network cameras can help users make smart decisions. Our network cameras
-                                                    are the ideal choice for hundreds of application scenarios.
-                                                </div>
-                                            </div>
-                                        </div> --}}
-                                        {{-- <div class="tab-pane fade" id="tab-three-1" role="tabpanel" aria-labelledby="tab-two-1">
-                                            <div class="row text-center mt-2">
-                                                <div class="col-12" style="font-size: 18px;font-weight:700">
-                                                    Security requirements and application settings vary. That's why Hikvision designs
-                                                    and tailors network cameras to meet various needs, from general video monitoring to
-                                                    video content analytics with deep learning algorithms and beyond.
-            
-            
-            
-                                                    By rendering high-quality images across a range of lighting conditions, minimizing
-                                                    storage and bandwidth requirements and providing data-powered situational awareness,
-                                                    Hikvision network cameras can help users make smart decisions. Our network cameras
-                                                    are the ideal choice for hundreds of application scenarios.
-                                                </div>
-                                            </div>
-                                        </div> --}}
-                                        {{-- <div class="tab-pane fade" id="tab-three-1" role="tabpanel" aria-labelledby="tab-three-1">
-                                            <div class="row text-center mt-2">
-                                                <div class="container">
-                                                    <div class="row">
-                                                        <div class="col-lg-1-5 col-md-4 col-12 col-sm-6 mb-md-4 mb-xl-0">
-                                                            <div class="banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp"
-                                                                data-wow-delay="0">
-                                                                <div class="banner-icon">
-                                                                    <img src="{{ asset('public/assets/imgs/theme/icons/icon-1.svg') }}"
-                                                                        alt="" />
-                                                                </div>
-                                                                <div class="banner-text">
-                                                                    <h3 class="icon-box-title">Blog</h3>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
-                                                            <div class="banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp"
-                                                                data-wow-delay=".1s">
-                                                                <div class="banner-icon">
-                                                                    <img src="{{ asset('public/assets/imgs/theme/icons/icon-2.svg') }}"
-                                                                        alt="" />
-                                                                </div>
-                                                                <div class="banner-text">
-                                                                    <h3 class="icon-box-title">E-learning</h3>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
-                                                            <div class="banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp"
-                                                                data-wow-delay=".2s">
-                                                                <div class="banner-icon">
-                                                                    <img src="{{ asset('public/assets/imgs/theme/icons/icon-3.svg') }}"
-                                                                        alt="" />
-                                                                </div>
-                                                                <div class="banner-text">
-                                                                    <h3 class="icon-box-title">Success Stories</h3>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
-                                                            <div class="banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp"
-                                                                data-wow-delay=".3s">
-                                                                <div class="banner-icon">
-                                                                    <img src="{{ asset('public/assets/imgs/theme/icons/icon-4.svg') }}"
-                                                                        alt="" />
-                                                                </div>
-                                                                <div class="banner-text">
-                                                                    <h3 class="icon-box-title">Technologies</h3>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
-                                                            <div class="banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp"
-                                                                data-wow-delay=".4s">
-                                                                <div class="banner-icon">
-                                                                    <img src="{{ asset('public/assets/imgs/theme/icons/icon-5.svg') }}"
-                                                                        alt="" />
-                                                                </div>
-                                                                <div class="banner-text">
-                                                                    <h3 class="icon-box-title">Sustainability</h3>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-            
-            
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div> --}}
-                                        <div class="tab-pane fade" id="tab-five-1" role="tabpanel" aria-labelledby="tab-two-1">
-                                            <div class="row text-center mt-2">
-                                                <div class="col-12" style="font-size: 18px;font-weight:700">
-                                                    Security requirements and application settings vary. That's why Hikvision designs
-                                                    and tailors network cameras to meet various needs, from general video monitoring to
-                                                    video content analytics with deep learning algorithms and beyond.
-            
-            
-            
-                                                    By rendering high-quality images across a range of lighting conditions, minimizing
-                                                    storage and bandwidth requirements and providing data-powered situational awareness,
-                                                    Hikvision network cameras can help users make smart decisions. Our network cameras
-                                                    are the ideal choice for hundreds of application scenarios.
-                                                </div>
-                                            </div>
-                                        </div>
             
                                     </div>
                                     <!--End tab-content-->

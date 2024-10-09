@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Solution;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Solution\SolutionStoreRequest;
+use App\Http\Requests\Admin\Solution\SolutionUpdateRequest;
 use App\Models\Admin\Solution\Solution;
 use App\Models\Admin\Solution\SolutionCategory;
 use App\Models\Admin\Solution\SolutionDetail;
@@ -15,7 +16,7 @@ class SolutionController extends Controller
 {
     /**
      * Display a listing of the resource.
-     */
+     */ 
     public function index()
     {
         $solutions = Solution::with('parentCategory','category','subCategory','solutionDetails')->where([['status',1],['delete',0]])->get();
@@ -73,15 +74,29 @@ class SolutionController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $parent_categories = SolutionParentCategory::where([['parent_category_status',1],['parent_category_delete',0]])->get();
+        $solution = Solution::with('parentCategory','category','subCategory','solutionDetails')->where([['status',1],['delete',0],['id',$id]])->first();
+        return view('backend.blade.solution.edit',compact('parent_categories','solution'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(SolutionUpdateRequest $data, string $id)
     {
-        //
+        if($data->update($id)){
+            return  response([
+                'title'=>__('admin_local.Congratulations !'),
+                'text'=>__('admin_local.Solution updated successfully.'),
+                'confirmButtonText'=>__('admin_local.Ok'),
+            ],200);
+        }else{
+            return  response([
+                'title'=>__('admin_local.Warning !'),
+                'text'=>__('admin_local.Server Error'),
+                'confirmButtonText'=>__('admin_local.Ok'),
+            ],403);
+        }
     }
 
     /**
