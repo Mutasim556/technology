@@ -179,6 +179,21 @@
                         </a>
                     </li>
                 @endif
+
+                @if (hasPermission(['support-create']))
+                <li>
+                    <a href="{{ route('admin.support.create') }}" class="sidebar-link">
+                        <span> {{ __('admin_local.Add Support') }} </span>
+                    </a>
+                </li>
+                @endif
+                @if (hasPermission(['support-index', 'support-update', 'support-delete']))
+                    <li>
+                        <a href="{{ route('admin.support.index') }}" class="sidebar-link">
+                            <span> {{ __('admin_local.View Support') }} </span>
+                        </a>
+                    </li>
+                @endif
             </ul>
         </li>
     @endif

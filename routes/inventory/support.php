@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\Support\CategoryController;
 use App\Http\Controllers\Admin\Support\ParentCategoryController;
+use App\Http\Controllers\Admin\Support\SupportController;
 use Illuminate\Support\Facades\Route;
 
 //solution route
@@ -19,3 +20,6 @@ Route::prefix('support')->name('support.')->group(function () {
       Route::get('/get/category-details/{id}/{target}', 'getCategoryDetails');
    });
 });
+
+Route::resource('support',SupportController::class);
+Route::get('/support-details',[SupportController::class,'solutionDetails']); 

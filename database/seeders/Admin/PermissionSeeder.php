@@ -152,5 +152,19 @@ class PermissionSeeder extends Seeder
         // Permission::create(['guard_name'=>'admin','name'=>'partner-category-update','group_name'=>'Partner Category Permissions']);
         // Permission::create(['guard_name'=>'admin','name'=>'partner-category-delete','group_name'=>'Partner Category Permissions']);
 
+
+        // solution permission
+        // Permission::create(['guard_name'=>'admin','name'=>'solution-index','group_name'=>'Solution Permissions']);
+        // Permission::create(['guard_name'=>'admin','name'=>'solution-store','group_name'=>'Solution Permissions']);
+        // Permission::create(['guard_name'=>'admin','name'=>'solution-update','group_name'=>'Solution Permissions']);
+        // Permission::create(['guard_name'=>'admin','name'=>'solution-delete','group_name'=>'Solution Permissions']);
+
+
+        // support permission
+        // Permission::create(['guard_name'=>'admin','name'=>'support-index','group_name'=>'Support Permissions']);
+        // Permission::create(['guard_name'=>'admin','name'=>'support-store','group_name'=>'Support Permissions']);
+        // Permission::create(['guard_name'=>'admin','name'=>'support-update','group_name'=>'Support Permissions']);
+        // Permission::create(['guard_name'=>'admin','name'=>'support-delete','group_name'=>'Support Permissions']);
+
     }
 }
