@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 08, 2024 at 04:54 PM
+-- Generation Time: Oct 17, 2024 at 01:23 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.12
 
@@ -273,7 +273,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (42, '2024_10_01_164301_add_short_description_to_products_table', 26),
 (43, '2024_10_07_163135_create_solutions_table', 27),
 (44, '2024_10_07_163503_create_solution_details_table', 27),
-(45, '2024_10_08_112424_add_solution_tags_to_solution_details_table', 28);
+(45, '2024_10_08_112424_add_solution_tags_to_solution_details_table', 28),
+(46, '2024_10_17_094121_create_supports_table', 29),
+(47, '2024_10_17_162756_add_file_size_to_supports_table', 30);
 
 -- --------------------------------------------------------
 
@@ -509,7 +511,15 @@ INSERT INTO `permissions` (`id`, `name`, `guard_name`, `group_name`, `created_at
 (81, 'partner-category-index', 'admin', 'Partner Category Permissions', '2024-09-26 06:32:36', '2024-09-26 06:32:36'),
 (82, 'partner-category-store', 'admin', 'Partner Category Permissions', '2024-09-26 06:32:36', '2024-09-26 06:32:36'),
 (83, 'partner-category-update', 'admin', 'Partner Category Permissions', '2024-09-26 06:32:36', '2024-09-26 06:32:36'),
-(84, 'partner-category-delete', 'admin', 'Partner Category Permissions', '2024-09-26 06:32:36', '2024-09-26 06:32:36');
+(84, 'partner-category-delete', 'admin', 'Partner Category Permissions', '2024-09-26 06:32:36', '2024-09-26 06:32:36'),
+(85, 'solution-index', 'admin', 'Solution Permissions', '2024-10-17 06:50:13', '2024-10-17 06:50:13'),
+(86, 'solution-store', 'admin', 'Solution Permissions', '2024-10-17 06:50:13', '2024-10-17 06:50:13'),
+(87, 'solution-update', 'admin', 'Solution Permissions', '2024-10-17 06:50:13', '2024-10-17 06:50:13'),
+(88, 'solution-delete', 'admin', 'Solution Permissions', '2024-10-17 06:50:13', '2024-10-17 06:50:13'),
+(89, 'support-index', 'admin', 'Support Permissions', '2024-10-17 06:51:20', '2024-10-17 06:51:20'),
+(90, 'support-store', 'admin', 'Support Permissions', '2024-10-17 06:51:20', '2024-10-17 06:51:20'),
+(91, 'support-update', 'admin', 'Support Permissions', '2024-10-17 06:51:20', '2024-10-17 06:51:20'),
+(92, 'support-delete', 'admin', 'Support Permissions', '2024-10-17 06:51:20', '2024-10-17 06:51:20');
 
 -- --------------------------------------------------------
 
@@ -3092,7 +3102,227 @@ INSERT INTO `pulse_aggregates` (`id`, `bucket`, `period`, `type`, `key`, `aggreg
 (6277, 1728385980, 60, 'exception', '[\"TypeError\",\"vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Support\\\\helpers.php:124\"]', 'count', 1.00, NULL),
 (6281, 1728385980, 60, 'exception', '[\"TypeError\",\"vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Support\\\\helpers.php:124\"]', 'max', 1728386001.00, NULL),
 (6285, 1728386040, 60, 'exception', '[\"TypeError\",\"vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Support\\\\helpers.php:124\"]', 'count', 1.00, NULL),
-(6289, 1728386040, 60, 'exception', '[\"TypeError\",\"vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Support\\\\helpers.php:124\"]', 'max', 1728386062.00, NULL);
+(6289, 1728386040, 60, 'exception', '[\"TypeError\",\"vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Support\\\\helpers.php:124\"]', 'max', 1728386062.00, NULL),
+(6291, 1728443820, 60, 'slow_request', '[\"GET\",\"\\/admin\\/dashboard\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Auth\\\\AdminLoginController@index\"]', 'count', 1.00, NULL),
+(6292, 1728443520, 360, 'slow_request', '[\"GET\",\"\\/admin\\/dashboard\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Auth\\\\AdminLoginController@index\"]', 'count', 1.00, NULL),
+(6293, 1728443520, 1440, 'slow_request', '[\"GET\",\"\\/admin\\/dashboard\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Auth\\\\AdminLoginController@index\"]', 'count', 1.00, NULL),
+(6294, 1728437760, 10080, 'slow_request', '[\"GET\",\"\\/admin\\/dashboard\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Auth\\\\AdminLoginController@index\"]', 'count', 1.00, NULL),
+(6295, 1728443820, 60, 'slow_request', '[\"GET\",\"\\/admin\\/dashboard\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Auth\\\\AdminLoginController@index\"]', 'max', 4151.00, NULL),
+(6296, 1728443520, 360, 'slow_request', '[\"GET\",\"\\/admin\\/dashboard\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Auth\\\\AdminLoginController@index\"]', 'max', 4151.00, NULL),
+(6297, 1728443520, 1440, 'slow_request', '[\"GET\",\"\\/admin\\/dashboard\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Auth\\\\AdminLoginController@index\"]', 'max', 4151.00, NULL),
+(6298, 1728437760, 10080, 'slow_request', '[\"GET\",\"\\/admin\\/dashboard\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Auth\\\\AdminLoginController@index\"]', 'max', 4151.00, NULL),
+(6299, 1728445560, 60, 'exception', '[\"ParseError\",\"resources\\\\views\\\\frontend\\\\pages\\\\solution\\\\index.blade.php:61\"]', 'count', 1.00, NULL),
+(6300, 1728445320, 360, 'exception', '[\"ParseError\",\"resources\\\\views\\\\frontend\\\\pages\\\\solution\\\\index.blade.php:61\"]', 'count', 1.00, NULL),
+(6301, 1728444960, 1440, 'exception', '[\"ParseError\",\"resources\\\\views\\\\frontend\\\\pages\\\\solution\\\\index.blade.php:61\"]', 'count', 1.00, NULL),
+(6302, 1728437760, 10080, 'exception', '[\"ParseError\",\"resources\\\\views\\\\frontend\\\\pages\\\\solution\\\\index.blade.php:61\"]', 'count', 1.00, NULL),
+(6303, 1728445560, 60, 'exception', '[\"ParseError\",\"resources\\\\views\\\\frontend\\\\pages\\\\solution\\\\index.blade.php:61\"]', 'max', 1728445609.00, NULL),
+(6304, 1728445320, 360, 'exception', '[\"ParseError\",\"resources\\\\views\\\\frontend\\\\pages\\\\solution\\\\index.blade.php:61\"]', 'max', 1728445609.00, NULL),
+(6305, 1728444960, 1440, 'exception', '[\"ParseError\",\"resources\\\\views\\\\frontend\\\\pages\\\\solution\\\\index.blade.php:61\"]', 'max', 1728445609.00, NULL),
+(6306, 1728437760, 10080, 'exception', '[\"ParseError\",\"resources\\\\views\\\\frontend\\\\pages\\\\solution\\\\index.blade.php:61\"]', 'max', 1728445609.00, NULL),
+(6307, 1728446220, 60, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\backend\\\\blade\\\\solution\\\\edit.blade.php:83\"]', 'count', 1.00, NULL),
+(6308, 1728446040, 360, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\backend\\\\blade\\\\solution\\\\edit.blade.php:83\"]', 'count', 2.00, NULL),
+(6309, 1728444960, 1440, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\backend\\\\blade\\\\solution\\\\edit.blade.php:83\"]', 'count', 2.00, NULL),
+(6310, 1728437760, 10080, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\backend\\\\blade\\\\solution\\\\edit.blade.php:83\"]', 'count', 2.00, NULL),
+(6311, 1728446220, 60, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\backend\\\\blade\\\\solution\\\\edit.blade.php:83\"]', 'max', 1728446242.00, NULL),
+(6312, 1728446040, 360, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\backend\\\\blade\\\\solution\\\\edit.blade.php:83\"]', 'max', 1728446280.00, NULL),
+(6313, 1728444960, 1440, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\backend\\\\blade\\\\solution\\\\edit.blade.php:83\"]', 'max', 1728446280.00, NULL),
+(6314, 1728437760, 10080, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\backend\\\\blade\\\\solution\\\\edit.blade.php:83\"]', 'max', 1728446280.00, NULL),
+(6315, 1728446280, 60, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\backend\\\\blade\\\\solution\\\\edit.blade.php:83\"]', 'count', 1.00, NULL),
+(6319, 1728446280, 60, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\backend\\\\blade\\\\solution\\\\edit.blade.php:83\"]', 'max', 1728446280.00, NULL),
+(6323, 1728446400, 60, 'cache_miss', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6324, 1728446400, 360, 'cache_miss', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6325, 1728446400, 1440, 'cache_miss', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6326, 1728437760, 10080, 'cache_miss', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6327, 1728446400, 60, 'cache_hit', 'spatie.permission.cache', 'count', 3.00, NULL),
+(6328, 1728446400, 360, 'cache_hit', 'spatie.permission.cache', 'count', 3.00, NULL),
+(6329, 1728446400, 1440, 'cache_hit', 'spatie.permission.cache', 'count', 3.00, NULL),
+(6330, 1728437760, 10080, 'cache_hit', 'spatie.permission.cache', 'count', 3.00, NULL),
+(6339, 1728446580, 60, 'exception', '[\"Exception\",\"vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Collections\\\\Traits\\\\EnumeratesValues.php:1011\"]', 'count', 1.00, NULL),
+(6340, 1728446400, 360, 'exception', '[\"Exception\",\"vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Collections\\\\Traits\\\\EnumeratesValues.php:1011\"]', 'count', 2.00, NULL),
+(6341, 1728446400, 1440, 'exception', '[\"Exception\",\"vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Collections\\\\Traits\\\\EnumeratesValues.php:1011\"]', 'count', 2.00, NULL),
+(6342, 1728437760, 10080, 'exception', '[\"Exception\",\"vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Collections\\\\Traits\\\\EnumeratesValues.php:1011\"]', 'count', 2.00, NULL),
+(6343, 1728446580, 60, 'exception', '[\"Exception\",\"vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Collections\\\\Traits\\\\EnumeratesValues.php:1011\"]', 'max', 1728446630.00, NULL),
+(6344, 1728446400, 360, 'exception', '[\"Exception\",\"vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Collections\\\\Traits\\\\EnumeratesValues.php:1011\"]', 'max', 1728446647.00, NULL),
+(6345, 1728446400, 1440, 'exception', '[\"Exception\",\"vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Collections\\\\Traits\\\\EnumeratesValues.php:1011\"]', 'max', 1728446647.00, NULL),
+(6346, 1728437760, 10080, 'exception', '[\"Exception\",\"vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Collections\\\\Traits\\\\EnumeratesValues.php:1011\"]', 'max', 1728446647.00, NULL),
+(6347, 1728446640, 60, 'exception', '[\"Exception\",\"vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Collections\\\\Traits\\\\EnumeratesValues.php:1011\"]', 'count', 1.00, NULL),
+(6351, 1728446640, 60, 'exception', '[\"Exception\",\"vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Collections\\\\Traits\\\\EnumeratesValues.php:1011\"]', 'max', 1728446647.00, NULL),
+(6355, 1728447120, 60, 'exception', '[\"ParseError\",\"resources\\\\views\\\\backend\\\\blade\\\\solution\\\\edit.blade.php:111\"]', 'count', 1.00, NULL),
+(6356, 1728447120, 360, 'exception', '[\"ParseError\",\"resources\\\\views\\\\backend\\\\blade\\\\solution\\\\edit.blade.php:111\"]', 'count', 1.00, NULL),
+(6357, 1728446400, 1440, 'exception', '[\"ParseError\",\"resources\\\\views\\\\backend\\\\blade\\\\solution\\\\edit.blade.php:111\"]', 'count', 1.00, NULL),
+(6358, 1728437760, 10080, 'exception', '[\"ParseError\",\"resources\\\\views\\\\backend\\\\blade\\\\solution\\\\edit.blade.php:111\"]', 'count', 1.00, NULL),
+(6359, 1728447120, 60, 'exception', '[\"ParseError\",\"resources\\\\views\\\\backend\\\\blade\\\\solution\\\\edit.blade.php:111\"]', 'max', 1728447170.00, NULL),
+(6360, 1728447120, 360, 'exception', '[\"ParseError\",\"resources\\\\views\\\\backend\\\\blade\\\\solution\\\\edit.blade.php:111\"]', 'max', 1728447170.00, NULL),
+(6361, 1728446400, 1440, 'exception', '[\"ParseError\",\"resources\\\\views\\\\backend\\\\blade\\\\solution\\\\edit.blade.php:111\"]', 'max', 1728447170.00, NULL),
+(6362, 1728437760, 10080, 'exception', '[\"ParseError\",\"resources\\\\views\\\\backend\\\\blade\\\\solution\\\\edit.blade.php:111\"]', 'max', 1728447170.00, NULL),
+(6363, 1728468060, 60, 'exception', '[\"Illuminate\\\\Contracts\\\\View\\\\ViewCompilationException\",\"app\\\\Http\\\\Middleware\\\\Admin\\\\CheckLoggedAdminStatus.php:23\"]', 'count', 1.00, NULL),
+(6364, 1728468000, 360, 'exception', '[\"Illuminate\\\\Contracts\\\\View\\\\ViewCompilationException\",\"app\\\\Http\\\\Middleware\\\\Admin\\\\CheckLoggedAdminStatus.php:23\"]', 'count', 1.00, NULL),
+(6365, 1728468000, 1440, 'exception', '[\"Illuminate\\\\Contracts\\\\View\\\\ViewCompilationException\",\"app\\\\Http\\\\Middleware\\\\Admin\\\\CheckLoggedAdminStatus.php:23\"]', 'count', 1.00, NULL),
+(6366, 1728468000, 10080, 'exception', '[\"Illuminate\\\\Contracts\\\\View\\\\ViewCompilationException\",\"app\\\\Http\\\\Middleware\\\\Admin\\\\CheckLoggedAdminStatus.php:23\"]', 'count', 1.00, NULL),
+(6367, 1728468060, 60, 'exception', '[\"Illuminate\\\\Contracts\\\\View\\\\ViewCompilationException\",\"app\\\\Http\\\\Middleware\\\\Admin\\\\CheckLoggedAdminStatus.php:23\"]', 'max', 1728468065.00, NULL),
+(6368, 1728468000, 360, 'exception', '[\"Illuminate\\\\Contracts\\\\View\\\\ViewCompilationException\",\"app\\\\Http\\\\Middleware\\\\Admin\\\\CheckLoggedAdminStatus.php:23\"]', 'max', 1728468065.00, NULL),
+(6369, 1728468000, 1440, 'exception', '[\"Illuminate\\\\Contracts\\\\View\\\\ViewCompilationException\",\"app\\\\Http\\\\Middleware\\\\Admin\\\\CheckLoggedAdminStatus.php:23\"]', 'max', 1728468065.00, NULL),
+(6370, 1728468000, 10080, 'exception', '[\"Illuminate\\\\Contracts\\\\View\\\\ViewCompilationException\",\"app\\\\Http\\\\Middleware\\\\Admin\\\\CheckLoggedAdminStatus.php:23\"]', 'max', 1728468065.00, NULL),
+(6371, 1728470640, 60, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionStoreRequest.php:96\"]', 'count', 1.00, NULL),
+(6372, 1728470520, 360, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionStoreRequest.php:96\"]', 'count', 2.00, NULL),
+(6373, 1728469440, 1440, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionStoreRequest.php:96\"]', 'count', 2.00, NULL),
+(6374, 1728468000, 10080, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionStoreRequest.php:96\"]', 'count', 2.00, NULL),
+(6375, 1728470640, 60, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionStoreRequest.php:96\"]', 'max', 1728470664.00, NULL),
+(6376, 1728470520, 360, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionStoreRequest.php:96\"]', 'max', 1728470703.00, NULL),
+(6377, 1728469440, 1440, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionStoreRequest.php:96\"]', 'max', 1728470703.00, NULL),
+(6378, 1728468000, 10080, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionStoreRequest.php:96\"]', 'max', 1728470703.00, NULL),
+(6379, 1728470700, 60, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionStoreRequest.php:96\"]', 'count', 1.00, NULL),
+(6383, 1728470700, 60, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionStoreRequest.php:96\"]', 'max', 1728470703.00, NULL),
+(6387, 1728471240, 60, 'exception', '[\"Error\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionUpdateRequest.php:80\"]', 'count', 1.00, NULL),
+(6388, 1728471240, 360, 'exception', '[\"Error\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionUpdateRequest.php:80\"]', 'count', 2.00, NULL),
+(6389, 1728470880, 1440, 'exception', '[\"Error\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionUpdateRequest.php:80\"]', 'count', 2.00, NULL),
+(6390, 1728468000, 10080, 'exception', '[\"Error\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionUpdateRequest.php:80\"]', 'count', 2.00, NULL),
+(6391, 1728471240, 60, 'exception', '[\"Error\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionUpdateRequest.php:80\"]', 'max', 1728471242.00, NULL),
+(6392, 1728471240, 360, 'exception', '[\"Error\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionUpdateRequest.php:80\"]', 'max', 1728471314.00, NULL),
+(6393, 1728470880, 1440, 'exception', '[\"Error\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionUpdateRequest.php:80\"]', 'max', 1728471314.00, NULL),
+(6394, 1728468000, 10080, 'exception', '[\"Error\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionUpdateRequest.php:80\"]', 'max', 1728471314.00, NULL),
+(6395, 1728471300, 60, 'exception', '[\"Error\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionUpdateRequest.php:80\"]', 'count', 1.00, NULL),
+(6399, 1728471300, 60, 'exception', '[\"Error\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionUpdateRequest.php:80\"]', 'max', 1728471314.00, NULL),
+(6403, 1728471480, 60, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionUpdateRequest.php:96\"]', 'count', 1.00, NULL),
+(6404, 1728471240, 360, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionUpdateRequest.php:96\"]', 'count', 1.00, NULL),
+(6405, 1728470880, 1440, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionUpdateRequest.php:96\"]', 'count', 2.00, NULL),
+(6406, 1728468000, 10080, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionUpdateRequest.php:96\"]', 'count', 2.00, NULL),
+(6407, 1728471480, 60, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionUpdateRequest.php:96\"]', 'max', 1728471498.00, NULL),
+(6408, 1728471240, 360, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionUpdateRequest.php:96\"]', 'max', 1728471498.00, NULL),
+(6409, 1728470880, 1440, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionUpdateRequest.php:96\"]', 'max', 1728471651.00, NULL),
+(6410, 1728468000, 10080, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionUpdateRequest.php:96\"]', 'max', 1728471651.00, NULL),
+(6411, 1728471540, 60, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionUpdateRequest.php:114\"]', 'count', 1.00, NULL),
+(6412, 1728471240, 360, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionUpdateRequest.php:114\"]', 'count', 1.00, NULL),
+(6413, 1728470880, 1440, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionUpdateRequest.php:114\"]', 'count', 1.00, NULL),
+(6414, 1728468000, 10080, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionUpdateRequest.php:114\"]', 'count', 1.00, NULL),
+(6415, 1728471540, 60, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionUpdateRequest.php:114\"]', 'max', 1728471545.00, NULL),
+(6416, 1728471240, 360, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionUpdateRequest.php:114\"]', 'max', 1728471545.00, NULL),
+(6417, 1728470880, 1440, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionUpdateRequest.php:114\"]', 'max', 1728471545.00, NULL),
+(6418, 1728468000, 10080, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionUpdateRequest.php:114\"]', 'max', 1728471545.00, NULL),
+(6419, 1728471540, 60, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\frontend\\\\pages\\\\solution\\\\index.blade.php:61\"]', 'count', 1.00, NULL),
+(6420, 1728471240, 360, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\frontend\\\\pages\\\\solution\\\\index.blade.php:61\"]', 'count', 1.00, NULL),
+(6421, 1728470880, 1440, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\frontend\\\\pages\\\\solution\\\\index.blade.php:61\"]', 'count', 2.00, NULL),
+(6422, 1728468000, 10080, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\frontend\\\\pages\\\\solution\\\\index.blade.php:61\"]', 'count', 2.00, NULL),
+(6423, 1728471540, 60, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\frontend\\\\pages\\\\solution\\\\index.blade.php:61\"]', 'max', 1728471576.00, NULL),
+(6424, 1728471240, 360, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\frontend\\\\pages\\\\solution\\\\index.blade.php:61\"]', 'max', 1728471576.00, NULL),
+(6425, 1728470880, 1440, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\frontend\\\\pages\\\\solution\\\\index.blade.php:61\"]', 'max', 1728471832.00, NULL),
+(6426, 1728468000, 10080, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\frontend\\\\pages\\\\solution\\\\index.blade.php:61\"]', 'max', 1728471832.00, NULL),
+(6427, 1728471600, 60, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionUpdateRequest.php:96\"]', 'count', 1.00, NULL),
+(6428, 1728471600, 360, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionUpdateRequest.php:96\"]', 'count', 1.00, NULL),
+(6431, 1728471600, 60, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionUpdateRequest.php:96\"]', 'max', 1728471651.00, NULL),
+(6432, 1728471600, 360, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionUpdateRequest.php:96\"]', 'max', 1728471651.00, NULL),
+(6435, 1728471780, 60, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\frontend\\\\pages\\\\solution\\\\index.blade.php:61\"]', 'count', 1.00, NULL),
+(6436, 1728471600, 360, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\frontend\\\\pages\\\\solution\\\\index.blade.php:61\"]', 'count', 1.00, NULL),
+(6439, 1728471780, 60, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\frontend\\\\pages\\\\solution\\\\index.blade.php:61\"]', 'max', 1728471832.00, NULL),
+(6440, 1728471600, 360, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\frontend\\\\pages\\\\solution\\\\index.blade.php:61\"]', 'max', 1728471832.00, NULL),
+(6442, 1729049760, 60, 'slow_request', '[\"GET\",\"\\/admin\\/dashboard\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Auth\\\\AdminLoginController@index\"]', 'count', 1.00, NULL),
+(6443, 1729049760, 360, 'slow_request', '[\"GET\",\"\\/admin\\/dashboard\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Auth\\\\AdminLoginController@index\"]', 'count', 1.00, NULL),
+(6444, 1729049760, 1440, 'slow_request', '[\"GET\",\"\\/admin\\/dashboard\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Auth\\\\AdminLoginController@index\"]', 'count', 1.00, NULL),
+(6445, 1729042560, 10080, 'slow_request', '[\"GET\",\"\\/admin\\/dashboard\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Auth\\\\AdminLoginController@index\"]', 'count', 1.00, NULL),
+(6446, 1729049760, 60, 'slow_request', '[\"GET\",\"\\/admin\\/dashboard\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Auth\\\\AdminLoginController@index\"]', 'max', 1134.00, NULL),
+(6447, 1729049760, 360, 'slow_request', '[\"GET\",\"\\/admin\\/dashboard\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Auth\\\\AdminLoginController@index\"]', 'max', 1134.00, NULL),
+(6448, 1729049760, 1440, 'slow_request', '[\"GET\",\"\\/admin\\/dashboard\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Auth\\\\AdminLoginController@index\"]', 'max', 1134.00, NULL),
+(6449, 1729042560, 10080, 'slow_request', '[\"GET\",\"\\/admin\\/dashboard\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Auth\\\\AdminLoginController@index\"]', 'max', 1134.00, NULL),
+(6450, 1729050360, 60, 'cache_miss', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6451, 1729050120, 360, 'cache_miss', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6452, 1729049760, 1440, 'cache_miss', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6453, 1729042560, 10080, 'cache_miss', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6454, 1729050360, 60, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6455, 1729050120, 360, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6456, 1729049760, 1440, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6457, 1729042560, 10080, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6458, 1729147740, 60, 'exception', '[\"ParseError\",\"database\\\\seeders\\\\Admin\\\\PermissionSeeder.php:156\"]', 'count', 1.00, NULL),
+(6459, 1729147680, 360, 'exception', '[\"ParseError\",\"database\\\\seeders\\\\Admin\\\\PermissionSeeder.php:156\"]', 'count', 1.00, NULL),
+(6460, 1729147680, 1440, 'exception', '[\"ParseError\",\"database\\\\seeders\\\\Admin\\\\PermissionSeeder.php:156\"]', 'count', 1.00, NULL),
+(6461, 1729143360, 10080, 'exception', '[\"ParseError\",\"database\\\\seeders\\\\Admin\\\\PermissionSeeder.php:156\"]', 'count', 1.00, NULL),
+(6462, 1729147740, 60, 'exception', '[\"ParseError\",\"database\\\\seeders\\\\Admin\\\\PermissionSeeder.php:156\"]', 'max', 1729147796.00, NULL),
+(6463, 1729147680, 360, 'exception', '[\"ParseError\",\"database\\\\seeders\\\\Admin\\\\PermissionSeeder.php:156\"]', 'max', 1729147796.00, NULL),
+(6464, 1729147680, 1440, 'exception', '[\"ParseError\",\"database\\\\seeders\\\\Admin\\\\PermissionSeeder.php:156\"]', 'max', 1729147796.00, NULL),
+(6465, 1729143360, 10080, 'exception', '[\"ParseError\",\"database\\\\seeders\\\\Admin\\\\PermissionSeeder.php:156\"]', 'max', 1729147796.00, NULL),
+(6466, 1729147800, 60, 'cache_miss', 'spatie.permission.cache', 'count', 5.00, NULL),
+(6467, 1729147680, 360, 'cache_miss', 'spatie.permission.cache', 'count', 8.00, NULL),
+(6468, 1729147680, 1440, 'cache_miss', 'spatie.permission.cache', 'count', 9.00, NULL),
+(6469, 1729143360, 10080, 'cache_miss', 'spatie.permission.cache', 'count', 9.00, NULL),
+(6470, 1729147800, 60, 'exception', '[\"Spatie\\\\Permission\\\\Exceptions\\\\PermissionAlreadyExists\",\"database\\\\seeders\\\\Admin\\\\PermissionSeeder.php:157\"]', 'count', 1.00, NULL),
+(6471, 1729147680, 360, 'exception', '[\"Spatie\\\\Permission\\\\Exceptions\\\\PermissionAlreadyExists\",\"database\\\\seeders\\\\Admin\\\\PermissionSeeder.php:157\"]', 'count', 1.00, NULL);
+INSERT INTO `pulse_aggregates` (`id`, `bucket`, `period`, `type`, `key`, `aggregate`, `value`, `count`) VALUES
+(6472, 1729147680, 1440, 'exception', '[\"Spatie\\\\Permission\\\\Exceptions\\\\PermissionAlreadyExists\",\"database\\\\seeders\\\\Admin\\\\PermissionSeeder.php:157\"]', 'count', 1.00, NULL),
+(6473, 1729143360, 10080, 'exception', '[\"Spatie\\\\Permission\\\\Exceptions\\\\PermissionAlreadyExists\",\"database\\\\seeders\\\\Admin\\\\PermissionSeeder.php:157\"]', 'count', 1.00, NULL),
+(6478, 1729147800, 60, 'exception', '[\"Spatie\\\\Permission\\\\Exceptions\\\\PermissionAlreadyExists\",\"database\\\\seeders\\\\Admin\\\\PermissionSeeder.php:157\"]', 'max', 1729147856.00, NULL),
+(6479, 1729147680, 360, 'exception', '[\"Spatie\\\\Permission\\\\Exceptions\\\\PermissionAlreadyExists\",\"database\\\\seeders\\\\Admin\\\\PermissionSeeder.php:157\"]', 'max', 1729147856.00, NULL),
+(6480, 1729147680, 1440, 'exception', '[\"Spatie\\\\Permission\\\\Exceptions\\\\PermissionAlreadyExists\",\"database\\\\seeders\\\\Admin\\\\PermissionSeeder.php:157\"]', 'max', 1729147856.00, NULL),
+(6481, 1729143360, 10080, 'exception', '[\"Spatie\\\\Permission\\\\Exceptions\\\\PermissionAlreadyExists\",\"database\\\\seeders\\\\Admin\\\\PermissionSeeder.php:157\"]', 'max', 1729147856.00, NULL),
+(6482, 1729147860, 60, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6483, 1729147680, 360, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6484, 1729147680, 1440, 'cache_hit', 'spatie.permission.cache', 'count', 4.00, NULL),
+(6485, 1729143360, 10080, 'cache_hit', 'spatie.permission.cache', 'count', 4.00, NULL),
+(6486, 1729147860, 60, 'cache_miss', 'spatie.permission.cache', 'count', 3.00, NULL),
+(6490, 1729148040, 60, 'cache_miss', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6491, 1729148040, 360, 'cache_miss', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6494, 1729148040, 60, 'cache_hit', 'spatie.permission.cache', 'count', 3.00, NULL),
+(6495, 1729148040, 360, 'cache_hit', 'spatie.permission.cache', 'count', 3.00, NULL),
+(6506, 1729148220, 60, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\backend\\\\blade\\\\support\\\\create.blade.php:83\"]', 'count', 1.00, NULL),
+(6507, 1729148040, 360, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\backend\\\\blade\\\\support\\\\create.blade.php:83\"]', 'count', 1.00, NULL),
+(6508, 1729147680, 1440, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\backend\\\\blade\\\\support\\\\create.blade.php:83\"]', 'count', 1.00, NULL),
+(6509, 1729143360, 10080, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\backend\\\\blade\\\\support\\\\create.blade.php:83\"]', 'count', 1.00, NULL),
+(6510, 1729148220, 60, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\backend\\\\blade\\\\support\\\\create.blade.php:83\"]', 'max', 1729148278.00, NULL),
+(6511, 1729148040, 360, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\backend\\\\blade\\\\support\\\\create.blade.php:83\"]', 'max', 1729148278.00, NULL),
+(6512, 1729147680, 1440, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\backend\\\\blade\\\\support\\\\create.blade.php:83\"]', 'max', 1729148278.00, NULL),
+(6513, 1729143360, 10080, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\backend\\\\blade\\\\support\\\\create.blade.php:83\"]', 'max', 1729148278.00, NULL),
+(6514, 1729154100, 60, 'cache_miss', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6515, 1729153800, 360, 'cache_miss', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6516, 1729153440, 1440, 'cache_miss', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6517, 1729153440, 10080, 'cache_miss', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6518, 1729154100, 60, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6519, 1729153800, 360, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6520, 1729153440, 1440, 'cache_hit', 'spatie.permission.cache', 'count', 5.00, NULL),
+(6521, 1729153440, 10080, 'cache_hit', 'spatie.permission.cache', 'count', 7.00, NULL),
+(6522, 1729154640, 60, 'cache_hit', 'spatie.permission.cache', 'count', 2.00, NULL),
+(6523, 1729154520, 360, 'cache_hit', 'spatie.permission.cache', 'count', 4.00, NULL),
+(6530, 1729154820, 60, 'cache_hit', 'spatie.permission.cache', 'count', 2.00, NULL),
+(6538, 1729155180, 60, 'cache_hit', 'spatie.permission.cache', 'count', 2.00, NULL),
+(6539, 1729154880, 360, 'cache_hit', 'spatie.permission.cache', 'count', 2.00, NULL),
+(6540, 1729154880, 1440, 'cache_hit', 'spatie.permission.cache', 'count', 2.00, NULL),
+(6546, 1729161240, 60, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\DecoderException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:63\"]', 'count', 1.00, NULL),
+(6547, 1729161000, 360, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\DecoderException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:63\"]', 'count', 2.00, NULL),
+(6548, 1729160640, 1440, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\DecoderException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:63\"]', 'count', 2.00, NULL),
+(6549, 1729153440, 10080, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\DecoderException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:63\"]', 'count', 2.00, NULL),
+(6550, 1729161240, 60, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\DecoderException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:63\"]', 'max', 1729161246.00, NULL),
+(6551, 1729161000, 360, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\DecoderException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:63\"]', 'max', 1729161344.00, NULL),
+(6552, 1729160640, 1440, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\DecoderException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:63\"]', 'max', 1729161344.00, NULL),
+(6553, 1729153440, 10080, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\DecoderException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:63\"]', 'max', 1729161344.00, NULL),
+(6554, 1729161300, 60, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\DecoderException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:63\"]', 'count', 1.00, NULL),
+(6558, 1729161300, 60, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\DecoderException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:63\"]', 'max', 1729161344.00, NULL),
+(6562, 1729161420, 60, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\DecoderException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:64\"]', 'count', 2.00, NULL),
+(6563, 1729161360, 360, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\DecoderException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:64\"]', 'count', 2.00, NULL),
+(6564, 1729160640, 1440, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\DecoderException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:64\"]', 'count', 2.00, NULL),
+(6565, 1729153440, 10080, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\DecoderException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:64\"]', 'count', 2.00, NULL),
+(6566, 1729161420, 60, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\DecoderException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:64\"]', 'max', 1729161439.00, NULL),
+(6567, 1729161360, 360, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\DecoderException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:64\"]', 'max', 1729161439.00, NULL),
+(6568, 1729160640, 1440, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\DecoderException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:64\"]', 'max', 1729161439.00, NULL),
+(6569, 1729153440, 10080, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\DecoderException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:64\"]', 'max', 1729161439.00, NULL),
+(6578, 1729161660, 60, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\NotWritableException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:65\"]', 'count', 2.00, NULL),
+(6579, 1729161360, 360, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\NotWritableException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:65\"]', 'count', 2.00, NULL),
+(6580, 1729160640, 1440, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\NotWritableException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:65\"]', 'count', 4.00, NULL),
+(6581, 1729153440, 10080, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\NotWritableException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:65\"]', 'count', 4.00, NULL),
+(6582, 1729161660, 60, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\NotWritableException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:65\"]', 'max', 1729161695.00, NULL),
+(6583, 1729161360, 360, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\NotWritableException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:65\"]', 'max', 1729161695.00, NULL),
+(6584, 1729160640, 1440, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\NotWritableException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:65\"]', 'max', 1729161802.00, NULL),
+(6585, 1729153440, 10080, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\NotWritableException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:65\"]', 'max', 1729161802.00, NULL),
+(6594, 1729161720, 60, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\NotWritableException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:65\"]', 'count', 1.00, NULL),
+(6595, 1729161720, 360, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\NotWritableException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:65\"]', 'count', 2.00, NULL),
+(6598, 1729161720, 60, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\NotWritableException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:65\"]', 'max', 1729161769.00, NULL),
+(6599, 1729161720, 360, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\NotWritableException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:65\"]', 'max', 1729161802.00, NULL),
+(6602, 1729161780, 60, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\NotWritableException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:65\"]', 'count', 1.00, NULL),
+(6606, 1729161780, 60, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\NotWritableException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:65\"]', 'max', 1729161802.00, NULL),
+(6610, 1729162140, 60, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:105\"]', 'count', 2.00, NULL),
+(6611, 1729162080, 360, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:105\"]', 'count', 2.00, NULL),
+(6612, 1729162080, 1440, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:105\"]', 'count', 2.00, NULL),
+(6613, 1729153440, 10080, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:105\"]', 'count', 2.00, NULL),
+(6614, 1729162140, 60, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:105\"]', 'max', 1729162181.00, NULL),
+(6615, 1729162080, 360, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:105\"]', 'max', 1729162181.00, NULL),
+(6616, 1729162080, 1440, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:105\"]', 'max', 1729162181.00, NULL),
+(6617, 1729153440, 10080, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:105\"]', 'max', 1729162181.00, NULL);
 
 -- --------------------------------------------------------
 
@@ -4491,7 +4721,65 @@ INSERT INTO `pulse_entries` (`id`, `timestamp`, `type`, `key`, `value`) VALUES
 (1386, 1728385947, 'exception', '[\"TypeError\",\"vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Support\\\\helpers.php:124\"]', 1728385947),
 (1387, 1728385959, 'exception', '[\"TypeError\",\"vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Support\\\\helpers.php:124\"]', 1728385959),
 (1388, 1728386001, 'exception', '[\"TypeError\",\"vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Support\\\\helpers.php:124\"]', 1728386001),
-(1389, 1728386062, 'exception', '[\"TypeError\",\"vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Support\\\\helpers.php:124\"]', 1728386062);
+(1389, 1728386062, 'exception', '[\"TypeError\",\"vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Support\\\\helpers.php:124\"]', 1728386062),
+(1390, 1728443847, 'slow_request', '[\"GET\",\"\\/admin\\/dashboard\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Auth\\\\AdminLoginController@index\"]', 4151),
+(1391, 1728445609, 'exception', '[\"ParseError\",\"resources\\\\views\\\\frontend\\\\pages\\\\solution\\\\index.blade.php:61\"]', 1728445609),
+(1392, 1728446242, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\backend\\\\blade\\\\solution\\\\edit.blade.php:83\"]', 1728446242),
+(1393, 1728446280, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\backend\\\\blade\\\\solution\\\\edit.blade.php:83\"]', 1728446280),
+(1394, 1728446414, 'cache_miss', 'spatie.permission.cache', NULL),
+(1395, 1728446416, 'cache_hit', 'spatie.permission.cache', NULL),
+(1396, 1728446419, 'cache_hit', 'spatie.permission.cache', NULL),
+(1397, 1728446420, 'cache_hit', 'spatie.permission.cache', NULL),
+(1398, 1728446630, 'exception', '[\"Exception\",\"vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Collections\\\\Traits\\\\EnumeratesValues.php:1011\"]', 1728446630),
+(1399, 1728446647, 'exception', '[\"Exception\",\"vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Collections\\\\Traits\\\\EnumeratesValues.php:1011\"]', 1728446647),
+(1400, 1728447170, 'exception', '[\"ParseError\",\"resources\\\\views\\\\backend\\\\blade\\\\solution\\\\edit.blade.php:111\"]', 1728447170),
+(1401, 1728468065, 'exception', '[\"Illuminate\\\\Contracts\\\\View\\\\ViewCompilationException\",\"app\\\\Http\\\\Middleware\\\\Admin\\\\CheckLoggedAdminStatus.php:23\"]', 1728468065),
+(1402, 1728470664, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionStoreRequest.php:96\"]', 1728470664),
+(1403, 1728470703, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionStoreRequest.php:96\"]', 1728470703),
+(1404, 1728471242, 'exception', '[\"Error\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionUpdateRequest.php:80\"]', 1728471242),
+(1405, 1728471314, 'exception', '[\"Error\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionUpdateRequest.php:80\"]', 1728471314),
+(1406, 1728471498, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionUpdateRequest.php:96\"]', 1728471498),
+(1407, 1728471545, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionUpdateRequest.php:114\"]', 1728471545),
+(1408, 1728471576, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\frontend\\\\pages\\\\solution\\\\index.blade.php:61\"]', 1728471576),
+(1409, 1728471651, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Solution\\\\SolutionUpdateRequest.php:96\"]', 1728471651),
+(1410, 1728471832, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\frontend\\\\pages\\\\solution\\\\index.blade.php:61\"]', 1728471832),
+(1411, 1729049790, 'slow_request', '[\"GET\",\"\\/admin\\/dashboard\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Auth\\\\AdminLoginController@index\"]', 1134),
+(1412, 1729050398, 'cache_miss', 'spatie.permission.cache', NULL),
+(1413, 1729050400, 'cache_hit', 'spatie.permission.cache', NULL),
+(1414, 1729147796, 'exception', '[\"ParseError\",\"database\\\\seeders\\\\Admin\\\\PermissionSeeder.php:156\"]', 1729147796),
+(1415, 1729147813, 'cache_miss', 'spatie.permission.cache', NULL),
+(1416, 1729147813, 'cache_miss', 'spatie.permission.cache', NULL),
+(1417, 1729147813, 'cache_miss', 'spatie.permission.cache', NULL),
+(1418, 1729147813, 'cache_miss', 'spatie.permission.cache', NULL),
+(1419, 1729147856, 'cache_miss', 'spatie.permission.cache', NULL),
+(1420, 1729147856, 'exception', '[\"Spatie\\\\Permission\\\\Exceptions\\\\PermissionAlreadyExists\",\"database\\\\seeders\\\\Admin\\\\PermissionSeeder.php:157\"]', 1729147856),
+(1421, 1729147880, 'cache_hit', 'spatie.permission.cache', NULL),
+(1422, 1729147880, 'cache_miss', 'spatie.permission.cache', NULL),
+(1423, 1729147880, 'cache_miss', 'spatie.permission.cache', NULL),
+(1424, 1729147880, 'cache_miss', 'spatie.permission.cache', NULL),
+(1425, 1729148071, 'cache_miss', 'spatie.permission.cache', NULL),
+(1426, 1729148073, 'cache_hit', 'spatie.permission.cache', NULL),
+(1427, 1729148073, 'cache_hit', 'spatie.permission.cache', NULL),
+(1428, 1729148076, 'cache_hit', 'spatie.permission.cache', NULL),
+(1429, 1729148278, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\backend\\\\blade\\\\support\\\\create.blade.php:83\"]', 1729148278),
+(1430, 1729154136, 'cache_miss', 'spatie.permission.cache', NULL),
+(1431, 1729154137, 'cache_hit', 'spatie.permission.cache', NULL),
+(1432, 1729154644, 'cache_hit', 'spatie.permission.cache', NULL),
+(1433, 1729154644, 'cache_hit', 'spatie.permission.cache', NULL),
+(1434, 1729154850, 'cache_hit', 'spatie.permission.cache', NULL),
+(1435, 1729154850, 'cache_hit', 'spatie.permission.cache', NULL),
+(1436, 1729155226, 'cache_hit', 'spatie.permission.cache', NULL),
+(1437, 1729155226, 'cache_hit', 'spatie.permission.cache', NULL),
+(1438, 1729161246, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\DecoderException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:63\"]', 1729161246),
+(1439, 1729161344, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\DecoderException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:63\"]', 1729161344),
+(1440, 1729161428, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\DecoderException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:64\"]', 1729161428),
+(1441, 1729161439, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\DecoderException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:64\"]', 1729161439),
+(1442, 1729161681, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\NotWritableException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:65\"]', 1729161681),
+(1443, 1729161695, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\NotWritableException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:65\"]', 1729161695),
+(1444, 1729161769, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\NotWritableException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:65\"]', 1729161769),
+(1445, 1729161802, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\NotWritableException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:65\"]', 1729161802),
+(1446, 1729162151, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:105\"]', 1729162151),
+(1447, 1729162181, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:105\"]', 1729162181);
 
 -- --------------------------------------------------------
 
@@ -4686,7 +4974,7 @@ CREATE TABLE `solution_details` (
 --
 
 INSERT INTO `solution_details` (`id`, `solution_id`, `solution_tags`, `offer_title`, `offer_description`, `success_story`, `success_description`, `download_icon`, `download_title`, `download_file`, `security_practices_title`, `security_practices_description`, `improved_services_title`, `improved_services_description`, `digital_management_title`, `digital_management_description`, `overview_title`, `overview_description`, `warehouse_title`, `warehouse_description`, `status`, `delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(5, 10, 'What_We_Offer,Downloads,Security_Practices', 'Hikvision Solutions for Smart Buildings', '<p>As the world enters the AIoT era, the real estate industry is embracing new opportunities. Hikvision offers smart building solutions for both commercial &amp; residential buildings that utilize AIoT technologies along with advanced video devices. These solutions help create secure, convenient, and low-stress environments for residents and employees, while assisting real estate companies in digitally transforming the entire lifecycle of buildings &ndash; from construction and marketing to operations and maintenance.&nbsp;</p>', NULL, NULL, 'public/admin/inventory/file/solution/2636315.png,public/admin/inventory/file/solution/8832880.png', 'Solutions for Smart Buildings|Smart Lock Solution', 'public/admin/inventory/file/solution/file/DIGITAL_PRODUCT_FILE_1728368667.pdf,public/admin/inventory/file/solution/file/DIGITAL_PRODUCT_FILE_1728368667.pdf', 'Professional Security Practices', '<p><strong>Secure your property and safeguard your well-being in a comprehensive way&nbsp;<img alt=\"\" src=\"http://localhost/technology/public/admin/inventory/file/downloaded_image/prac1.png\" style=\"float:right; height:200px; margin-bottom:50px; margin-top:50px; width:352px\" /></strong></p>\r\n\r\n<ul>\r\n	<li>Minimize false alarms with 24/7 AI-powered video protection</li>\r\n	<li>Get real-time notifications upon detection of real threats</li>\r\n	<li>Record evidence easily with HD video and easy-to-search footage</li>\r\n	<li>Detect person falling and trigger instant alerts to authorized personnel</li>\r\n</ul>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong><img alt=\"\" src=\"http://localhost/technology/public/admin/inventory/file/downloaded_image/prac2.png\" style=\"border-style:solid; border-width:2px; float:left; height:200px; margin:30px 20px; width:284px\" />Reduce property loss with risk detection and evacuation</strong></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<ul>\r\n	<li>Increase situational awareness with multi-dimensional detection</li>\r\n	<li>Keep selected doors automatically open during risk evacuation</li>\r\n	<li>Easy roll call using access control terminals to verify everyone&#39;s safety</li>\r\n</ul>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p style=\"text-align:center\"><span style=\"font-size:22px\"><strong>Improved Service Quality</strong></span></p>\r\n\r\n<p><strong>Efficient personnel management&nbsp;<img alt=\"\" src=\"http://localhost/technology/public/admin/inventory/file/downloaded_image/prac3.png\" style=\"border-style:solid; border-width:2px; float:right; height:200px; margin:20px; width:351px\" /></strong></p>\r\n\r\n<ul>\r\n	<li>Quick entry for registered personnel with touch-free biometric authentication</li>\r\n	<li>Improve visitor experience with on-site self-registration, remote registration in advance, etc.</li>\r\n	<li>Efficient &amp; flexible verification of walk-in visitors</li>\r\n</ul>', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, 1, 1, '2024-10-08 06:24:27', '2024-10-08 06:24:27');
+(5, 10, 'What_We_Offer,Downloads,Security_Practices', 'Hikvision Solutions for Smart Buildings', '<p>As the world enters the AIoT era, the real estate industry is embracing new opportunities. Hikvision offers smart building solutions for both commercial &amp; residential buildings that utilize AIoT technologies along with advanced video devices. These solutions help create secure, convenient, and low-stress environments for residents and employees, while assisting real estate companies in digitally transforming the entire lifecycle of buildings &ndash; from construction and marketing to operations and maintenance.&nbsp;</p>', NULL, '<p>&quot;</p>\r\n\r\n<p>&quot;</p>\r\n\r\n<p>&quot;</p>\r\n\r\n<p>&quot;</p>\r\n\r\n<p>&quot;</p>\r\n\r\n<p>&quot;</p>', 'public/admin/inventory/file/solution/2636315.png,public/admin/inventory/file/solution/8832880.png', 'Solutions for Smart Buildingsu|Smart Lock Solution', 'public/admin/inventory/file/solution/file/DIGITAL_PRODUCT_FILE_1728471853.pdf,public/admin/inventory/file/solution/file/DIGITAL_PRODUCT_FILE_1728471853.pdf', 'Professional Security Practices', '<p><strong>Secure your property and safeguard your well-being in a comprehensive way&nbsp;<img alt=\"\" src=\"http://localhost/technology/public/admin/inventory/file/downloaded_image/prac1.png\" style=\"float:right; height:200px; margin-bottom:50px; margin-top:50px; width:352px\" /></strong></p>\r\n\r\n<ul>\r\n	<li>Minimize false alarms with 24/7 AI-powered video protection</li>\r\n	<li>Get real-time notifications upon detection of real threats</li>\r\n	<li>Record evidence easily with HD video and easy-to-search footage</li>\r\n	<li>Detect person falling and trigger instant alerts to authorized personnel</li>\r\n</ul>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong><img alt=\"\" src=\"http://localhost/technology/public/admin/inventory/file/downloaded_image/prac2.png\" style=\"border-style:solid; border-width:2px; float:left; height:200px; margin:30px 20px; width:284px\" />Reduce property loss with risk detection and evacuation</strong></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<ul>\r\n	<li>Increase situational awareness with multi-dimensional detection</li>\r\n	<li>Keep selected doors automatically open during risk evacuation</li>\r\n	<li>Easy roll call using access control terminals to verify everyone&#39;s safety</li>\r\n</ul>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p style=\"text-align:center\"><span style=\"font-size:22px\"><strong>Improved Service Quality</strong></span></p>\r\n\r\n<p><strong>Efficient personnel management&nbsp;<img alt=\"\" src=\"http://localhost/technology/public/admin/inventory/file/downloaded_image/prac3.png\" style=\"border-style:solid; border-width:2px; float:right; height:200px; margin:20px; width:351px\" /></strong></p>\r\n\r\n<ul>\r\n	<li>Quick entry for registered personnel with touch-free biometric authentication</li>\r\n	<li>Improve visitor experience with on-site self-registration, remote registration in advance, etc.</li>\r\n	<li>Efficient &amp; flexible verification of walk-in visitors</li>\r\n</ul>', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, 1, 1, '2024-10-08 06:24:27', '2024-10-09 11:04:13');
 
 -- --------------------------------------------------------
 
@@ -4777,6 +5065,43 @@ INSERT INTO `sub_categories` (`id`, `parent_category_id`, `category_id`, `sub_ca
 (13, 1, 1, 'Pro Series All', 'public/admin/inventory/file/sub_category/Pro Series All1727845087.png', 1, 0, 1, '2024-09-23 05:26:52', '2024-10-02 04:58:08'),
 (14, 1, 1, 'Pro Series With AcuSense', '', 1, 0, 1, '2024-09-23 05:27:10', '2024-09-23 05:27:10'),
 (15, 1, 1, 'Pro Series with ColorVu', '', 1, 0, 1, '2024-09-23 05:27:27', '2024-09-23 05:27:27');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `supports`
+--
+
+CREATE TABLE `supports` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `parent_category_id` bigint(20) UNSIGNED NOT NULL,
+  `category_id` bigint(20) UNSIGNED NOT NULL,
+  `title` text DEFAULT NULL,
+  `short_description` text DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `release_note` text DEFAULT NULL,
+  `icon` text DEFAULT NULL,
+  `file` text DEFAULT NULL,
+  `file_size` varchar(255) DEFAULT NULL,
+  `file_link` text DEFAULT NULL,
+  `release_file` text DEFAULT NULL,
+  `release_link` text DEFAULT NULL,
+  `link` text DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 1,
+  `delete` tinyint(1) NOT NULL DEFAULT 0 COMMENT '0= Not Deleted & 1=Deleted',
+  `created_by` bigint(20) UNSIGNED NOT NULL,
+  `updated_by` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `supports`
+--
+
+INSERT INTO `supports` (`id`, `parent_category_id`, `category_id`, `title`, `short_description`, `description`, `release_note`, `icon`, `file`, `file_size`, `file_link`, `release_file`, `release_link`, `link`, `status`, `delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 'Test Software', 'Download Now', '<p>sdfdsfsdfsdf</p>', '<p>asdasdasdasd</p>', 'admin/inventory/file/support/1729162237.png', 'public/admin/inventory/file/support/file/DIGITAL_PRODUCT_FILE_1729162237.apk', '5.69', 'NFL', 'public/admin/inventory/file/support/release_file/DIGITAL_PRODUCT_FILE_1729162237.pdf', 'NRFL', 'NSL', 1, 0, 1, 1, '2024-10-17 10:50:37', '2024-10-17 10:50:37'),
+(2, 1, 1, 'Test Software', 'Download Now', '<p>sdfdsfsdfsdf</p>', '<p>asdasdasdasd</p>', 'admin/inventory/file/support/1729162311.png', 'public/admin/inventory/file/support/file/DIGITAL_PRODUCT_FILE_1729162311.apk', '5.69', 'NFL', 'public/admin/inventory/file/support/release_file/DIGITAL_PRODUCT_FILE_1729162311.pdf', 'NRFL', 'NSL', 1, 0, 1, 1, '2024-10-17 10:51:51', '2024-10-17 10:51:51');
 
 -- --------------------------------------------------------
 
@@ -5198,6 +5523,16 @@ ALTER TABLE `sub_categories`
   ADD KEY `sub_categories_sub_category_added_by_foreign` (`sub_category_added_by`);
 
 --
+-- Indexes for table `supports`
+--
+ALTER TABLE `supports`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `supports_parent_category_id_foreign` (`parent_category_id`),
+  ADD KEY `supports_category_id_foreign` (`category_id`),
+  ADD KEY `supports_created_by_foreign` (`created_by`),
+  ADD KEY `supports_updated_by_foreign` (`updated_by`);
+
+--
 -- Indexes for table `support_categories`
 --
 ALTER TABLE `support_categories`
@@ -5300,7 +5635,7 @@ ALTER TABLE `maintenances`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `parent_categories`
@@ -5324,7 +5659,7 @@ ALTER TABLE `partner_parent_categories`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -5348,13 +5683,13 @@ ALTER TABLE `product_variants`
 -- AUTO_INCREMENT for table `pulse_aggregates`
 --
 ALTER TABLE `pulse_aggregates`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6293;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6626;
 
 --
 -- AUTO_INCREMENT for table `pulse_entries`
 --
 ALTER TABLE `pulse_entries`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1390;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1448;
 
 --
 -- AUTO_INCREMENT for table `pulse_values`
@@ -5378,7 +5713,7 @@ ALTER TABLE `sizes`
 -- AUTO_INCREMENT for table `solutions`
 --
 ALTER TABLE `solutions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `solution_categories`
@@ -5409,6 +5744,12 @@ ALTER TABLE `solution_sub_categories`
 --
 ALTER TABLE `sub_categories`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `supports`
+--
+ALTER TABLE `supports`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `support_categories`
@@ -5568,6 +5909,15 @@ ALTER TABLE `sub_categories`
   ADD CONSTRAINT `sub_categories_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`),
   ADD CONSTRAINT `sub_categories_parent_category_id_foreign` FOREIGN KEY (`parent_category_id`) REFERENCES `parent_categories` (`id`),
   ADD CONSTRAINT `sub_categories_sub_category_added_by_foreign` FOREIGN KEY (`sub_category_added_by`) REFERENCES `admins` (`id`);
+
+--
+-- Constraints for table `supports`
+--
+ALTER TABLE `supports`
+  ADD CONSTRAINT `supports_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `solution_categories` (`id`),
+  ADD CONSTRAINT `supports_created_by_foreign` FOREIGN KEY (`created_by`) REFERENCES `admins` (`id`),
+  ADD CONSTRAINT `supports_parent_category_id_foreign` FOREIGN KEY (`parent_category_id`) REFERENCES `solution_parent_categories` (`id`),
+  ADD CONSTRAINT `supports_updated_by_foreign` FOREIGN KEY (`updated_by`) REFERENCES `admins` (`id`);
 
 --
 -- Constraints for table `support_categories`
