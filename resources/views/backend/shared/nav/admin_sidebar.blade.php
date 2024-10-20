@@ -8,7 +8,7 @@
         <li class="sidebar-list">
             <a class="sidebar-link sidebar-title" href="javascript:void(0)" aria-expanded="false">
                 <i data-feather="user-plus"></i>
-                <span class="lan-3">{{ __('admin_local.Users') }}</span> 
+                <span class="lan-3">{{ __('admin_local.Users') }}</span>
             </a>
             <ul class="sidebar-submenu">
                 <li>
@@ -37,7 +37,7 @@
                 @if (hasPermission(['brand-index']))
                     <li>
                         <a href="{{ route('admin.product.brand.index') }}" class="sidebar-link">
-                            
+
                             <span > {{ __('admin_local.Brand') }} </span>
                         </a>
                     </li>
@@ -45,7 +45,7 @@
                 @if (hasPermission(['size-index']))
                     <li>
                         <a href="{{ route('admin.product.size.index') }}" class="sidebar-link">
-                            
+
                             <span > {{ __('admin_local.Size') }} </span>
                         </a>
                     </li>
@@ -53,7 +53,7 @@
                 @if (hasPermission(['parent-category-index']))
                     <li>
                         <a href="{{ route('admin.product.parent-category.index') }}" class="sidebar-link">
-                            
+
                             <span > {{ __('admin_local.Parent Category') }} </span>
                         </a>
                     </li>
@@ -61,7 +61,7 @@
                 @if (hasPermission(['category-index']))
                     <li>
                         <a href="{{ route('admin.product.category.index') }}" class="sidebar-link">
-                            
+
                             <span > {{ __('admin_local.Category') }} </span>
                         </a>
                     </li>
@@ -69,7 +69,7 @@
                 @if (hasPermission(['sub-category-index']))
                     <li>
                         <a href="{{ route('admin.product.sub-category.index') }}" class="sidebar-link">
-                            
+
                             <span > {{ __('admin_local.Sub Category') }} </span>
                         </a>
                     </li>
@@ -111,7 +111,7 @@
                 @endif
             </ul>
         </li>
-        
+
     @endif
     @if (hasPermission(['solution-parent-category-index','solution-category-index','solution-sub-category-index','solution-index']))
         <li class="sidebar-list">
@@ -197,7 +197,7 @@
             </ul>
         </li>
     @endif
-    @if (hasPermission(['partner-parent-category-index','partner-category-index','partner-sub-category-index']))
+    @if (hasPermission(['partner-parent-category-index','partner-category-index','partner-sub-category-index','partner-index','partner-create']))
         <li class="sidebar-list">
             <a class="sidebar-link sidebar-title" href="javascript:void(0)" aria-expanded="false">
                 <i data-feather="command"></i>
@@ -218,6 +218,45 @@
                         </a>
                     </li>
                 @endif
+                @if (hasPermission(['partner-create']))
+                <li>
+                    <a href="{{ route('admin.partner.create') }}" class="sidebar-link">
+                        <span> {{ __('admin_local.Add partner') }} </span>
+                    </a>
+                </li>
+                @endif
+                @if (hasPermission(['partner-index', 'partner-update', 'partner-delete']))
+                    <li>
+                        <a href="{{ route('admin.partner.index') }}" class="sidebar-link">
+                            <span> {{ __('admin_local.View partner') }} </span>
+                        </a>
+                    </li>
+                @endif
+            </ul>
+        </li>
+    @endif
+    @if (hasPermission(['vendor-index','vendor-store']))
+        <li class="sidebar-list">
+            <a class="sidebar-link sidebar-title" href="javascript:void(0)" aria-expanded="false">
+                <i data-feather="users"></i>
+                <span class="lan-3">{{ __('admin_local.Vendors') }}</span>
+            </a>
+            <ul class="sidebar-submenu">
+                @if (hasPermission(['vendor-store']))
+                    <li>
+                        <a href="{{ route('admin.vendor.create') }}" class="sidebar-link">
+                            <span> {{ __('admin_local.Add Vendor') }} </span>
+                        </a>
+                    </li>
+                @endif
+                @if (hasPermission(['vendor-index','vendor-update','vendor-delete']))
+                    <li>
+                        <a href="{{ route('admin.vendor.index') }}" class="sidebar-link">
+                            <span> {{ __('admin_local.View Vendor') }} </span>
+                        </a>
+                    </li>
+                @endif
+
             </ul>
         </li>
     @endif
@@ -276,7 +315,7 @@
             </li>
             @endif
 
-            
+
         </ul>
     </li>
     @endif

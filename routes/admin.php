@@ -42,13 +42,13 @@ Route::prefix('admin')->name('admin.')->group(function(){
             Route::post('/give-user-permissions','giveUserPermission')->name('giveUserPermission');
         });
 
-        //language controller 
+        //language controller
         Route::resource('language',LanguageController::class)->except(['craete','show']);
         Route::controller(LanguageController::class)->name('language.')->prefix('language')->group(function () {
             Route::get('/update/status/{id}/{status}', 'updateStatus')->name('language_status');
         });
 
-        //backend language controller 
+        //backend language controller
         Route::resource('backend/language',BackendLanguageController::class,['as'=>'backend'])->except(['craete','show','edit','distroy']);
         Route::controller(BackendLanguageController::class)->name('backend.language.')->prefix('backend/language')->group(function () {
             Route::post('/store/translate/string', 'storeTranslateString')->name('storeTranslateString');
@@ -76,8 +76,9 @@ Route::prefix('admin')->name('admin.')->group(function(){
         require __DIR__.'/inventory/solution.php';
         require __DIR__.'/inventory/support.php';
         require __DIR__.'/inventory/partners.php';
+        require __DIR__.'/inventory/vendor.php';
     });
 
 
-    
+
 });

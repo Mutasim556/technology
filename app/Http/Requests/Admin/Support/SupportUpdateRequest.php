@@ -7,7 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Intervention\Image\Drivers\Gd\Driver;
 use Intervention\Image\ImageManager;
 
-class SupportStoreRequest extends FormRequest
+class SupportUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -39,8 +39,8 @@ class SupportStoreRequest extends FormRequest
         ];
     }
 
-    public function store(){
-        $support = new Support();
+    public function update(string $id){
+        $support = Support::where([['id',$id]])->first();
 
         $support->parent_category_id = $this->parent_category;
         $support->category_id = $this->category;
@@ -66,7 +66,7 @@ class SupportStoreRequest extends FormRequest
             $manager->read($this->icon)->resize(50,50)->save(env('ASSET_DIRECTORY').'/admin/inventory/file/support/'.$file);
 
         }else{
-            $icon = "";
+            $icon = $support->icon;
         }
         $support->icon = $icon;
     //    dd($support);
@@ -77,8 +77,8 @@ class SupportStoreRequest extends FormRequest
                 $file->move(env('ASSET_DIRECTORY').'/admin/inventory/file/support/file/',$fileName);
                 $file_name = env('ASSET_DIRECTORY').'/admin/inventory/file/support/file/'.$fileName;
         }else{
-            $file_name = '';
-            $file_size = '';
+            $file_name = $support->file;
+            $file_size = $support->file_size;
         }
 
         $support->file = $file_name;
@@ -91,7 +91,7 @@ class SupportStoreRequest extends FormRequest
             $file->move(env('ASSET_DIRECTORY').'/admin/inventory/file/support/release_file/',$fileName);
             $file_name = env('ASSET_DIRECTORY').'/admin/inventory/file/support/release_file/'.$fileName;
         }else{
-            $file_name = '';
+            $file_name = $support->release_file;
         }
 
         $support->release_file = $file_name;

@@ -30,11 +30,11 @@
         #solution-details-modal .table-bordered thead, #solution-details-modal .table-bordered tbody, #solution-details-modal .table-bordered tfoot, #solution-details-modal .table-bordered tr, #solution-details-modal .table-bordered td, #solution-details-modal .table-bordered th{
             border-color:black;
         }
-        #solution-details-modal .table-bordered th{ 
+        #solution-details-modal .table-bordered th{
             font-weight: 1000;
         }
 
-        
+
     </style>
 @endpush
 @section('content')
@@ -67,9 +67,9 @@
                 </div>
                 <div class="modal-body" id="DivIdToPrint" style="margin-top: -20px">
                     <div class="row ">
-                        
+
                         <div class="col-md-7 mt-2" id="solution_tags_append">
-                            
+
                         </div>
                         <div class="col-md-12 mt-2" id="solution_details_append">
                             <div class="row">
@@ -101,7 +101,7 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
-    
+
     {{-- Solution Details Modal End --}}
     <div class="container-fluid">
         <div class="row">
@@ -133,8 +133,8 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($solutions as $solution)
-                                        <tr data-id="{{ $solution->id }}"  id="solution_row"> 
-                                            
+                                        <tr data-id="{{ $solution->id }}"  id="solution_row">
+
                                             <td data-bs-toggle="modal" data-bs-target="#solution-details-modal">{{ $solution->parentCategory->parent_category_name }}</td>
                                             <td data-bs-toggle="modal" data-bs-target="#solution-details-modal">{{ $solution->category->category_name }}</td>
                                             <td data-bs-toggle="modal" data-bs-target="#solution-details-modal">{{ $solution->subCategory->sub_category_name }}</td>
@@ -203,8 +203,8 @@
     <script src="{{ asset(env('ASSET_DIRECTORY').'/'.'admin/plugins/switchery/switchery.min.js') }}"></script>
     <script src="{{ asset(env('ASSET_DIRECTORY').'/'.'admin/assets/js/select2/select2.full.min.js') }}"></script>
     <script>
-        
-        
+
+
 
         $('[data-toggle="switchery"]').each(function(idx, obj) {
             new Switchery($(this)[0], $(this).data());
@@ -242,10 +242,10 @@
                     'className': 'btn btn-info btn-square py-1 px-3'
                 }
             ],
-            
+
         });
 
-    
+
         // var getting_permission = `<span>{{ __('admin_local.Getting Permissons') }} ...... <i class="fa fa-spinner fa-spin" ></i></span>`;
         var submit_btn_after = `{{ __('admin_local.Submitting') }}`;
         var submit_btn_before = `{{ __('admin_local.Submit') }}`;

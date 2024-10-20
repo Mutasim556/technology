@@ -34,14 +34,14 @@ class PartnerParentCategoryRequest extends FormRequest
     public function store(){
         if($this->parent_category_image){
             $files = $this->parent_category_image;
-            $file = $this->parent_category_name.time().'.'.$files->getClientOriginalExtension();
+            $file = time().'.'.$files->getClientOriginalExtension();
             $file_name = 'admin/inventory/file/partner/parent_category/'.$file;
             $manager = new ImageManager(new Driver());
             $manager->read($this->parent_category_image)->resize(50,50)->save('admin/inventory/file/partner/parent_category/'.$file);
         }else{
             $file_name = "";
         }
-        
+
 
         $parent_category = new PartnerParentCategory();
         $parent_category->parent_category_name=$this->parent_category_name;
@@ -50,7 +50,7 @@ class PartnerParentCategoryRequest extends FormRequest
         $parent_category->parent_category_status=1;
         $parent_category->parent_category_delete=0;
         $parent_category->save();
-        
+
         return $parent_category;
     }
 }

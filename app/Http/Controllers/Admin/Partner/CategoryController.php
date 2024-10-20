@@ -87,7 +87,7 @@ class CategoryController extends Controller
 
         if($data->category_image){
             $files = $data->category_image;
-            $file = $data->category_name.time().'.'.$files->getClientOriginalExtension();
+            $file = time().'.'.$files->getClientOriginalExtension();
             $file_name = 'admin/inventory/file/partner/category/'.$file;
             if($category->category_image){
                 unlink($category->category_image);

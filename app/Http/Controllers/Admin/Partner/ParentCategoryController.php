@@ -90,7 +90,7 @@ class ParentCategoryController extends Controller
 
         if($data->parent_category_image){
             $files = $data->parent_category_image;
-            $file = $data->parent_category_name.time().'.'.$files->getClientOriginalExtension();
+            $file = time().'.'.$files->getClientOriginalExtension();
             $file_name = 'admin/inventory/file/partner/parent_category/'.$file;
             if($parent_category->parent_category_image){
                 unlink($parent_category->parent_category_image);

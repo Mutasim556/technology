@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\Partner\CategoryController;
 use App\Http\Controllers\Admin\Partner\ParentCategoryController;
+use App\Http\Controllers\Admin\Partner\PartnerController;
 use Illuminate\Support\Facades\Route;
 
 //solution route
@@ -19,3 +20,5 @@ Route::prefix('partner')->name('partner.')->group(function () {
       Route::get('/get/category-details/{id}/{target}', 'getCategoryDetails');
    });
 });
+
+Route::resource('partner',PartnerController::class);

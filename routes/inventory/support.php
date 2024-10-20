@@ -22,4 +22,5 @@ Route::prefix('support')->name('support.')->group(function () {
 });
 
 Route::resource('support',SupportController::class);
-Route::get('/support-details',[SupportController::class,'solutionDetails']); 
+Route::get('/support-details',[SupportController::class,'solutionDetails']);
+

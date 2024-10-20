@@ -1,6 +1,6 @@
 @extends('backend.shared.layouts.admin')
 @push('title')
-    {{ __('admin_local.Supports') }}
+    {{ __('admin_local.Partners') }}
 @endpush
 @push('css')
     <link rel="stylesheet" href="{{ asset(env('ASSET_DIRECTORY') . '/' . 'admin/assets/css/custom.css') }}">
@@ -30,16 +30,16 @@
             background-color: aqua;
         }
 
-        #support-details-modal .table-bordered thead,
-        #support-details-modal .table-bordered tbody,
-        #support-details-modal .table-bordered tfoot,
-        #support-details-modal .table-bordered tr,
-        #support-details-modal .table-bordered td,
-        #support-details-modal .table-bordered th {
+        #partner-details-modal .table-bordered thead,
+        #partner-details-modal .table-bordered tbody,
+        #partner-details-modal .table-bordered tfoot,
+        #partner-details-modal .table-bordered tr,
+        #partner-details-modal .table-bordered td,
+        #partner-details-modal .table-bordered th {
             border-color: black;
         }
 
-        #support-details-modal .table-bordered th {
+        #partner-details-modal .table-bordered th {
             font-weight: 1000;
         }
     </style>
@@ -49,14 +49,14 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-sm-6">
-                    <h3>{{ __('admin_local.Supports') }}</h3>
+                    <h3>{{ __('admin_local.Partners') }}</h3>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="javascript:void(0)">{{ __('admin_local.Support') }}</a>
+                            <a href="javascript:void(0)">{{ __('admin_local.Partner') }}</a>
                         </li>
-                        <li class="breadcrumb-item active">{{ __('admin_local.Support List') }}</li>
+                        <li class="breadcrumb-item active">{{ __('admin_local.Partner List') }}</li>
                     </ol>
                 </div>
             </div>
@@ -64,22 +64,22 @@
     </div>
 
 
-    {{-- support Details Modal End --}}
+    {{-- partner Details Modal End --}}
     <div class="container-fluid">
         <div class="row">
             <!-- Column -->
             <div class="col-lg-12 mx-auto">
                 <div class="card">
                     <div class="card-header py-3" style="border-bottom: 2px dashed gray">
-                        <h3 class="card-title mb-0 text-center">{{ __('admin_local.Support List') }}</h3>
+                        <h3 class="card-title mb-0 text-center">{{ __('admin_local.Partner List') }}</h3>
                     </div>
 
                     <div class="card-body">
-                        @if (hasPermission(['support-store']))
+                        @if (hasPermission(['partner-store']))
                             <div class="row mb-3">
                                 <div class="col-md-3">
-                                    <a class="btn btn-success" href="{{ route('admin.support.create') }}">+
-                                        {{ __('admin_local.Add Support') }}</a>
+                                    <a class="btn btn-success" href="{{ route('admin.partner.create') }}">+
+                                        {{ __('admin_local.Add partner') }}</a>
                                 </div>
                             </div>
                         @endif
@@ -89,77 +89,55 @@
                                     <tr>
                                         <th>{{ __('admin_local.Parent Category') }}</th>
                                         <th>{{ __('admin_local.Category') }}</th>
-                                        <th>{{ __('admin_local.Title') }}</th>
+                                        <th>{{ __('admin_local.Image') }}</th>
+                                        <th>{{ __('admin_local.Partner Name') }}</th>
                                         <th>{{ __('admin_local.Action') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($supports as $support)
-                                        {{-- support details modal start --}}
-                                        <div class="modal fade" id="support-details-modal" tabindex="-1"
+                                    @foreach ($partners as $partner)
+                                        {{-- partner details modal start --}}
+                                        <div class="modal fade" id="partner-details-modal" tabindex="-1"
                                             aria-labelledby="bs-example-modal-lg" aria-hidden="true">
                                             <div class="modal-dialog modal-xl">
                                                 <div class="modal-content">
                                                     <div class="modal-header d-flex align-items-center"
                                                         style="border-bottom:1px dashed gray">
                                                         <h4 class="modal-title" id="myLargeModalLabel">
-                                                            {{ __('admin_local.Support Details') }}
+                                                            {{ __('admin_local.Partner Details') }}
                                                         </h4>
                                                         <button type="button" class="btn-close " data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body" id="DivIdToPrint" style="margin-top: -20px">
-                                                        <div class="row ">
+                                                        <div class="row mt-4">
+                                                            <div class="col-md-10">
+                                                                <h4 class="text-center">{{__('admin_local.Partner Contact Details')}}</h4>
+                                                                <span>
+                                                                    <b>
+                                                                        {{ __('admin_local.Contact Number') }} :
+                                                                    </b>
+                                                                    {{ $partner->partner_contact_number }} <br>
 
-                                                            <div class="col-md-7 mt-2" id="support_tags_append">
+                                                                    <b>
+                                                                        {{ __('admin_local.Email') }} :
+                                                                    </b>
+                                                                    {{ $partner->partner_email }} <br>
+                                                                    <b>
+                                                                        {{ __('admin_local.Address') }} :
+                                                                    </b>
+                                                                    {!! $partner->partner_address !!} <br>
 
-                                                            </div>
-                                                            <div class="col-md-12 mt-2" id="support_details_append">
-                                                                <div class="row">
-                                                                    <div class="col-md-12 py-2 px-2">
-                                                                        <div class="row">
-                                                                            <div class="col-md-8 mx-auto" style="box-shadow:0px 0px 5px gray">
-                                                                                <div class="row py-3 px-1">
-                                                                                    <div class="col-md-2">
-                                                                                        <img style="height:40px;float:right" src="{{ asset(env('ASSET_DIRECTORY')."/".$support->icon) }}" alt="">
-                                                                                    </div>
-                                                                                    <div class="col-md-6">
-                                                                                        <h5>{{ $support->title }}</h5>
-                                                                                        <span>{{ $support->file_size }} MB</span><br>
-                                                                                        <span>{!! $support->short_description !!}</span><br>
+                                                                    <b>
+                                                                        {{ __('admin_local.Short Details') }} :
+                                                                    </b>
+                                                                    {!! $partner->short_details !!} <br>
+                                                                    <b>
+                                                                        {{ __('admin_local.Details') }} :
+                                                                    </b>
+                                                                    {!! $partner->details !!} <br>
+                                                                </span>
 
-                                                                                    </div>
-                                                                                    <div class="col-md-4">
-                                                                                       <a href="{{$support->file_link?$support->file_link:asset($support->file) }}" class="btn btn-success">{{ __('admin_local.Download Now') }}</a>
-                                                                                    </div>
-                                                                                    <div class="col-md-2">
-
-                                                                                    </div>
-                                                                                    <div class="col-md-10">
-                                                                                        <span><b>{{ __('admin_local.Release Note') }}</b> : <a href="{{ asset($support->release_file) }}">
-                                                                                            @php
-                                                                                                $afx = explode('/',$support->release_file);
-                                                                                                echo end($afx);
-                                                                                            @endphp
-                                                                                        </a>{!! $support->release_note!!}</span>
-                                                                                    </div>
-                                                                                    <div class="col-md-2">
-
-                                                                                    </div>
-                                                                                    <div class="col-md-10 text-center">
-                                                                                        <span><b>{{ __('admin_local.Support Details') }}</b></span>
-                                                                                        {!! $support->description !!}
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="row">
-                                                                            <div class="col-md-3">
-
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div class="row mt-4 mb-2">
@@ -178,28 +156,30 @@
                                             </div>
                                             <!-- /.modal-dialog -->
                                         </div>
-                                        <tr data-id="{{ $support->id }}" id="support_row">
+                                        <tr data-id="{{ $partner->id }}" id="partner_row">
 
-                                            <td data-bs-toggle="modal" data-bs-target="#support-details-modal">
-                                                {{ $support->parentCategory->parent_category_name }}</td>
-                                            <td data-bs-toggle="modal" data-bs-target="#support-details-modal">
-                                                {{ $support->category->category_name }}</td>
-                                            <td data-bs-toggle="modal" data-bs-target="#support-details-modal">
-                                                {{ $support->title }}</td>
+                                            <td data-bs-toggle="modal" data-bs-target="#partner-details-modal">
+                                                {{ $partner->parentCategory->parent_category_name }}</td>
+                                            <td data-bs-toggle="modal" data-bs-target="#partner-details-modal">
+                                                {{ $partner->category->category_name }}</td>
+                                            <td data-bs-toggle="modal" data-bs-target="#partner-details-modal">
+                                                    <img src="{{ asset(env('ASSET_DIRECTORY').'/'.$partner->partner_image) }}" alt=""></td>
+                                            <td data-bs-toggle="modal" data-bs-target="#partner-details-modal">
+                                                {{ $partner->partner_name }}</td>
                                             <td>
-                                                @if (hasPermission(['support-update', 'support-delete']))
+                                                @if (hasPermission(['partner-update', 'partner-delete']))
                                                     <div class="dropdown">
                                                         <button
                                                             class="btn btn-info text-white px-2 py-1 dropbtn">{{ __('admin_local.Action') }}
                                                             <i class="fa fa-angle-down"></i></button>
                                                         <div class="dropdown-content">
-                                                            @if (hasPermission(['support-update']))
+                                                            @if (hasPermission(['partner-update']))
                                                                 <a style="cursor: pointer;"
-                                                                    href="{{ route('admin.support.edit', $support->id) }}"
+                                                                    href="{{ route('admin.partner.edit', $partner->id) }}"
                                                                     class="text-primary" id="edit_button"><i
                                                                         class=" fa fa-edit mx-1"></i>{{ __('admin_local.Edit') }}</a>
                                                             @endif
-                                                            @if (hasPermission(['support-delete']))
+                                                            @if (hasPermission(['partner-delete']))
                                                                 <a class="text-danger" id="delete_button"
                                                                     style="cursor: pointer;"><i
                                                                         class="fa fa-trash mx-1"></i>
@@ -229,7 +209,8 @@
 
 @push('js')
     <script src="{{ asset(env('ASSET_DIRECTORY') . '/' . 'admin/assets/js/sweet-alert/sweetalert.min.js') }}"></script>
-    <script src="{{ asset(env('ASSET_DIRECTORY') . '/' . 'admin/assets/js/datatable/datatables/jquery.dataTables.min.js') }}">
+    <script
+        src="{{ asset(env('ASSET_DIRECTORY') . '/' . 'admin/assets/js/datatable/datatables/jquery.dataTables.min.js') }}">
     </script>
     <script
         src="{{ asset(env('ASSET_DIRECTORY') . '/' . 'admin/assets/js/datatable/datatable-extension/dataTables.buttons.min.js') }}">
@@ -239,7 +220,8 @@
     <script
         src="{{ asset(env('ASSET_DIRECTORY') . '/' . 'admin/assets/js/datatable/datatable-extension/buttons.colVis.min.js') }}">
     </script>
-    <script src="{{ asset(env('ASSET_DIRECTORY') . '/' . 'admin/assets/js/datatable/datatable-extension/pdfmake.min.js') }}">
+    <script
+        src="{{ asset(env('ASSET_DIRECTORY') . '/' . 'admin/assets/js/datatable/datatable-extension/pdfmake.min.js') }}">
     </script>
     <script src="{{ asset(env('ASSET_DIRECTORY') . '/' . 'admin/assets/js/datatable/datatable-extension/vfs_fonts.js') }}">
     </script>
@@ -334,8 +316,9 @@
 
 
         var delete_swal_title = `{{ __('admin_local.Are you sure?') }}`;
-        var delete_swal_text = `{{ __('admin_local.Once deleted, you will not be able to recover this maintenance data') }}`;
+        var delete_swal_text =
+            `{{ __('admin_local.Once deleted, you will not be able to recover this maintenance data') }}`;
         var delete_swal_cancel_text = `{{ __('admin_local.Delete request canceld successfully') }}`;
     </script>
-    <script src="{{ asset(env('ASSET_DIRECTORY') . '/' . 'admin/custom/support/support.js') }}"></script>
+    <script src="{{ asset(env('ASSET_DIRECTORY') . '/' . 'admin/custom/partner/partner.js') }}"></script>
 @endpush

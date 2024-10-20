@@ -1,6 +1,6 @@
 @extends('backend.shared.layouts.admin')
 @push('title')
-    {{ __('admin_local.Edit Support') }}
+    {{ __('admin_local.Add Vendor') }}
 @endpush
 @push('css')
     <link rel="stylesheet" href="{{ asset(env('ASSET_DIRECTORY').'/'.'admin/assets/css/custom.css') }}">
@@ -44,14 +44,14 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-sm-6">
-                    <h3>{{ __('admin_local.Edit Support') }}</h3>
+                    <h3>{{ __('admin_local.Add vendor') }}</h3>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="javascript:void(0)">{{ __('admin_local.Support') }}</a>
+                            <a href="javascript:void(0)">{{ __('admin_local.Vendor') }}</a>
                         </li>
-                        <li class="breadcrumb-item active">{{ __('admin_local.Edit Support') }}</li>
+                        <li class="breadcrumb-item active">{{ __('admin_local.Add Vendor') }}</li>
                     </ol>
                 </div>
             </div>
@@ -64,7 +64,7 @@
             <div class="col-lg-10 mx-auto">
                 <div class="card">
                     <div class="card-header py-3" style="border-bottom: 2px dashed gray">
-                        <h3 class="card-title mb-0 text-center">{{ __('admin_local.Edit Support') }}</h3>
+                        <h3 class="card-title mb-0 text-center">{{ __('admin_local.Add Vendor') }}</h3>
                     </div>
                     <p class="px-4 text-danger"><i>{{ __('admin_local.The field labels marked with * are required input fields.') }}</i>
                     </p>
@@ -72,87 +72,89 @@
                         <div class="row mb-3">
                             <div class="col-md-12">
                                 <input type="hidden" id="csrf_token" value="{{ csrf_token() }}">
-                                <form action="theme-form" id="edit_support_form" enctype="multipart/form-data">
+                                <form action="theme-form" id="add_vendor_form" enctype="multipart/form-data">
                                     @csrf
-                                    @method('PUT')
-                                    <input type="hidden" name="support_id" id="support_id" value="{{ $support->id }}">
                                     <div class="row">
-                                        <div class="form-group col-md-4" id="parent_category_div">
-                                            <label for="parent_category">{{ __('admin_local.Parent Category') }} *</label>
-                                            <select class="form-control js-example-basic-single invalid-selec2" id="parent_category"
-                                                name="parent_category" onchange="getCategoryDetails(this.value,'category')">
-                                                <option value="">{{ __('admin_local.Please Select') }}</option>
-                                                @foreach ($parent_categories as $parent_category)
-                                                    <option value="{{ $parent_category->id }}" {{ $support->parent_category_id==$parent_category->id?'selected':'' }}>{{ $parent_category->parent_category_name }}</option>
-                                                @endforeach
-                                            </select>
-                                            <span class="text-danger err-mgs" id="parent_category_err"></span>
+                                        <div class="form-group col-md-4" id="category_div">
+                                            <label for="category">{{ __('admin_local.Vendor Name') }} *</label>
+                                            <input type="text" class="form-control" name="vendor_name" id="vendor_name">
+                                            <span class="text-danger err-mgs" id="vendor_name_err"></span>
                                         </div>
                                         <div class="form-group col-md-4" id="category_div">
-                                            <label for="category">{{ __('admin_local.Category') }} *</label>
-                                            <select class="js-example-basic-single form-select" id="category"
-                                                name="category">
+                                            <label for="category">{{ __('admin_local.Vendor Image') }} *</label>
+                                            <input type="file" class="form-control" name="vendor_image" id="vendor_image">
+                                            <span class="text-danger err-mgs" id="vendor_image_err"></span>
+                                        </div>
+                                        <div class="form-group col-md-4" id="category_div">
+                                            <label for="category">{{ __('admin_local.Vendor Join Date') }} *</label>
+                                            <input type="date" class="form-control" name="vendor_join_date" id="vendor_join_date">
+                                            <span class="text-danger err-mgs" id="vendor_join_date_err"></span>
+                                        </div>
+                                        <div class="form-group col-md-4" id="category_div">
+                                            <label for="category">{{ __('admin_local.Vendor Type') }} *</label>
+                                            <select class="js-example-basic-single form-select" id="vendor_type"
+                                                name="vendor_type">
                                                 <option value="">{{ __('admin_local.Please Select') }}</option>
-                                                <option value="{{ $support->category_id }}" selected>{{ $support->category->category_name }}</option>
+                                                <option value="Retailer">{{ __('admin_local.Retailer') }}</option>
+                                                <option value="Wholeseller">{{ __('admin_local.Wholeseller') }}</option>
+                                                <option value="Manufacturer">{{ __('admin_local.Manufacturer') }}</option>
+                                            </select>
+                                            <span class="text-danger err-mgs" id="vendor_type_err"></span>
+                                        </div>
 
-                                            </select>
-                                            <span class="text-danger err-mgs" id="category_err"></span>
-                                        </div>
                                         <div class="form-group col-md-4" id="category_div">
-                                            <label for="category">{{ __('admin_local.Title') }} </label>
-                                            <input type="text" class="form-control" name="title" id="title" value="{{ $support->title }}">
-                                            <span class="text-danger err-mgs" id="title_err"></span>
+                                            <label for="category">{{ __('admin_local.Vendor Link ( If any )') }} </label>
+                                            <input type="text" class="form-control" name="vendor_link" id="vendor_link">
+                                            <span class="text-danger err-mgs" id="vendor_link_err"></span>
                                         </div>
-                                        <div class="form-group col-md-4" id="category_div">
-                                            <label for="category">{{ __('admin_local.Icon') }} </label>
-                                            <input type="file" class="form-control" name="icon" id="icon">
-                                            <span class="text-danger err-mgs" id="icon_err"></span>
+                                        <div class="form-group col-md-6" id="category_div">
+                                            <label for="category">{{ __('admin_local.Vendor Contact Number ( If any )') }} </label>
+                                            <input type="text" class="form-control" name="vendor_contact_number" id="vendor_contact_number">
+                                            <span class="text-danger err-mgs" id="vendor_contact_number_err"></span>
                                         </div>
-                                        <div class="form-group col-md-4" id="category_div">
-                                            <label for="category">{{ __('admin_local.File') }} </label>
-                                            <input type="file" class="form-control" name="file" id="file">
-                                            <span class="text-danger err-mgs" id="file_err"></span>
-                                        </div>
-                                        <div class="form-group col-md-4" id="category_div">
-                                            <label for="category">{{ __('admin_local.File Link ( If any )') }} </label>
-                                            <input type="text" class="form-control" name="file_link" id="file_link" value="{{ $support->file_link }}">
-                                            <span class="text-danger err-mgs" id="file_link_err"></span>
-                                        </div>
-                                        <div class="form-group col-md-4" id="category_div">
-                                            <label for="category">{{ __('admin_local.Release File') }} </label>
-                                            <input type="file" class="form-control" name="release_file" id="release_file">
-                                            <span class="text-danger err-mgs" id="release_file_err"></span>
-                                        </div>
-                                        <div class="form-group col-md-4" id="category_div">
-                                            <label for="category">{{ __('admin_local.Release File Link ( If any )') }} </label>
-                                            <input type="text" class="form-control" name="release_file_link" id="release_file_link" value="{{ $support->release_link }}">
-                                            <span class="text-danger err-mgs" id="release_file_link_err"></span>
-                                        </div>
-                                        <div class="form-group col-md-4" id="category_div">
-                                            <label for="category">{{ __('admin_local.Solution Link ( If any )') }} </label>
-                                            <input type="text" class="form-control" name="solution_link" id="solution_link" value="{{ $support->link }}">
-                                            <span class="text-danger err-mgs" id="solution_link_err"></span>
+                                        <div class="form-group col-md-6" id="category_div">
+                                            <label for="category">{{ __('admin_local.Vendor Email ( If any )') }} </label>
+                                            <input type="text" class="form-control" name="vendor_email" id="vendor_email">
+                                            <span class="text-danger err-mgs" id="vendor_email_err"></span>
                                         </div>
                                         <div class="form-group col-md-12" id="category_div">
-                                            <label for="category">{{ __('admin_local.Release Note') }} </label>
-                                            <textarea id="editor1" name="release_note" >{!! $support->release_note !!}</textarea>
-                                            <span class="text-danger err-mgs" id="release_note_err"></span>
+                                            <label for="category">{{ __('admin_local.Vendor Adrress') }} </label>
+                                            <textarea id="editor1" name="vendor_address" ></textarea>
+                                            <span class="text-danger err-mgs" id="vendor_address_err"></span>
                                         </div>
                                         <div class="form-group col-md-12" id="category_div">
-                                            <label for="category">{{ __('admin_local.Short Description') }} </label>
-                                            <input type="text" class="form-control" name="short_description" id="short_description" value="{{ $support->short_description }}">
-                                            <span class="text-danger err-mgs" id="short_description_err"></span>
+                                            <label for="category">{{ __('admin_local.Short Details') }} </label>
+                                            <input type="text" class="form-control" name="short_details" id="short_details">
+                                            <span class="text-danger err-mgs" id="short_details_err"></span>
                                         </div>
                                         <div class="form-group col-md-12" id="category_div">
-                                            <label for="category">{{ __('admin_local.Description') }} </label>
-                                            <textarea id="editor2" name="description" >{!! $support->description !!}</textarea>
-                                            <span class="text-danger err-mgs" id="description_err"></span>
+                                            <label for="category">{{ __('admin_local.Details') }} </label>
+                                            <textarea id="editor2" name="details" ></textarea>
+                                            <span class="text-danger err-mgs" id="details_err"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-4 py-4">
+                                        <h5 class="text-center" style="font-size: 22px;">{{ __('admin_local.Owner Information') }}</h5>
+                                        <div class="form-group col-md-4" id="category_div">
+                                            <label for="category">{{ __('admin_local.Owner Name') }} *</label>
+                                            <input type="text" class="form-control" name="owner_name" id="owner_name">
+                                            <span class="text-danger err-mgs" id="owner_name_err"></span>
+                                        </div>
+                                        <div class="form-group col-md-4" id="category_div">
+                                            <label for="category">{{ __('admin_local.Owner Email') }} *</label>
+                                            <input type="text" class="form-control" name="owner_email" id="owner_email">
+                                            <span class="text-danger err-mgs" id="owner_email_err"></span>
+                                        </div>
+                                        <div class="form-group col-md-4" id="category_div">
+                                            <label for="category">{{ __('admin_local.Owner Phone Number') }} *</label>
+                                            <input type="text" class="form-control" name="owner_phone_number" id="owner_phone_number">
+                                            <span class="text-danger err-mgs" id="owner_phone_number_err"></span>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <button style="float:right" type="submit" id="submit_btn" class="btn btn-outline-success">{{ __('admin_local.Update') }}</button>
+                                            <button style="float:right" type="submit" id="submit_btn" class="btn btn-outline-success">{{ __('admin_local.Submit') }}</button>
                                             {{-- <button style="float:right" type="button" id="reset_btn" class="btn btn-outline-danger mx-4">{{ __('admin_local.Reset') }}</button> --}}
                                         </div>
                                     </div>
@@ -221,7 +223,7 @@
             }
         });
         var download_count = 0;
-        var form_url = "{{ route('admin.support.store') }}";
+        var form_url = "{{ route('admin.vendor.store') }}";
         var submit_btn_after = `{{ __('admin_local.Submitting') }}`;
         var submit_btn_before = `{{ __('admin_local.Submit') }}`;
         var no_permission_mgs = `{{ __('admin_local.No Permission') }}`;
@@ -236,9 +238,9 @@
             `{{ __('admin_local.Once deleted, you will not be able to recover this size data') }}`;
         var delete_swal_cancel_text = `{{ __('admin_local.Delete request canceld successfully') }}`;
         var no_file = `{{ __('admin_local.No file') }}`;
-        var base_url = '{{ URL::to("/") }}';
+
 
     </script>
-    <script src="{{ asset(env('ASSET_DIRECTORY').'/'.'admin/custom/support/support.js') }}"></script>
+    <script src="{{ asset(env('ASSET_DIRECTORY').'/'.'admin/custom/vendor/vendor.js') }}"></script>
     {{-- <script src="{{ asset(env('ASSET_DIRECTORY').'/'.'inventory/custom/user/user_list.js') }}"></script> --}}
 @endpush
