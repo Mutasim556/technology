@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 17, 2024 at 01:23 PM
+-- Generation Time: Oct 21, 2024 at 01:05 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.12
 
@@ -275,7 +275,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (44, '2024_10_07_163503_create_solution_details_table', 27),
 (45, '2024_10_08_112424_add_solution_tags_to_solution_details_table', 28),
 (46, '2024_10_17_094121_create_supports_table', 29),
-(47, '2024_10_17_162756_add_file_size_to_supports_table', 30);
+(47, '2024_10_17_162756_add_file_size_to_supports_table', 30),
+(48, '2024_10_18_130635_create_partners_table', 31),
+(50, '2024_10_20_203118_create_vendors_table', 32);
 
 -- --------------------------------------------------------
 
@@ -335,6 +337,33 @@ CREATE TABLE `parent_categories` (
 INSERT INTO `parent_categories` (`id`, `parent_category_name`, `parent_category_image`, `parent_category_status`, `parent_category_delete`, `parent_category_added_by`, `created_at`, `updated_at`) VALUES
 (1, 'Network Products', '', 1, 0, 1, '2024-09-23 03:53:48', '2024-09-23 03:53:48'),
 (2, 'Turbo HD Products', '', 1, 0, 1, '2024-09-23 03:54:02', '2024-09-23 03:54:02');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `partners`
+--
+
+CREATE TABLE `partners` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `parent_category_id` bigint(20) UNSIGNED NOT NULL,
+  `category_id` bigint(20) UNSIGNED NOT NULL,
+  `partner_name` text DEFAULT NULL,
+  `partner_join_date` text DEFAULT NULL,
+  `partner_image` text DEFAULT NULL,
+  `partner_link` text DEFAULT NULL,
+  `partner_contact_number` text DEFAULT NULL,
+  `partner_email` text DEFAULT NULL,
+  `partner_address` text DEFAULT NULL,
+  `short_details` text DEFAULT NULL,
+  `details` text DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 1,
+  `delete` tinyint(1) NOT NULL DEFAULT 0 COMMENT '0= Not Deleted & 1=Deleted',
+  `created_by` bigint(20) UNSIGNED NOT NULL,
+  `updated_by` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -519,7 +548,15 @@ INSERT INTO `permissions` (`id`, `name`, `guard_name`, `group_name`, `created_at
 (89, 'support-index', 'admin', 'Support Permissions', '2024-10-17 06:51:20', '2024-10-17 06:51:20'),
 (90, 'support-store', 'admin', 'Support Permissions', '2024-10-17 06:51:20', '2024-10-17 06:51:20'),
 (91, 'support-update', 'admin', 'Support Permissions', '2024-10-17 06:51:20', '2024-10-17 06:51:20'),
-(92, 'support-delete', 'admin', 'Support Permissions', '2024-10-17 06:51:20', '2024-10-17 06:51:20');
+(92, 'support-delete', 'admin', 'Support Permissions', '2024-10-17 06:51:20', '2024-10-17 06:51:20'),
+(93, 'partner-index', 'admin', 'Partner Permissions', '2024-10-21 03:29:03', '2024-10-21 03:29:03'),
+(94, 'partner-store', 'admin', 'Partner Permissions', '2024-10-21 03:29:03', '2024-10-21 03:29:03'),
+(95, 'partner-update', 'admin', 'Partner Permissions', '2024-10-21 03:29:03', '2024-10-21 03:29:03'),
+(96, 'partner-delete', 'admin', 'Partner Permissions', '2024-10-21 03:29:03', '2024-10-21 03:29:03'),
+(97, 'vendor-index', 'admin', 'Vendor Permissions', '2024-10-21 03:29:03', '2024-10-21 03:29:03'),
+(98, 'vendor-store', 'admin', 'Vendor Permissions', '2024-10-21 03:29:03', '2024-10-21 03:29:03'),
+(99, 'vendor-update', 'admin', 'Vendor Permissions', '2024-10-21 03:29:03', '2024-10-21 03:29:03'),
+(100, 'vendor-delete', 'admin', 'Vendor Permissions', '2024-10-21 03:29:03', '2024-10-21 03:29:03');
 
 -- --------------------------------------------------------
 
@@ -3322,7 +3359,86 @@ INSERT INTO `pulse_aggregates` (`id`, `bucket`, `period`, `type`, `key`, `aggreg
 (6614, 1729162140, 60, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:105\"]', 'max', 1729162181.00, NULL),
 (6615, 1729162080, 360, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:105\"]', 'max', 1729162181.00, NULL),
 (6616, 1729162080, 1440, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:105\"]', 'max', 1729162181.00, NULL),
-(6617, 1729153440, 10080, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:105\"]', 'max', 1729162181.00, NULL);
+(6617, 1729153440, 10080, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:105\"]', 'max', 1729162181.00, NULL),
+(6626, 1729481340, 60, 'cache_miss', 'spatie.permission.cache', 'count', 8.00, NULL),
+(6627, 1729481040, 360, 'cache_miss', 'spatie.permission.cache', 'count', 8.00, NULL),
+(6628, 1729480320, 1440, 'cache_miss', 'spatie.permission.cache', 'count', 8.00, NULL),
+(6629, 1729476000, 10080, 'cache_miss', 'spatie.permission.cache', 'count', 8.00, NULL),
+(6630, 1729505820, 60, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Middleware\\\\Admin\\\\CheckLoggedAdminStatus.php:23\"]', 'count', 1.00, NULL),
+(6631, 1729505520, 360, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Middleware\\\\Admin\\\\CheckLoggedAdminStatus.php:23\"]', 'count', 1.00, NULL),
+(6632, 1729504800, 1440, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Middleware\\\\Admin\\\\CheckLoggedAdminStatus.php:23\"]', 'count', 2.00, NULL),
+(6633, 1729496160, 10080, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Middleware\\\\Admin\\\\CheckLoggedAdminStatus.php:23\"]', 'count', 2.00, NULL),
+(6634, 1729505820, 60, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Middleware\\\\Admin\\\\CheckLoggedAdminStatus.php:23\"]', 'max', 1729505837.00, NULL),
+(6635, 1729505520, 360, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Middleware\\\\Admin\\\\CheckLoggedAdminStatus.php:23\"]', 'max', 1729505837.00, NULL),
+(6636, 1729504800, 1440, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Middleware\\\\Admin\\\\CheckLoggedAdminStatus.php:23\"]', 'max', 1729505925.00, NULL),
+(6637, 1729496160, 10080, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Middleware\\\\Admin\\\\CheckLoggedAdminStatus.php:23\"]', 'max', 1729505925.00, NULL),
+(6638, 1729505880, 60, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Middleware\\\\Admin\\\\CheckLoggedAdminStatus.php:23\"]', 'count', 1.00, NULL),
+(6639, 1729505880, 360, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Middleware\\\\Admin\\\\CheckLoggedAdminStatus.php:23\"]', 'count', 1.00, NULL),
+(6642, 1729505880, 60, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Middleware\\\\Admin\\\\CheckLoggedAdminStatus.php:23\"]', 'max', 1729505925.00, NULL),
+(6643, 1729505880, 360, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Middleware\\\\Admin\\\\CheckLoggedAdminStatus.php:23\"]', 'max', 1729505925.00, NULL),
+(6646, 1729506120, 60, 'slow_request', '[\"POST\",\"\\/admin\\/vendor\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Vendor\\\\VendorController@store\"]', 'count', 1.00, NULL),
+(6647, 1729505880, 360, 'slow_request', '[\"POST\",\"\\/admin\\/vendor\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Vendor\\\\VendorController@store\"]', 'count', 3.00, NULL),
+(6648, 1729504800, 1440, 'slow_request', '[\"POST\",\"\\/admin\\/vendor\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Vendor\\\\VendorController@store\"]', 'count', 3.00, NULL),
+(6649, 1729496160, 10080, 'slow_request', '[\"POST\",\"\\/admin\\/vendor\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Vendor\\\\VendorController@store\"]', 'count', 3.00, NULL),
+(6650, 1729506180, 60, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Vendor\\\\VendorStorerequest.php:78\"]', 'count', 3.00, NULL),
+(6651, 1729505880, 360, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Vendor\\\\VendorStorerequest.php:78\"]', 'count', 3.00, NULL),
+(6652, 1729504800, 1440, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Vendor\\\\VendorStorerequest.php:78\"]', 'count', 3.00, NULL),
+(6653, 1729496160, 10080, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Vendor\\\\VendorStorerequest.php:78\"]', 'count', 3.00, NULL),
+(6654, 1729506120, 60, 'slow_request', '[\"POST\",\"\\/admin\\/vendor\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Vendor\\\\VendorController@store\"]', 'max', 2239.00, NULL),
+(6655, 1729505880, 360, 'slow_request', '[\"POST\",\"\\/admin\\/vendor\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Vendor\\\\VendorController@store\"]', 'max', 2239.00, NULL),
+(6656, 1729504800, 1440, 'slow_request', '[\"POST\",\"\\/admin\\/vendor\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Vendor\\\\VendorController@store\"]', 'max', 2239.00, NULL),
+(6657, 1729496160, 10080, 'slow_request', '[\"POST\",\"\\/admin\\/vendor\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Vendor\\\\VendorController@store\"]', 'max', 2239.00, NULL),
+(6658, 1729506180, 60, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Vendor\\\\VendorStorerequest.php:78\"]', 'max', 1729506219.00, NULL),
+(6659, 1729505880, 360, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Vendor\\\\VendorStorerequest.php:78\"]', 'max', 1729506219.00, NULL),
+(6660, 1729504800, 1440, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Vendor\\\\VendorStorerequest.php:78\"]', 'max', 1729506219.00, NULL),
+(6661, 1729496160, 10080, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Vendor\\\\VendorStorerequest.php:78\"]', 'max', 1729506219.00, NULL),
+(6662, 1729506180, 60, 'slow_request', '[\"POST\",\"\\/admin\\/vendor\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Vendor\\\\VendorController@store\"]', 'count', 2.00, NULL),
+(6670, 1729506180, 60, 'slow_request', '[\"POST\",\"\\/admin\\/vendor\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Vendor\\\\VendorController@store\"]', 'max', 1831.00, NULL),
+(6694, 1729506240, 60, 'slow_request', '[\"POST\",\"\\/admin\\/vendor\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Vendor\\\\VendorController@store\"]', 'count', 1.00, NULL),
+(6695, 1729506240, 360, 'slow_request', '[\"POST\",\"\\/admin\\/vendor\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Vendor\\\\VendorController@store\"]', 'count', 2.00, NULL),
+(6696, 1729506240, 1440, 'slow_request', '[\"POST\",\"\\/admin\\/vendor\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Vendor\\\\VendorController@store\"]', 'count', 2.00, NULL),
+(6697, 1729506240, 10080, 'slow_request', '[\"POST\",\"\\/admin\\/vendor\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Vendor\\\\VendorController@store\"]', 'count', 2.00, NULL),
+(6698, 1729506240, 60, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Vendor\\\\VendorStorerequest.php:78\"]', 'count', 1.00, NULL),
+(6699, 1729506240, 360, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Vendor\\\\VendorStorerequest.php:78\"]', 'count', 1.00, NULL),
+(6700, 1729506240, 1440, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Vendor\\\\VendorStorerequest.php:78\"]', 'count', 1.00, NULL),
+(6701, 1729506240, 10080, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Vendor\\\\VendorStorerequest.php:78\"]', 'count', 1.00, NULL),
+(6702, 1729506240, 60, 'slow_request', '[\"POST\",\"\\/admin\\/vendor\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Vendor\\\\VendorController@store\"]', 'max', 1783.00, NULL),
+(6703, 1729506240, 360, 'slow_request', '[\"POST\",\"\\/admin\\/vendor\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Vendor\\\\VendorController@store\"]', 'max', 1783.00, NULL),
+(6704, 1729506240, 1440, 'slow_request', '[\"POST\",\"\\/admin\\/vendor\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Vendor\\\\VendorController@store\"]', 'max', 1783.00, NULL),
+(6705, 1729506240, 10080, 'slow_request', '[\"POST\",\"\\/admin\\/vendor\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Vendor\\\\VendorController@store\"]', 'max', 1783.00, NULL),
+(6706, 1729506240, 60, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Vendor\\\\VendorStorerequest.php:78\"]', 'max', 1729506260.00, NULL),
+(6707, 1729506240, 360, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Vendor\\\\VendorStorerequest.php:78\"]', 'max', 1729506260.00, NULL),
+(6708, 1729506240, 1440, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Vendor\\\\VendorStorerequest.php:78\"]', 'max', 1729506260.00, NULL),
+(6709, 1729506240, 10080, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Vendor\\\\VendorStorerequest.php:78\"]', 'max', 1729506260.00, NULL),
+(6710, 1729506300, 60, 'slow_request', '[\"POST\",\"\\/admin\\/vendor\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Vendor\\\\VendorController@store\"]', 'count', 1.00, NULL),
+(6714, 1729506300, 60, 'slow_request', '[\"POST\",\"\\/admin\\/vendor\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Vendor\\\\VendorController@store\"]', 'max', 1742.00, NULL),
+(6718, 1729507560, 60, 'cache_miss', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6719, 1729507320, 360, 'cache_miss', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6720, 1729506240, 1440, 'cache_miss', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6721, 1729506240, 10080, 'cache_miss', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6722, 1729507560, 60, 'cache_hit', 'spatie.permission.cache', 'count', 2.00, NULL),
+(6723, 1729507320, 360, 'cache_hit', 'spatie.permission.cache', 'count', 2.00, NULL),
+(6724, 1729506240, 1440, 'cache_hit', 'spatie.permission.cache', 'count', 2.00, NULL),
+(6725, 1729506240, 10080, 'cache_hit', 'spatie.permission.cache', 'count', 7.00, NULL),
+(6730, 1729508280, 60, 'slow_request', '[\"GET\",\"\\/admin\\/vendor\\/{vendor}\\/edit\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Vendor\\\\VendorController@edit\"]', 'count', 1.00, NULL),
+(6731, 1729508040, 360, 'slow_request', '[\"GET\",\"\\/admin\\/vendor\\/{vendor}\\/edit\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Vendor\\\\VendorController@edit\"]', 'count', 1.00, NULL),
+(6732, 1729507680, 1440, 'slow_request', '[\"GET\",\"\\/admin\\/vendor\\/{vendor}\\/edit\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Vendor\\\\VendorController@edit\"]', 'count', 1.00, NULL),
+(6733, 1729506240, 10080, 'slow_request', '[\"GET\",\"\\/admin\\/vendor\\/{vendor}\\/edit\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Vendor\\\\VendorController@edit\"]', 'count', 1.00, NULL),
+(6734, 1729508280, 60, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\backend\\\\blade\\\\vendor\\\\edit.blade.php:80\"]', 'count', 1.00, NULL),
+(6735, 1729508040, 360, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\backend\\\\blade\\\\vendor\\\\edit.blade.php:80\"]', 'count', 1.00, NULL),
+(6736, 1729507680, 1440, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\backend\\\\blade\\\\vendor\\\\edit.blade.php:80\"]', 'count', 1.00, NULL),
+(6737, 1729506240, 10080, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\backend\\\\blade\\\\vendor\\\\edit.blade.php:80\"]', 'count', 1.00, NULL),
+(6738, 1729508280, 60, 'slow_request', '[\"GET\",\"\\/admin\\/vendor\\/{vendor}\\/edit\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Vendor\\\\VendorController@edit\"]', 'max', 1070.00, NULL),
+(6739, 1729508040, 360, 'slow_request', '[\"GET\",\"\\/admin\\/vendor\\/{vendor}\\/edit\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Vendor\\\\VendorController@edit\"]', 'max', 1070.00, NULL),
+(6740, 1729507680, 1440, 'slow_request', '[\"GET\",\"\\/admin\\/vendor\\/{vendor}\\/edit\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Vendor\\\\VendorController@edit\"]', 'max', 1070.00, NULL),
+(6741, 1729506240, 10080, 'slow_request', '[\"GET\",\"\\/admin\\/vendor\\/{vendor}\\/edit\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Vendor\\\\VendorController@edit\"]', 'max', 1070.00, NULL),
+(6742, 1729508280, 60, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\backend\\\\blade\\\\vendor\\\\edit.blade.php:80\"]', 'max', 1729508325.00, NULL),
+(6743, 1729508040, 360, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\backend\\\\blade\\\\vendor\\\\edit.blade.php:80\"]', 'max', 1729508325.00, NULL),
+(6744, 1729507680, 1440, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\backend\\\\blade\\\\vendor\\\\edit.blade.php:80\"]', 'max', 1729508325.00, NULL),
+(6745, 1729506240, 10080, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\backend\\\\blade\\\\vendor\\\\edit.blade.php:80\"]', 'max', 1729508325.00, NULL),
+(6746, 1729508640, 60, 'cache_hit', 'spatie.permission.cache', 'count', 5.00, NULL),
+(6747, 1729508400, 360, 'cache_hit', 'spatie.permission.cache', 'count', 5.00, NULL),
+(6748, 1729507680, 1440, 'cache_hit', 'spatie.permission.cache', 'count', 5.00, NULL);
 
 -- --------------------------------------------------------
 
@@ -4779,7 +4895,36 @@ INSERT INTO `pulse_entries` (`id`, `timestamp`, `type`, `key`, `value`) VALUES
 (1444, 1729161769, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\NotWritableException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:65\"]', 1729161769),
 (1445, 1729161802, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\NotWritableException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:65\"]', 1729161802),
 (1446, 1729162151, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:105\"]', 1729162151),
-(1447, 1729162181, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:105\"]', 1729162181);
+(1447, 1729162181, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Support\\\\SupportStoreRequest.php:105\"]', 1729162181),
+(1448, 1729481343, 'cache_miss', 'spatie.permission.cache', NULL),
+(1449, 1729481343, 'cache_miss', 'spatie.permission.cache', NULL),
+(1450, 1729481343, 'cache_miss', 'spatie.permission.cache', NULL),
+(1451, 1729481343, 'cache_miss', 'spatie.permission.cache', NULL),
+(1452, 1729481343, 'cache_miss', 'spatie.permission.cache', NULL),
+(1453, 1729481343, 'cache_miss', 'spatie.permission.cache', NULL),
+(1454, 1729481343, 'cache_miss', 'spatie.permission.cache', NULL),
+(1455, 1729481343, 'cache_miss', 'spatie.permission.cache', NULL),
+(1456, 1729505837, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Middleware\\\\Admin\\\\CheckLoggedAdminStatus.php:23\"]', 1729505837),
+(1457, 1729505925, 'exception', '[\"TypeError\",\"app\\\\Http\\\\Middleware\\\\Admin\\\\CheckLoggedAdminStatus.php:23\"]', 1729505925),
+(1458, 1729506178, 'slow_request', '[\"POST\",\"\\/admin\\/vendor\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Vendor\\\\VendorController@store\"]', 2239),
+(1459, 1729506181, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Vendor\\\\VendorStorerequest.php:78\"]', 1729506181),
+(1460, 1729506185, 'slow_request', '[\"POST\",\"\\/admin\\/vendor\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Vendor\\\\VendorController@store\"]', 1831),
+(1461, 1729506187, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Vendor\\\\VendorStorerequest.php:78\"]', 1729506187),
+(1462, 1729506218, 'slow_request', '[\"POST\",\"\\/admin\\/vendor\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Vendor\\\\VendorController@store\"]', 1782),
+(1463, 1729506219, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Vendor\\\\VendorStorerequest.php:78\"]', 1729506219),
+(1464, 1729506258, 'slow_request', '[\"POST\",\"\\/admin\\/vendor\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Vendor\\\\VendorController@store\"]', 1783),
+(1465, 1729506260, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Requests\\\\Admin\\\\Vendor\\\\VendorStorerequest.php:78\"]', 1729506260),
+(1466, 1729506312, 'slow_request', '[\"POST\",\"\\/admin\\/vendor\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Vendor\\\\VendorController@store\"]', 1742),
+(1467, 1729507608, 'cache_miss', 'spatie.permission.cache', NULL),
+(1468, 1729507611, 'cache_hit', 'spatie.permission.cache', NULL),
+(1469, 1729507613, 'cache_hit', 'spatie.permission.cache', NULL),
+(1470, 1729508324, 'slow_request', '[\"GET\",\"\\/admin\\/vendor\\/{vendor}\\/edit\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Vendor\\\\VendorController@edit\"]', 1070),
+(1471, 1729508325, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\backend\\\\blade\\\\vendor\\\\edit.blade.php:80\"]', 1729508325),
+(1472, 1729508664, 'cache_hit', 'spatie.permission.cache', NULL),
+(1473, 1729508664, 'cache_hit', 'spatie.permission.cache', NULL),
+(1474, 1729508664, 'cache_hit', 'spatie.permission.cache', NULL),
+(1475, 1729508665, 'cache_hit', 'spatie.permission.cache', NULL),
+(1476, 1729508667, 'cache_hit', 'spatie.permission.cache', NULL);
 
 -- --------------------------------------------------------
 
@@ -5216,6 +5361,42 @@ INSERT INTO `users` (`id`, `name`, `email`, `phone`, `username`, `image`, `email
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `vendors`
+--
+
+CREATE TABLE `vendors` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `vendor_name` text DEFAULT NULL,
+  `vendor_join_date` text DEFAULT NULL,
+  `vendor_image` text DEFAULT NULL,
+  `vendor_type` varchar(255) DEFAULT NULL,
+  `vendor_link` text DEFAULT NULL,
+  `vendor_contact_number` text DEFAULT NULL,
+  `vendor_email` text DEFAULT NULL,
+  `vendor_address` text DEFAULT NULL,
+  `short_details` text DEFAULT NULL,
+  `owner_name` text DEFAULT NULL,
+  `owner_email` varchar(255) DEFAULT NULL,
+  `owner_phone_number` text DEFAULT NULL,
+  `details` text DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 1,
+  `delete` tinyint(1) NOT NULL DEFAULT 0 COMMENT '0= Not Deleted & 1=Deleted',
+  `created_by` bigint(20) UNSIGNED NOT NULL,
+  `updated_by` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `vendors`
+--
+
+INSERT INTO `vendors` (`id`, `vendor_name`, `vendor_join_date`, `vendor_image`, `vendor_type`, `vendor_link`, `vendor_contact_number`, `vendor_email`, `vendor_address`, `short_details`, `owner_name`, `owner_email`, `owner_phone_number`, `details`, `status`, `delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'TEST', '2024-10-22', 'admin/inventory/file/vendor/1729506312.png', 'Retailer', 'N?A', '12345678999', 'test@test.com', '<p>YEST</p>', 'SDETAILS', 'TEST OWNER', 'OWNER@OWNER.COM', '98765432111', '<p>DETAILSs</p>', 1, 0, 1, 1, '2024-10-21 10:25:14', '2024-10-21 11:04:15');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `warehouses`
 --
 
@@ -5355,6 +5536,16 @@ ALTER TABLE `model_has_roles`
 ALTER TABLE `parent_categories`
   ADD PRIMARY KEY (`id`),
   ADD KEY `parent_categories_parent_category_added_by_foreign` (`parent_category_added_by`);
+
+--
+-- Indexes for table `partners`
+--
+ALTER TABLE `partners`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `partners_parent_category_id_foreign` (`parent_category_id`),
+  ADD KEY `partners_category_id_foreign` (`category_id`),
+  ADD KEY `partners_created_by_foreign` (`created_by`),
+  ADD KEY `partners_updated_by_foreign` (`updated_by`);
 
 --
 -- Indexes for table `partner_categories`
@@ -5563,6 +5754,14 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `users_username_unique` (`username`);
 
 --
+-- Indexes for table `vendors`
+--
+ALTER TABLE `vendors`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `vendors_created_by_foreign` (`created_by`),
+  ADD KEY `vendors_updated_by_foreign` (`updated_by`);
+
+--
 -- Indexes for table `warehouses`
 --
 ALTER TABLE `warehouses`
@@ -5635,13 +5834,19 @@ ALTER TABLE `maintenances`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `parent_categories`
 --
 ALTER TABLE `parent_categories`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `partners`
+--
+ALTER TABLE `partners`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `partner_categories`
@@ -5659,7 +5864,7 @@ ALTER TABLE `partner_parent_categories`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -5683,13 +5888,13 @@ ALTER TABLE `product_variants`
 -- AUTO_INCREMENT for table `pulse_aggregates`
 --
 ALTER TABLE `pulse_aggregates`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6626;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6766;
 
 --
 -- AUTO_INCREMENT for table `pulse_entries`
 --
 ALTER TABLE `pulse_entries`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1448;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1477;
 
 --
 -- AUTO_INCREMENT for table `pulse_values`
@@ -5776,6 +5981,12 @@ ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `vendors`
+--
+ALTER TABLE `vendors`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `warehouses`
 --
 ALTER TABLE `warehouses`
@@ -5829,6 +6040,15 @@ ALTER TABLE `model_has_roles`
 --
 ALTER TABLE `parent_categories`
   ADD CONSTRAINT `parent_categories_parent_category_added_by_foreign` FOREIGN KEY (`parent_category_added_by`) REFERENCES `admins` (`id`);
+
+--
+-- Constraints for table `partners`
+--
+ALTER TABLE `partners`
+  ADD CONSTRAINT `partners_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `solution_categories` (`id`),
+  ADD CONSTRAINT `partners_created_by_foreign` FOREIGN KEY (`created_by`) REFERENCES `admins` (`id`),
+  ADD CONSTRAINT `partners_parent_category_id_foreign` FOREIGN KEY (`parent_category_id`) REFERENCES `solution_parent_categories` (`id`),
+  ADD CONSTRAINT `partners_updated_by_foreign` FOREIGN KEY (`updated_by`) REFERENCES `admins` (`id`);
 
 --
 -- Constraints for table `partner_categories`
@@ -5931,6 +6151,13 @@ ALTER TABLE `support_categories`
 --
 ALTER TABLE `support_parent_categories`
   ADD CONSTRAINT `support_parent_categories_parent_category_added_by_foreign` FOREIGN KEY (`parent_category_added_by`) REFERENCES `admins` (`id`);
+
+--
+-- Constraints for table `vendors`
+--
+ALTER TABLE `vendors`
+  ADD CONSTRAINT `vendors_created_by_foreign` FOREIGN KEY (`created_by`) REFERENCES `admins` (`id`),
+  ADD CONSTRAINT `vendors_updated_by_foreign` FOREIGN KEY (`updated_by`) REFERENCES `admins` (`id`);
 
 --
 -- Constraints for table `warehouses`
