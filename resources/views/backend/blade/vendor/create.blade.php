@@ -225,7 +225,7 @@
         var download_count = 0;
         var form_url = "{{ route('admin.vendor.store') }}";
         var submit_btn_after = `{{ __('admin_local.Submitting') }}`;
-        var submit_btn_before = `{{ __('admin_local.Submit') }}`;
+        var submit_btn_before = `{{ __('admin_local.Submit') }}`; 
         var no_permission_mgs = `{{ __('admin_local.No Permission') }}`;
         var download_icon = `{{ __('admin_local.Icon') }}`;
         var download_title = `{{ __('admin_local.Title') }}`;
