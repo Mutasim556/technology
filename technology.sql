@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 21, 2024 at 01:05 PM
+-- Generation Time: Oct 22, 2024 at 01:18 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.12
 
@@ -179,6 +179,38 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `homepage_silders`
+--
+
+CREATE TABLE `homepage_silders` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `slider_title` text DEFAULT NULL,
+  `slider_short_description` text DEFAULT NULL,
+  `slider_link` text DEFAULT NULL,
+  `slider_button_text` text DEFAULT NULL,
+  `slider_image` text DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 1,
+  `delete` tinyint(1) NOT NULL DEFAULT 0 COMMENT '0= Not Deleted & 1=Deleted',
+  `created_by` bigint(20) UNSIGNED NOT NULL,
+  `updated_by` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `homepage_silders`
+--
+
+INSERT INTO `homepage_silders` (`id`, `slider_title`, `slider_short_description`, `slider_link`, `slider_button_text`, `slider_image`, `status`, `delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'TEST', 'TEST D', NULL, 'TEST BT', '', 0, 0, 1, 1, '2024-10-22 10:27:12', '2024-10-22 10:41:54'),
+(2, 'TEST', 'TEST SD', 'TEST LI', 'TEST BT', 'admin/inventory/file/settings/homepage/slider/1729595138.png', 1, 0, 1, 1, '2024-10-22 10:29:19', '2024-10-22 11:05:39'),
+(3, 'TEST', 'TEST D', 'KK', 'TEST BTN TEXT', 'admin/inventory/file/settings/homepage/slider/1729595169.png', 1, 0, 1, 1, '2024-10-22 10:31:10', '2024-10-22 11:06:09'),
+(4, 'TEST', 'TEST D', 'TEL', 'TEST BT', 'admin/inventory/file/settings/homepage/slider/1729593270.png', 1, 0, 1, 1, '2024-10-22 10:34:31', '2024-10-22 11:07:39'),
+(5, 'TEST', 'TEST L', NULL, 'TEST BT', 'admin/inventory/file/settings/homepage/slider/1729593688.png', 1, 1, 1, 1, '2024-10-22 10:41:29', '2024-10-22 11:08:37');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `languages`
 --
 
@@ -277,7 +309,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (46, '2024_10_17_094121_create_supports_table', 29),
 (47, '2024_10_17_162756_add_file_size_to_supports_table', 30),
 (48, '2024_10_18_130635_create_partners_table', 31),
-(50, '2024_10_20_203118_create_vendors_table', 32);
+(50, '2024_10_20_203118_create_vendors_table', 32),
+(51, '2024_10_22_133337_create_homepage_silders_table', 33);
 
 -- --------------------------------------------------------
 
@@ -556,7 +589,13 @@ INSERT INTO `permissions` (`id`, `name`, `guard_name`, `group_name`, `created_at
 (97, 'vendor-index', 'admin', 'Vendor Permissions', '2024-10-21 03:29:03', '2024-10-21 03:29:03'),
 (98, 'vendor-store', 'admin', 'Vendor Permissions', '2024-10-21 03:29:03', '2024-10-21 03:29:03'),
 (99, 'vendor-update', 'admin', 'Vendor Permissions', '2024-10-21 03:29:03', '2024-10-21 03:29:03'),
-(100, 'vendor-delete', 'admin', 'Vendor Permissions', '2024-10-21 03:29:03', '2024-10-21 03:29:03');
+(100, 'vendor-delete', 'admin', 'Vendor Permissions', '2024-10-21 03:29:03', '2024-10-21 03:29:03'),
+(101, 'homepage-setting-index', 'admin', 'Settings Permissions', '2024-10-22 07:18:43', '2024-10-22 07:18:43'),
+(102, 'homepage-setting-update', 'admin', 'Settings Permissions', '2024-10-22 07:18:44', '2024-10-22 07:18:44'),
+(103, 'homepage-slider-update', 'admin', 'Settings Permissions', '2024-10-22 07:19:48', '2024-10-22 07:19:48'),
+(104, 'homepage-slider-store', 'admin', 'Settings Permissions', '2024-10-22 09:52:54', '2024-10-22 09:52:54'),
+(105, 'homepage-slider-delete', 'admin', 'Settings Permissions', '2024-10-22 09:52:54', '2024-10-22 09:52:54'),
+(106, 'homepage-slider-index', 'admin', 'Settings Permissions', '2024-10-22 09:52:54', '2024-10-22 09:52:54');
 
 -- --------------------------------------------------------
 
@@ -3438,7 +3477,171 @@ INSERT INTO `pulse_aggregates` (`id`, `bucket`, `period`, `type`, `key`, `aggreg
 (6745, 1729506240, 10080, 'exception', '[\"ErrorException\",\"resources\\\\views\\\\backend\\\\blade\\\\vendor\\\\edit.blade.php:80\"]', 'max', 1729508325.00, NULL),
 (6746, 1729508640, 60, 'cache_hit', 'spatie.permission.cache', 'count', 5.00, NULL),
 (6747, 1729508400, 360, 'cache_hit', 'spatie.permission.cache', 'count', 5.00, NULL),
-(6748, 1729507680, 1440, 'cache_hit', 'spatie.permission.cache', 'count', 5.00, NULL);
+(6748, 1729507680, 1440, 'cache_hit', 'spatie.permission.cache', 'count', 5.00, NULL),
+(6763, 1729575000, 60, 'slow_request', '[\"GET\",\"\\/admin\\/dashboard\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Auth\\\\AdminLoginController@index\"]', 'count', 1.00, NULL),
+(6764, 1729575000, 360, 'slow_request', '[\"GET\",\"\\/admin\\/dashboard\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Auth\\\\AdminLoginController@index\"]', 'count', 1.00, NULL),
+(6765, 1729573920, 1440, 'slow_request', '[\"GET\",\"\\/admin\\/dashboard\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Auth\\\\AdminLoginController@index\"]', 'count', 1.00, NULL),
+(6766, 1729566720, 10080, 'slow_request', '[\"GET\",\"\\/admin\\/dashboard\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Auth\\\\AdminLoginController@index\"]', 'count', 1.00, NULL),
+(6767, 1729575000, 60, 'slow_request', '[\"GET\",\"\\/admin\\/dashboard\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Auth\\\\AdminLoginController@index\"]', 'max', 6618.00, NULL),
+(6768, 1729575000, 360, 'slow_request', '[\"GET\",\"\\/admin\\/dashboard\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Auth\\\\AdminLoginController@index\"]', 'max', 6618.00, NULL),
+(6769, 1729573920, 1440, 'slow_request', '[\"GET\",\"\\/admin\\/dashboard\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Auth\\\\AdminLoginController@index\"]', 'max', 6618.00, NULL),
+(6770, 1729566720, 10080, 'slow_request', '[\"GET\",\"\\/admin\\/dashboard\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Auth\\\\AdminLoginController@index\"]', 'max', 6618.00, NULL),
+(6771, 1729580280, 60, 'cache_miss', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6772, 1729580040, 360, 'cache_miss', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6773, 1729579680, 1440, 'cache_miss', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6774, 1729576800, 10080, 'cache_miss', 'spatie.permission.cache', 'count', 4.00, NULL),
+(6775, 1729580280, 60, 'cache_hit', 'spatie.permission.cache', 'count', 4.00, NULL),
+(6776, 1729580040, 360, 'cache_hit', 'spatie.permission.cache', 'count', 5.00, NULL),
+(6777, 1729579680, 1440, 'cache_hit', 'spatie.permission.cache', 'count', 17.00, NULL),
+(6778, 1729576800, 10080, 'cache_hit', 'spatie.permission.cache', 'count', 22.00, NULL),
+(6791, 1729580340, 60, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6795, 1729580460, 60, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6796, 1729580400, 360, 'cache_hit', 'spatie.permission.cache', 'count', 3.00, NULL),
+(6799, 1729580520, 60, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6803, 1729580640, 60, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6807, 1729580760, 60, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6808, 1729580760, 360, 'cache_hit', 'spatie.permission.cache', 'count', 9.00, NULL),
+(6811, 1729580940, 60, 'cache_hit', 'spatie.permission.cache', 'count', 5.00, NULL),
+(6831, 1729581000, 60, 'cache_hit', 'spatie.permission.cache', 'count', 3.00, NULL),
+(6843, 1729581120, 60, 'cache_hit', 'spatie.permission.cache', 'count', 4.00, NULL),
+(6844, 1729581120, 360, 'cache_hit', 'spatie.permission.cache', 'count', 4.00, NULL),
+(6845, 1729581120, 1440, 'cache_hit', 'spatie.permission.cache', 'count', 5.00, NULL),
+(6859, 1729581480, 60, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6860, 1729581480, 360, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6861, 1729581480, 60, 'cache_miss', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6862, 1729581480, 360, 'cache_miss', 'spatie.permission.cache', 'count', 3.00, NULL),
+(6863, 1729581120, 1440, 'cache_miss', 'spatie.permission.cache', 'count', 3.00, NULL),
+(6867, 1729581540, 60, 'cache_miss', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6871, 1729581600, 60, 'cache_miss', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6875, 1729588140, 60, 'cache_miss', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6876, 1729587960, 360, 'cache_miss', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6877, 1729586880, 1440, 'cache_miss', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6878, 1729586880, 10080, 'cache_miss', 'spatie.permission.cache', 'count', 5.00, NULL),
+(6879, 1729588260, 60, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6880, 1729587960, 360, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6881, 1729586880, 1440, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6882, 1729586880, 10080, 'cache_hit', 'spatie.permission.cache', 'count', 73.00, NULL),
+(6883, 1729588320, 60, 'cache_hit', 'spatie.permission.cache', 'count', 2.00, NULL),
+(6884, 1729588320, 360, 'cache_hit', 'spatie.permission.cache', 'count', 7.00, NULL),
+(6885, 1729588320, 1440, 'cache_hit', 'spatie.permission.cache', 'count', 13.00, NULL),
+(6891, 1729588380, 60, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6895, 1729588440, 60, 'cache_hit', 'spatie.permission.cache', 'count', 4.00, NULL),
+(6911, 1729589580, 60, 'cache_hit', 'spatie.permission.cache', 'count', 2.00, NULL),
+(6912, 1729589400, 360, 'cache_hit', 'spatie.permission.cache', 'count', 6.00, NULL),
+(6919, 1729589640, 60, 'cache_hit', 'spatie.permission.cache', 'count', 2.00, NULL),
+(6927, 1729589700, 60, 'cache_hit', 'spatie.permission.cache', 'count', 2.00, NULL),
+(6935, 1729589760, 60, 'cache_hit', 'spatie.permission.cache', 'count', 4.00, NULL),
+(6936, 1729589760, 360, 'cache_hit', 'spatie.permission.cache', 'count', 7.00, NULL),
+(6937, 1729589760, 1440, 'cache_hit', 'spatie.permission.cache', 'count', 23.00, NULL),
+(6951, 1729589880, 60, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(6955, 1729590000, 60, 'cache_hit', 'spatie.permission.cache', 'count', 2.00, NULL),
+(6963, 1729590240, 60, 'cache_hit', 'spatie.permission.cache', 'count', 2.00, NULL),
+(6964, 1729590120, 360, 'cache_hit', 'spatie.permission.cache', 'count', 12.00, NULL),
+(6971, 1729590300, 60, 'cache_hit', 'spatie.permission.cache', 'count', 4.00, NULL),
+(6987, 1729590360, 60, 'cache_hit', 'spatie.permission.cache', 'count', 6.00, NULL),
+(7011, 1729590540, 60, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(7012, 1729590480, 360, 'cache_hit', 'spatie.permission.cache', 'count', 2.00, NULL),
+(7015, 1729590720, 60, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(7016, 1729590720, 60, 'cache_miss', 'spatie.permission.cache', 'count', 2.00, NULL),
+(7017, 1729590480, 360, 'cache_miss', 'spatie.permission.cache', 'count', 2.00, NULL),
+(7018, 1729589760, 1440, 'cache_miss', 'spatie.permission.cache', 'count', 3.00, NULL),
+(7023, 1729591080, 60, 'cache_miss', 'spatie.permission.cache', 'count', 1.00, NULL),
+(7024, 1729590840, 360, 'cache_miss', 'spatie.permission.cache', 'count', 1.00, NULL),
+(7027, 1729591080, 60, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(7028, 1729590840, 360, 'cache_hit', 'spatie.permission.cache', 'count', 2.00, NULL),
+(7029, 1729591080, 60, 'exception', '[\"Symfony\\\\Component\\\\Routing\\\\Exception\\\\RouteNotFoundException\",\"vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\UrlGenerator.php:479\"]', 'count', 1.00, NULL),
+(7030, 1729590840, 360, 'exception', '[\"Symfony\\\\Component\\\\Routing\\\\Exception\\\\RouteNotFoundException\",\"vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\UrlGenerator.php:479\"]', 'count', 1.00, NULL),
+(7031, 1729589760, 1440, 'exception', '[\"Symfony\\\\Component\\\\Routing\\\\Exception\\\\RouteNotFoundException\",\"vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\UrlGenerator.php:479\"]', 'count', 1.00, NULL),
+(7032, 1729586880, 10080, 'exception', '[\"Symfony\\\\Component\\\\Routing\\\\Exception\\\\RouteNotFoundException\",\"vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\UrlGenerator.php:479\"]', 'count', 1.00, NULL),
+(7035, 1729591080, 60, 'exception', '[\"Symfony\\\\Component\\\\Routing\\\\Exception\\\\RouteNotFoundException\",\"vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\UrlGenerator.php:479\"]', 'max', 1729591124.00, NULL),
+(7036, 1729590840, 360, 'exception', '[\"Symfony\\\\Component\\\\Routing\\\\Exception\\\\RouteNotFoundException\",\"vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\UrlGenerator.php:479\"]', 'max', 1729591124.00, NULL),
+(7037, 1729589760, 1440, 'exception', '[\"Symfony\\\\Component\\\\Routing\\\\Exception\\\\RouteNotFoundException\",\"vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\UrlGenerator.php:479\"]', 'max', 1729591124.00, NULL),
+(7038, 1729586880, 10080, 'exception', '[\"Symfony\\\\Component\\\\Routing\\\\Exception\\\\RouteNotFoundException\",\"vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\UrlGenerator.php:479\"]', 'max', 1729591124.00, NULL),
+(7039, 1729591140, 60, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(7043, 1729591260, 60, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(7044, 1729591200, 360, 'cache_hit', 'spatie.permission.cache', 'count', 5.00, NULL),
+(7045, 1729591200, 1440, 'cache_hit', 'spatie.permission.cache', 'count', 7.00, NULL),
+(7047, 1729591320, 60, 'cache_hit', 'spatie.permission.cache', 'count', 3.00, NULL),
+(7059, 1729591380, 60, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(7063, 1729591680, 60, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(7064, 1729591560, 360, 'cache_hit', 'spatie.permission.cache', 'count', 2.00, NULL),
+(7067, 1729591800, 60, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(7071, 1729592640, 60, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\NotWritableException\",\"app\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController.php:40\"]', 'count', 1.00, NULL),
+(7072, 1729592640, 360, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\NotWritableException\",\"app\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController.php:40\"]', 'count', 1.00, NULL),
+(7073, 1729592640, 1440, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\NotWritableException\",\"app\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController.php:40\"]', 'count', 1.00, NULL),
+(7074, 1729586880, 10080, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\NotWritableException\",\"app\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController.php:40\"]', 'count', 1.00, NULL),
+(7075, 1729592640, 60, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\NotWritableException\",\"app\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController.php:40\"]', 'max', 1729592641.00, NULL),
+(7076, 1729592640, 360, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\NotWritableException\",\"app\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController.php:40\"]', 'max', 1729592641.00, NULL),
+(7077, 1729592640, 1440, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\NotWritableException\",\"app\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController.php:40\"]', 'max', 1729592641.00, NULL),
+(7078, 1729586880, 10080, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\NotWritableException\",\"app\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController.php:40\"]', 'max', 1729592641.00, NULL),
+(7079, 1729592760, 60, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController.php:47\"]', 'count', 1.00, NULL),
+(7080, 1729592640, 360, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController.php:47\"]', 'count', 1.00, NULL),
+(7081, 1729592640, 1440, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController.php:47\"]', 'count', 1.00, NULL),
+(7082, 1729586880, 10080, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController.php:47\"]', 'count', 1.00, NULL),
+(7083, 1729592760, 60, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController.php:47\"]', 'max', 1729592783.00, NULL),
+(7084, 1729592640, 360, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController.php:47\"]', 'max', 1729592783.00, NULL),
+(7085, 1729592640, 1440, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController.php:47\"]', 'max', 1729592783.00, NULL),
+(7086, 1729586880, 10080, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController.php:47\"]', 'max', 1729592783.00, NULL),
+(7087, 1729592820, 60, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(7088, 1729592640, 360, 'cache_hit', 'spatie.permission.cache', 'count', 2.00, NULL),
+(7089, 1729592640, 1440, 'cache_hit', 'spatie.permission.cache', 'count', 15.00, NULL),
+(7091, 1729592880, 60, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\NotWritableException\",\"app\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController.php:42\"]', 'count', 2.00, NULL),
+(7092, 1729592640, 360, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\NotWritableException\",\"app\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController.php:42\"]', 'count', 2.00, NULL),
+(7093, 1729592640, 1440, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\NotWritableException\",\"app\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController.php:42\"]', 'count', 2.00, NULL),
+(7094, 1729586880, 10080, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\NotWritableException\",\"app\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController.php:42\"]', 'count', 2.00, NULL),
+(7095, 1729592880, 60, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\NotWritableException\",\"app\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController.php:42\"]', 'max', 1729592892.00, NULL),
+(7096, 1729592640, 360, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\NotWritableException\",\"app\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController.php:42\"]', 'max', 1729592892.00, NULL),
+(7097, 1729592640, 1440, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\NotWritableException\",\"app\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController.php:42\"]', 'max', 1729592892.00, NULL),
+(7098, 1729586880, 10080, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\NotWritableException\",\"app\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController.php:42\"]', 'max', 1729592892.00, NULL),
+(7107, 1729592940, 60, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(7111, 1729593000, 60, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(7112, 1729593000, 360, 'cache_hit', 'spatie.permission.cache', 'count', 7.00, NULL),
+(7115, 1729593060, 60, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(7119, 1729593180, 60, 'cache_hit', 'spatie.permission.cache', 'count', 2.00, NULL),
+(7127, 1729593240, 60, 'cache_hit', 'spatie.permission.cache', 'count', 3.00, NULL),
+(7139, 1729593540, 60, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(7140, 1729593360, 360, 'cache_hit', 'spatie.permission.cache', 'count', 3.00, NULL),
+(7143, 1729593600, 60, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(7147, 1729593660, 60, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(7151, 1729593720, 60, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(7152, 1729593720, 360, 'cache_hit', 'spatie.permission.cache', 'count', 3.00, NULL),
+(7155, 1729593780, 60, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(7159, 1729593900, 60, 'exception', '[\"ParseError\",\"app\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController.php:85\"]', 'count', 2.00, NULL),
+(7160, 1729593720, 360, 'exception', '[\"ParseError\",\"app\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController.php:85\"]', 'count', 2.00, NULL),
+(7161, 1729592640, 1440, 'exception', '[\"ParseError\",\"app\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController.php:85\"]', 'count', 2.00, NULL),
+(7162, 1729586880, 10080, 'exception', '[\"ParseError\",\"app\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController.php:85\"]', 'count', 2.00, NULL),
+(7163, 1729593900, 60, 'exception', '[\"ParseError\",\"app\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController.php:85\"]', 'max', 1729593955.00, NULL),
+(7164, 1729593720, 360, 'exception', '[\"ParseError\",\"app\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController.php:85\"]', 'max', 1729593955.00, NULL),
+(7165, 1729592640, 1440, 'exception', '[\"ParseError\",\"app\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController.php:85\"]', 'max', 1729593955.00, NULL),
+(7166, 1729586880, 10080, 'exception', '[\"ParseError\",\"app\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController.php:85\"]', 'max', 1729593955.00, NULL),
+(7167, 1729593960, 60, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(7171, 1729594140, 60, 'cache_hit', 'spatie.permission.cache', 'count', 2.00, NULL),
+(7172, 1729594080, 360, 'cache_hit', 'spatie.permission.cache', 'count', 4.00, NULL),
+(7173, 1729594080, 1440, 'cache_hit', 'spatie.permission.cache', 'count', 13.00, NULL),
+(7179, 1729594260, 60, 'cache_hit', 'spatie.permission.cache', 'count', 2.00, NULL),
+(7187, 1729594440, 60, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(7188, 1729594440, 360, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(7191, 1729594800, 60, 'cache_miss', 'spatie.permission.cache', 'count', 1.00, NULL),
+(7192, 1729594800, 360, 'cache_miss', 'spatie.permission.cache', 'count', 1.00, NULL),
+(7193, 1729594080, 1440, 'cache_miss', 'spatie.permission.cache', 'count', 1.00, NULL),
+(7195, 1729594920, 60, 'cache_hit', 'spatie.permission.cache', 'count', 3.00, NULL),
+(7196, 1729594800, 360, 'cache_hit', 'spatie.permission.cache', 'count', 7.00, NULL),
+(7207, 1729594980, 60, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(7211, 1729595040, 60, 'cache_hit', 'spatie.permission.cache', 'count', 2.00, NULL),
+(7219, 1729595100, 60, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(7223, 1729595100, 60, 'slow_request', '[\"PUT\",\"\\/admin\\/settings\\/homepage\\/slider\\/{id}\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController@update\"]', 'count', 1.00, NULL),
+(7224, 1729594800, 360, 'slow_request', '[\"PUT\",\"\\/admin\\/settings\\/homepage\\/slider\\/{id}\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController@update\"]', 'count', 1.00, NULL),
+(7225, 1729594080, 1440, 'slow_request', '[\"PUT\",\"\\/admin\\/settings\\/homepage\\/slider\\/{id}\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController@update\"]', 'count', 1.00, NULL),
+(7226, 1729586880, 10080, 'slow_request', '[\"PUT\",\"\\/admin\\/settings\\/homepage\\/slider\\/{id}\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController@update\"]', 'count', 1.00, NULL),
+(7227, 1729595100, 60, 'slow_request', '[\"PUT\",\"\\/admin\\/settings\\/homepage\\/slider\\/{id}\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController@update\"]', 'max', 1007.00, NULL),
+(7228, 1729594800, 360, 'slow_request', '[\"PUT\",\"\\/admin\\/settings\\/homepage\\/slider\\/{id}\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController@update\"]', 'max', 1007.00, NULL),
+(7229, 1729594080, 1440, 'slow_request', '[\"PUT\",\"\\/admin\\/settings\\/homepage\\/slider\\/{id}\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController@update\"]', 'max', 1007.00, NULL),
+(7230, 1729586880, 10080, 'slow_request', '[\"PUT\",\"\\/admin\\/settings\\/homepage\\/slider\\/{id}\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController@update\"]', 'max', 1007.00, NULL),
+(7231, 1729595280, 60, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(7232, 1729595160, 360, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(7235, 1729595760, 60, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(7236, 1729595520, 360, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL),
+(7237, 1729595520, 1440, 'cache_hit', 'spatie.permission.cache', 'count', 1.00, NULL);
 
 -- --------------------------------------------------------
 
@@ -4924,7 +5127,120 @@ INSERT INTO `pulse_entries` (`id`, `timestamp`, `type`, `key`, `value`) VALUES
 (1473, 1729508664, 'cache_hit', 'spatie.permission.cache', NULL),
 (1474, 1729508664, 'cache_hit', 'spatie.permission.cache', NULL),
 (1475, 1729508665, 'cache_hit', 'spatie.permission.cache', NULL),
-(1476, 1729508667, 'cache_hit', 'spatie.permission.cache', NULL);
+(1476, 1729508667, 'cache_hit', 'spatie.permission.cache', NULL),
+(1477, 1729575041, 'slow_request', '[\"GET\",\"\\/admin\\/dashboard\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Auth\\\\AdminLoginController@index\"]', 6618),
+(1478, 1729580294, 'cache_miss', 'spatie.permission.cache', NULL),
+(1479, 1729580297, 'cache_hit', 'spatie.permission.cache', NULL),
+(1480, 1729580298, 'cache_hit', 'spatie.permission.cache', NULL),
+(1481, 1729580330, 'cache_hit', 'spatie.permission.cache', NULL),
+(1482, 1729580332, 'cache_hit', 'spatie.permission.cache', NULL),
+(1483, 1729580362, 'cache_hit', 'spatie.permission.cache', NULL),
+(1484, 1729580480, 'cache_hit', 'spatie.permission.cache', NULL),
+(1485, 1729580558, 'cache_hit', 'spatie.permission.cache', NULL),
+(1486, 1729580666, 'cache_hit', 'spatie.permission.cache', NULL),
+(1487, 1729580817, 'cache_hit', 'spatie.permission.cache', NULL),
+(1488, 1729580969, 'cache_hit', 'spatie.permission.cache', NULL),
+(1489, 1729580971, 'cache_hit', 'spatie.permission.cache', NULL),
+(1490, 1729580972, 'cache_hit', 'spatie.permission.cache', NULL),
+(1491, 1729580974, 'cache_hit', 'spatie.permission.cache', NULL),
+(1492, 1729580993, 'cache_hit', 'spatie.permission.cache', NULL),
+(1493, 1729581017, 'cache_hit', 'spatie.permission.cache', NULL),
+(1494, 1729581022, 'cache_hit', 'spatie.permission.cache', NULL),
+(1495, 1729581022, 'cache_hit', 'spatie.permission.cache', NULL),
+(1496, 1729581128, 'cache_hit', 'spatie.permission.cache', NULL),
+(1497, 1729581136, 'cache_hit', 'spatie.permission.cache', NULL),
+(1498, 1729581136, 'cache_hit', 'spatie.permission.cache', NULL),
+(1499, 1729581140, 'cache_hit', 'spatie.permission.cache', NULL),
+(1500, 1729581523, 'cache_hit', 'spatie.permission.cache', NULL),
+(1501, 1729581523, 'cache_miss', 'spatie.permission.cache', NULL),
+(1502, 1729581587, 'cache_miss', 'spatie.permission.cache', NULL),
+(1503, 1729581612, 'cache_miss', 'spatie.permission.cache', NULL),
+(1504, 1729588186, 'cache_miss', 'spatie.permission.cache', NULL),
+(1505, 1729588293, 'cache_hit', 'spatie.permission.cache', NULL),
+(1506, 1729588343, 'cache_hit', 'spatie.permission.cache', NULL),
+(1507, 1729588347, 'cache_hit', 'spatie.permission.cache', NULL),
+(1508, 1729588415, 'cache_hit', 'spatie.permission.cache', NULL),
+(1509, 1729588468, 'cache_hit', 'spatie.permission.cache', NULL),
+(1510, 1729588471, 'cache_hit', 'spatie.permission.cache', NULL),
+(1511, 1729588475, 'cache_hit', 'spatie.permission.cache', NULL),
+(1512, 1729588477, 'cache_hit', 'spatie.permission.cache', NULL),
+(1513, 1729589580, 'cache_hit', 'spatie.permission.cache', NULL),
+(1514, 1729589595, 'cache_hit', 'spatie.permission.cache', NULL),
+(1515, 1729589662, 'cache_hit', 'spatie.permission.cache', NULL),
+(1516, 1729589690, 'cache_hit', 'spatie.permission.cache', NULL),
+(1517, 1729589712, 'cache_hit', 'spatie.permission.cache', NULL),
+(1518, 1729589733, 'cache_hit', 'spatie.permission.cache', NULL),
+(1519, 1729589785, 'cache_hit', 'spatie.permission.cache', NULL),
+(1520, 1729589816, 'cache_hit', 'spatie.permission.cache', NULL),
+(1521, 1729589816, 'cache_hit', 'spatie.permission.cache', NULL),
+(1522, 1729589819, 'cache_hit', 'spatie.permission.cache', NULL),
+(1523, 1729589912, 'cache_hit', 'spatie.permission.cache', NULL),
+(1524, 1729590021, 'cache_hit', 'spatie.permission.cache', NULL),
+(1525, 1729590054, 'cache_hit', 'spatie.permission.cache', NULL),
+(1526, 1729590279, 'cache_hit', 'spatie.permission.cache', NULL),
+(1527, 1729590295, 'cache_hit', 'spatie.permission.cache', NULL),
+(1528, 1729590321, 'cache_hit', 'spatie.permission.cache', NULL),
+(1529, 1729590329, 'cache_hit', 'spatie.permission.cache', NULL),
+(1530, 1729590348, 'cache_hit', 'spatie.permission.cache', NULL),
+(1531, 1729590357, 'cache_hit', 'spatie.permission.cache', NULL),
+(1532, 1729590361, 'cache_hit', 'spatie.permission.cache', NULL),
+(1533, 1729590363, 'cache_hit', 'spatie.permission.cache', NULL),
+(1534, 1729590367, 'cache_hit', 'spatie.permission.cache', NULL),
+(1535, 1729590402, 'cache_hit', 'spatie.permission.cache', NULL),
+(1536, 1729590402, 'cache_hit', 'spatie.permission.cache', NULL),
+(1537, 1729590404, 'cache_hit', 'spatie.permission.cache', NULL),
+(1538, 1729590583, 'cache_hit', 'spatie.permission.cache', NULL),
+(1539, 1729590774, 'cache_hit', 'spatie.permission.cache', NULL),
+(1540, 1729590774, 'cache_miss', 'spatie.permission.cache', NULL),
+(1541, 1729590774, 'cache_miss', 'spatie.permission.cache', NULL),
+(1542, 1729591106, 'cache_miss', 'spatie.permission.cache', NULL),
+(1543, 1729591124, 'cache_hit', 'spatie.permission.cache', NULL),
+(1544, 1729591124, 'exception', '[\"Symfony\\\\Component\\\\Routing\\\\Exception\\\\RouteNotFoundException\",\"vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\UrlGenerator.php:479\"]', 1729591124),
+(1545, 1729591148, 'cache_hit', 'spatie.permission.cache', NULL),
+(1546, 1729591292, 'cache_hit', 'spatie.permission.cache', NULL),
+(1547, 1729591326, 'cache_hit', 'spatie.permission.cache', NULL),
+(1548, 1729591365, 'cache_hit', 'spatie.permission.cache', NULL),
+(1549, 1729591369, 'cache_hit', 'spatie.permission.cache', NULL),
+(1550, 1729591394, 'cache_hit', 'spatie.permission.cache', NULL),
+(1551, 1729591710, 'cache_hit', 'spatie.permission.cache', NULL),
+(1552, 1729591824, 'cache_hit', 'spatie.permission.cache', NULL),
+(1553, 1729592641, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\NotWritableException\",\"app\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController.php:40\"]', 1729592641),
+(1554, 1729592783, 'exception', '[\"Illuminate\\\\Database\\\\QueryException\",\"app\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController.php:47\"]', 1729592783),
+(1555, 1729592841, 'cache_hit', 'spatie.permission.cache', NULL),
+(1556, 1729592886, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\NotWritableException\",\"app\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController.php:42\"]', 1729592886),
+(1557, 1729592892, 'exception', '[\"Intervention\\\\Image\\\\Exceptions\\\\NotWritableException\",\"app\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController.php:42\"]', 1729592892),
+(1558, 1729592985, 'cache_hit', 'spatie.permission.cache', NULL),
+(1559, 1729593022, 'cache_hit', 'spatie.permission.cache', NULL),
+(1560, 1729593060, 'cache_hit', 'spatie.permission.cache', NULL),
+(1561, 1729593183, 'cache_hit', 'spatie.permission.cache', NULL),
+(1562, 1729593208, 'cache_hit', 'spatie.permission.cache', NULL),
+(1563, 1729593247, 'cache_hit', 'spatie.permission.cache', NULL),
+(1564, 1729593258, 'cache_hit', 'spatie.permission.cache', NULL),
+(1565, 1729593291, 'cache_hit', 'spatie.permission.cache', NULL),
+(1566, 1729593558, 'cache_hit', 'spatie.permission.cache', NULL),
+(1567, 1729593612, 'cache_hit', 'spatie.permission.cache', NULL),
+(1568, 1729593712, 'cache_hit', 'spatie.permission.cache', NULL),
+(1569, 1729593777, 'cache_hit', 'spatie.permission.cache', NULL),
+(1570, 1729593785, 'cache_hit', 'spatie.permission.cache', NULL),
+(1571, 1729593955, 'exception', '[\"ParseError\",\"app\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController.php:85\"]', 1729593955),
+(1572, 1729593955, 'exception', '[\"ParseError\",\"app\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController.php:85\"]', 1729593955),
+(1573, 1729593970, 'cache_hit', 'spatie.permission.cache', NULL),
+(1574, 1729594166, 'cache_hit', 'spatie.permission.cache', NULL),
+(1575, 1729594190, 'cache_hit', 'spatie.permission.cache', NULL),
+(1576, 1729594274, 'cache_hit', 'spatie.permission.cache', NULL),
+(1577, 1729594317, 'cache_hit', 'spatie.permission.cache', NULL),
+(1578, 1729594459, 'cache_hit', 'spatie.permission.cache', NULL),
+(1579, 1729594802, 'cache_miss', 'spatie.permission.cache', NULL),
+(1580, 1729594920, 'cache_hit', 'spatie.permission.cache', NULL),
+(1581, 1729594943, 'cache_hit', 'spatie.permission.cache', NULL),
+(1582, 1729594956, 'cache_hit', 'spatie.permission.cache', NULL),
+(1583, 1729594996, 'cache_hit', 'spatie.permission.cache', NULL),
+(1584, 1729595069, 'cache_hit', 'spatie.permission.cache', NULL),
+(1585, 1729595090, 'cache_hit', 'spatie.permission.cache', NULL),
+(1586, 1729595128, 'cache_hit', 'spatie.permission.cache', NULL),
+(1587, 1729595138, 'slow_request', '[\"PUT\",\"\\/admin\\/settings\\/homepage\\/slider\\/{id}\",\"App\\\\Http\\\\Controllers\\\\Admin\\\\Setting\\\\HomepageSettingController@update\"]', 1007),
+(1588, 1729595320, 'cache_hit', 'spatie.permission.cache', NULL),
+(1589, 1729595762, 'cache_hit', 'spatie.permission.cache', NULL);
 
 -- --------------------------------------------------------
 
@@ -5498,6 +5814,14 @@ ALTER TABLE `failed_jobs`
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
+-- Indexes for table `homepage_silders`
+--
+ALTER TABLE `homepage_silders`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `homepage_silders_created_by_foreign` (`created_by`),
+  ADD KEY `homepage_silders_updated_by_foreign` (`updated_by`);
+
+--
 -- Indexes for table `languages`
 --
 ALTER TABLE `languages`
@@ -5819,6 +6143,12 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `homepage_silders`
+--
+ALTER TABLE `homepage_silders`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `languages`
 --
 ALTER TABLE `languages`
@@ -5834,7 +6164,7 @@ ALTER TABLE `maintenances`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `parent_categories`
@@ -5864,7 +6194,7 @@ ALTER TABLE `partner_parent_categories`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -5888,13 +6218,13 @@ ALTER TABLE `product_variants`
 -- AUTO_INCREMENT for table `pulse_aggregates`
 --
 ALTER TABLE `pulse_aggregates`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6766;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7239;
 
 --
 -- AUTO_INCREMENT for table `pulse_entries`
 --
 ALTER TABLE `pulse_entries`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1477;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1590;
 
 --
 -- AUTO_INCREMENT for table `pulse_values`
@@ -6016,6 +6346,13 @@ ALTER TABLE `adjustments`
 ALTER TABLE `categories`
   ADD CONSTRAINT `categories_category_added_by_foreign` FOREIGN KEY (`category_added_by`) REFERENCES `admins` (`id`),
   ADD CONSTRAINT `categories_parent_category_id_foreign` FOREIGN KEY (`parent_category_id`) REFERENCES `parent_categories` (`id`);
+
+--
+-- Constraints for table `homepage_silders`
+--
+ALTER TABLE `homepage_silders`
+  ADD CONSTRAINT `homepage_silders_created_by_foreign` FOREIGN KEY (`created_by`) REFERENCES `admins` (`id`),
+  ADD CONSTRAINT `homepage_silders_updated_by_foreign` FOREIGN KEY (`updated_by`) REFERENCES `admins` (`id`);
 
 --
 -- Constraints for table `maintenances`
