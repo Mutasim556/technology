@@ -194,7 +194,7 @@
       var link = $(this).attr("href");
       if (link) {
         if (current==link) {
-          $(this).parents().children("a").addClass("active");
+          // $(this).parents().children("a").addClass("active");
           $(this).parents().parents().children("ul").css("display", "block");
           $(this).addClass("active");
           $(this)

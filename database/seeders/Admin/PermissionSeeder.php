@@ -174,10 +174,17 @@ class PermissionSeeder extends Seeder
         // Permission::create(['guard_name'=>'admin','name'=>'partner-delete','group_name'=>'Partner Permissions']);
 
         // vendor permission
-        Permission::create(['guard_name'=>'admin','name'=>'vendor-index','group_name'=>'Vendor Permissions']);
-        Permission::create(['guard_name'=>'admin','name'=>'vendor-store','group_name'=>'Vendor Permissions']);
-        Permission::create(['guard_name'=>'admin','name'=>'vendor-update','group_name'=>'Vendor Permissions']);
-        Permission::create(['guard_name'=>'admin','name'=>'vendor-delete','group_name'=>'Vendor Permissions']);
+        // Permission::create(['guard_name'=>'admin','name'=>'vendor-index','group_name'=>'Vendor Permissions']);
+        // Permission::create(['guard_name'=>'admin','name'=>'vendor-store','group_name'=>'Vendor Permissions']);
+        // Permission::create(['guard_name'=>'admin','name'=>'vendor-update','group_name'=>'Vendor Permissions']);
+        // Permission::create(['guard_name'=>'admin','name'=>'vendor-delete','group_name'=>'Vendor Permissions']);
 
+        //settings permission
+        // Permission::create(['guard_name'=>'admin','name'=>'homepage-setting-index','group_name'=>'Settings Permissions']);
+        // Permission::create(['guard_name'=>'admin','name'=>'homepage-setting-update','group_name'=>'Settings Permissions']);
+        // Permission::create(['guard_name'=>'admin','name'=>'homepage-slider-update','group_name'=>'Settings Permissions']);
+        // Permission::create(['guard_name'=>'admin','name'=>'homepage-slider-store','group_name'=>'Settings Permissions']);
+        // Permission::create(['guard_name'=>'admin','name'=>'homepage-slider-delete','group_name'=>'Settings Permissions']);
+        // Permission::create(['guard_name'=>'admin','name'=>'homepage-slider-index','group_name'=>'Settings Permissions']);
     }
 }
