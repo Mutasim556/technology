@@ -108,7 +108,7 @@
                                                <option value="{{ $solution->sub_category_id }}" selected>{{ $solution->subCategory->sub_category_name }}</option>
                                             </select>
                                             <span class="text-danger err-mgs" id="sub_category_err"></span>
-                                        </div>
+                                        </div> 
                                     </div>
                                     @php
                                         $solution_tags = explode(',',$solution->solutionDetails->solution_tags);
