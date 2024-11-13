@@ -15,5 +15,5 @@ Route::prefix('settings')->name('settings.')->group(function(){
         Route::delete('/slider/{id}','destroySlider');
     });
 
-    Route::resource('/logo',LogoController::class);
+    Route::resource('/logo',LogoController::class); 
 });

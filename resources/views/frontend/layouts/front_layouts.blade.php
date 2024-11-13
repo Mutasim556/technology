@@ -183,7 +183,7 @@
         <div class="header-middle header-middle-ptb-1 d-none d-lg-block">
             <div class="container">
                 <div class="header-wrap">
-                    <div class="logo logo-width-1">
+                    <div class="logo logo-width-1 py-0">
                         <a href="index.html"><img src="{{ asset('public/nexyos.png') }}" alt="logo" /></a>
                     </div>
                     <div class="header-right">

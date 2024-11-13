@@ -65,27 +65,17 @@
                         @csrf
                         <div class="row">
                             <div class="col-lg-12 mt-2">
-                                <label for="logo_name"><strong>{{ __('admin_local.logo Title') }} *</strong></label>
-                                <input type="text" class="form-control" name="logo_title" id="logo_title">
-                                <span class="text-danger err-mgs"></span>
-                            </div>
-                            <div class="col-lg-12 mt-2">
-                                <label for="logo_name"><strong>{{ __('admin_local.logo Short Description') }} *</strong></label>
-                                <input type="text" class="form-control" name="logo_short_description" id="logo_short_description">
-                                <span class="text-danger err-mgs"></span>
-                            </div>
-                            <div class="col-lg-12 mt-2">
-                                <label for="logo_name"><strong>{{ __('admin_local.logo Link ( If Any )') }} *</strong></label>
+                                <label for="logo_name"><strong>{{ __('admin_local.Logo Link ( If Any )') }} *</strong></label>
                                 <input type="text" class="form-control" name="logo_link" id="logo_link">
                                 <span class="text-danger err-mgs"></span>
                             </div>
                             <div class="col-lg-12 mt-2">
-                                <label for="logo_name"><strong>{{ __('admin_local.logo Button Text') }} *</strong></label>
+                                <label for="logo_name"><strong>{{ __('admin_local.Logo Alternate Text') }} *</strong></label>
                                 <input type="text" class="form-control" name="logo_button_text" id="logo_button_text">
                                 <span class="text-danger err-mgs"></span>
                             </div>
                             <div class="col-lg-12 mt-2">
-                                <label for="logo_image"><strong>{{ __('admin_local.logo Image') }} ( 2376px x 807px )
+                                <label for="logo_image"><strong>{{ __('admin_local.Logo') }} 
                                     </strong></label>
                                 <input type="file" class="form-control" name="logo_image" id="logo_image" onchange="document.getElementById('preview_image').src = window.URL.createObjectURL(this.files[0])">
                                 <span class="text-danger err-mgs"></span>
