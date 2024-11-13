@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\Setting\HomepageSettingController;
+use App\Http\Controllers\Admin\Settings\LogoController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('settings')->name('settings.')->group(function(){
@@ -13,4 +14,6 @@ Route::prefix('settings')->name('settings.')->group(function(){
         Route::put('/slider/{id}','update');
         Route::delete('/slider/{id}','destroySlider');
     });
+
+    Route::resource('/logo',LogoController::class);
 });

@@ -186,5 +186,12 @@ class PermissionSeeder extends Seeder
         // Permission::create(['guard_name'=>'admin','name'=>'homepage-slider-store','group_name'=>'Settings Permissions']);
         // Permission::create(['guard_name'=>'admin','name'=>'homepage-slider-delete','group_name'=>'Settings Permissions']);
         // Permission::create(['guard_name'=>'admin','name'=>'homepage-slider-index','group_name'=>'Settings Permissions']);
+
+        //frontend setting permission
+
+        // Permission::create(['guard_name'=>'admin','name'=>'setting-frontend-logo-index','group_name'=>'Settings Frontend Permissions']);
+        // Permission::create(['guard_name'=>'admin','name'=>'setting-frontend-logo-store','group_name'=>'Settings Frontend Permissions']);
+        // Permission::create(['guard_name'=>'admin','name'=>'setting-frontend-logo-update','group_name'=>'Settings Frontend Permissions']);
+        // Permission::create(['guard_name'=>'admin','name'=>'setting-frontend-logo-delete','group_name'=>'Settings Frontend Permissions']);
     }
 }

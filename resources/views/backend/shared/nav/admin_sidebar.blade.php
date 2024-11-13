@@ -366,7 +366,7 @@
                 @endif
                 @if (hasPermission(['warehouse-index']))
                     <li>
-                        <a href="{{ route('admin.settings.warehouse.index') }}" class="sidebar-link">
+                        <a href="{{ route('admin.settings.warehouse.index') }}" class="sidebar-link"> 
                             <span> {{ __('admin_local.Warehouses') }} </span>
                         </a>
                     </li>
@@ -379,12 +379,14 @@
                         </ul>
                     </li>
                 @endif
-                @if (hasPermission(['homepage-setting-index']))
+                @if (hasPermission(['setting-frontend-logo-index']))
                 <li><a class="submenu-title"
                         href="javascript:void(0)">{{ __('admin_local.Fronted') }}<span
                             class="sub-arrow"><i class="fa fa-angle-right"></i></span></a>
                     <ul class="nav-sub-childmenu submenu-content">
-                        <li><a href="bootstrap-basic-table.html">{{ __('admin_local.Logo') }}</a></li>
+                        @if (hasPermission(['setting-frontend-logo-index']))
+                        <li><a href="{{ route('admin.settings.logo.index') }}">{{ __('admin_local.Logo') }}</a></li>
+                        @endif
                         <li><a href="bootstrap-basic-table.html">{{ __('admin_local.Contact') }}</a></li>
                         <li><a href="bootstrap-basic-table.html">{{ __('admin_local.About Us') }}</a></li>
                     </ul>
