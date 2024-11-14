@@ -65,19 +65,30 @@
                         @csrf
                         <div class="row">
                             <div class="col-lg-12 mt-2">
-                                <label for="logo_name"><strong>{{ __('admin_local.Logo Link ( If Any )') }} *</strong></label>
+                                <label for="logo_type"><strong>{{ __('admin_local.Logo Type') }} *</strong></label>
+                                <select class="js-example-basic-single" name="logo_type" id="logo_type">
+                                    <option value="front_main_logo">{{ __('admin_local.Front Main Logo') }}</option>
+                                    <option value="front_bottom_logo">{{ __('admin_local.Front Bottom Logo') }}</option>
+                                    <option value="front_logo_icon">{{ __('admin_local.Front Logo Icon') }}</option>
+                                    <option value="admin_main_logo">{{ __('admin_local.Admin Main Logo') }}</option>
+                                    <option value="admin_logo_icon">{{ __('admin_local.Admin Logo Icon') }}</option>
+                                </select>
+                                <span class="text-danger err-mgs" id="logo_type_err"></span>
+                            </div>
+                            <div class="col-lg-12 mt-2">
+                                <label for="logo_name"><strong>{{ __('admin_local.Logo Link ( If Any )') }} </strong></label>
                                 <input type="text" class="form-control" name="logo_link" id="logo_link">
                                 <span class="text-danger err-mgs"></span>
                             </div>
                             <div class="col-lg-12 mt-2">
                                 <label for="logo_name"><strong>{{ __('admin_local.Logo Alternate Text') }} *</strong></label>
-                                <input type="text" class="form-control" name="logo_button_text" id="logo_button_text">
+                                <input type="text" class="form-control" name="logo_alt_text" id="logo_alt_text">
                                 <span class="text-danger err-mgs"></span>
                             </div>
                             <div class="col-lg-12 mt-2">
                                 <label for="logo_image"><strong>{{ __('admin_local.Logo') }} 
                                     </strong></label>
-                                <input type="file" class="form-control" name="logo_image" id="logo_image" onchange="document.getElementById('preview_image').src = window.URL.createObjectURL(this.files[0])">
+                                <input type="file" class="form-control" name="logo" id="logo" onchange="document.getElementById('preview_image').src = window.URL.createObjectURL(this.files[0])">
                                 <span class="text-danger err-mgs"></span>
                             </div>
                             <div class="col-lg-12 mt-2 mb-4">
@@ -127,29 +138,30 @@
                         <input type="hidden" id="logo_id" name="logo_id" value="">
                         <div class="row">
                             <div class="col-lg-12 mt-2">
-                                <label for="logo_name"><strong>{{ __('admin_local.logo Title') }} *</strong></label>
-                                <input type="text" class="form-control" name="logo_title" id="logo_title">
-                                <span class="text-danger err-mgs"></span>
+                                <label for="logo_type"><strong>{{ __('admin_local.Logo Type') }} *</strong></label>
+                                <select class="js-example-basic-single" name="logo_type" id="logo_type">
+                                    <option value="front_main_logo">{{ __('admin_local.Front Main Logo') }}</option>
+                                    <option value="front_bottom_logo">{{ __('admin_local.Front Bottom Logo') }}</option>
+                                    <option value="front_logo_icon">{{ __('admin_local.Front Logo Icon') }}</option>
+                                    <option value="admin_main_logo">{{ __('admin_local.Admin Main Logo') }}</option>
+                                    <option value="admin_logo_icon">{{ __('admin_local.Admin Logo Icon') }}</option>
+                                </select>
+                                <span class="text-danger err-mgs" id="logo_type_err"></span>
                             </div>
                             <div class="col-lg-12 mt-2">
-                                <label for="logo_name"><strong>{{ __('admin_local.logo Short Description') }} *</strong></label>
-                                <input type="text" class="form-control" name="logo_short_description" id="logo_short_description">
-                                <span class="text-danger err-mgs"></span>
-                            </div>
-                            <div class="col-lg-12 mt-2">
-                                <label for="logo_name"><strong>{{ __('admin_local.logo Link ( If Any )') }} *</strong></label>
+                                <label for="logo_name"><strong>{{ __('admin_local.Logo Link ( If Any )') }} </strong></label>
                                 <input type="text" class="form-control" name="logo_link" id="logo_link">
                                 <span class="text-danger err-mgs"></span>
                             </div>
                             <div class="col-lg-12 mt-2">
-                                <label for="logo_name"><strong>{{ __('admin_local.logo Button Text') }} *</strong></label>
-                                <input type="text" class="form-control" name="logo_button_text" id="logo_button_text">
+                                <label for="logo_name"><strong>{{ __('admin_local.Logo Alternate Text') }} *</strong></label>
+                                <input type="text" class="form-control" name="logo_alt_text" id="logo_alt_text">
                                 <span class="text-danger err-mgs"></span>
                             </div>
                             <div class="col-lg-12 mt-2">
-                                <label for="logo_image"><strong>{{ __('admin_local.logo Image') }} ( 2376px x 807px )
+                                <label for="logo_image"><strong>{{ __('admin_local.Logo') }} 
                                     </strong></label>
-                                <input type="file" class="form-control" name="logo_image" id="logo_image" onchange="document.getElementById('preview_image2').src = window.URL.createObjectURL(this.files[0])">
+                                <input type="file" class="form-control" name="logo_image" id="logo" onchange="document.getElementById('preview_image2').src = window.URL.createObjectURL(this.files[0])">
                                 <span class="text-danger err-mgs"></span>
                             </div>
                             <div class="col-lg-12 mt-2 mb-4">
@@ -191,7 +203,7 @@
                     </div>
 
                     <div class="card-body">
-                        @if (hasPermission(['homepage-logo-store']))
+                        @if (hasPermission(['setting-frontend-logo-store']))
                             <div class="row mb-3">
                                 <div class="col-md-3">
                                     <button class="btn btn-success" type="btn" data-bs-toggle="modal"
@@ -204,10 +216,9 @@
                             <table id="basic-1" class="display table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>{{ __('admin_local.Image') }}</th>
-                                        <th>{{ __('admin_local.Title') }}</th>
-                                        <th>{{ __('admin_local.Details') }}</th>
-                                        <th>{{ __('admin_local.Button Text') }}</th>
+                                        <th>{{ __('admin_local.Logo Type') }}</th>
+                                        <th>{{ __('admin_local.Logo') }}</th>
+                                        <th>{{ __('admin_local.Alter Text') }}</th>
                                         <th>{{ __('admin_local.Status') }}</th>
                                         <th>{{ __('admin_local.Action') }}</th>
                                     </tr>
@@ -215,21 +226,18 @@
                                 <tbody>
                                     @foreach ($logos as $logo)
                                         <tr id="trid-{{ $logo->id }}" data-id="{{ $logo->id }}">
+                                            <td>{{ ucwords(str_replace('_',' ',$logo->logo_type)) }}</td>
                                             <td>
-                                                @if ($logo->logo_image)
-                                                    <img height="40px" src="{{ asset(env('ASSET_DIRECTORY').'/'.$logo->logo_image) }}" alt=""
+                                                @if ($logo->logo)
+                                                    <img height="40px" src="{{ asset(env('ASSET_DIRECTORY').'/'.$logo->logo) }}" alt=""
                                                         style="height:">
                                                 @else
                                                     {{ __('admin_local.No File') }}
                                                 @endif
                                             </td>
-                                            <td>{{ $logo->logo_title }}</td>
-                                            <td>{{ $logo->logo_short_description != '' ? $logo->logo_short_description : 'N/A' }}</td>
-                                            <td>
-                                                {{ $logo->logo_button_text != '' ? $logo->logo_button_text : 'N/A' }}
-                                            </td>
+                                            <td>{{ $logo->logo_alt_text }}</td>
                                             <td class="text-center">
-                                                @if (hasPermission(['homepage-logo-update']))
+                                                @if (hasPermission(['setting-frontend-logo-update']))
                                                     <span
                                                         class="mx-2">{{ $logo->status == 0 ? 'Inactive' : 'Active' }}</span><input
                                                         data-status="{{ $logo->status == 0 ? 1 : 0 }}"
@@ -242,19 +250,19 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                @if (hasPermission(['homepage-logo-update', 'homepage-logo-delete']))
+                                                @if (hasPermission(['setting-frontend-logo-update', 'setting-frontend-logo-delete']))
                                                     <div class="dropdown">
                                                         <button
                                                             class="btn btn-info text-white px-2 py-1 dropbtn">{{ __('admin_local.Action') }}
                                                             <i class="fa fa-angle-down"></i></button>
                                                         <div class="dropdown-content">
-                                                            @if (hasPermission(['homepage-logo-update']))
+                                                            @if (hasPermission(['setting-frontend-logo-update']))
                                                                 <a data-bs-toggle="modal" style="cursor: pointer;"
                                                                     data-bs-target="#edit-logo-modal"
                                                                     class="text-primary" id="edit_button"><i
                                                                         class=" fa fa-edit mx-1"></i>{{ __('admin_local.Edit') }}</a>
                                                             @endif
-                                                            @if (hasPermission(['homepage-logo-delete']))
+                                                            @if (hasPermission(['setting-frontend-logo-delete']))
                                                                 <a class="text-danger" id="delete_button"
                                                                     style="cursor: pointer;"><i
                                                                         class="fa fa-trash mx-1"></i>
@@ -343,4 +351,5 @@
     </script>
     <script src="{{ asset(env('ASSET_DIRECTORY').'/'.'admin/custom/settings/logo.js') }}"></script>
     {{-- <script src="{{ asset(env('ASSET_DIRECTORY').'/'.'inventory/custom/user/user_list.js') }}"></script> --}}
+    
 @endpush

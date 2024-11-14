@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('logos', function (Blueprint $table) {
             $table->id();
-            $table->text('logo_link')->nullable();;
-            $table->text('logo_image')->nullable();
+            $table->text('logo_link')->nullable();
+            $table->text('logo_alt_text')->nullable();
+            $table->text('logo')->nullable();
             $table->boolean('status')->default(1);
             $table->boolean('delete')->default(0)->comment('0= Not Deleted & 1=Deleted');
             $table->foreignId('created_by')->references('id')->on('admins');

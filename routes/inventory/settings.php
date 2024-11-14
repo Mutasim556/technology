@@ -16,4 +16,5 @@ Route::prefix('settings')->name('settings.')->group(function(){
     });
 
     Route::resource('/logo',LogoController::class); 
+    Route::get('logo/update/status/{id}/{status}',[LogoController::class,'updateStatus']);
 });
