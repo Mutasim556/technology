@@ -4800,7 +4800,7 @@ div.DTS div.dataTables_scrollBody table {
     margin: 0 10px;
     height: 2.7142em;
     background-color: #fff;
-    
+
 }
 div.dataTables_wrapper div.dataTables_length select{
     border-radius: 0px;
@@ -10439,11 +10439,14 @@ th {
     padding: 2px;
 }
 .add-post form .col-form-label .select2-container--default .select2-selection--multiple {
-    border: 1px solid #efefef;
+    border: 1px solid black;
     max-width: 100%;
+    height: 40px !important;
 }
 .add-post form .col-form-label .select2-container--default .select2-selection--multiple .select2-selection__rendered li {
     margin-top: 6px !important;
+    border:1px solid black !important;
+    height: 40px !important;
 }
 .add-post .dropzone {
     margin-bottom: 30px;
@@ -10520,8 +10523,8 @@ th {
     color: #fff;
 }
 .selection .select2-selection {
-    border-radius: 10px !important;
-    border-color: #eee;
+    border-radius: 3px !important;
+    border: 1px solid black !important;
 }
 .selection .select2-selection .select2-search__field {
     margin-top: 0;
@@ -10531,8 +10534,9 @@ th {
     padding: 2px 6px !important;
     margin-top: 0 !important;
     background-color: var(--theme-deafult) !important;
-    border-color: #2d33ee !important;
+    border-color: black !important;
     color: #fff;
+    height: 40px !important;
     margin-right: 8px !important;
 }
 .select2-container--classic .select2-selection--multiple .select2-selection__choice__remove {
@@ -26861,7 +26865,7 @@ footer {
     background-color: #5c61f2;
     border-radius: 5px;
     color: #fff;
-    
+
 }
 .page-wrapper.compact-wrapper .page-body-wrapper div.sidebar-wrapper .sidebar-main .sidebar-links .simplebar-wrapper .simplebar-mask .simplebar-content-wrapper .simplebar-content > li .sidebar-submenu li a.active:after {
     border-color: #fff;
@@ -32326,7 +32330,7 @@ body.dark-only .draggable .checkbox label::before {
 body.dark-only .select2-container--default .select2-selection--multiple,
 body.dark-only .select2-container--default .select2-selection--single {
     background-color: #10101c;
-    border: 1px solid #10101c !important;
+    border: 1px solid  !important;
 }
 body.dark-only .select2-container--default .select2-search--inline .select2-search__field {
     color: rgba(255, 255, 255, 0.8);

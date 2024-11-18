@@ -98,7 +98,7 @@
                                                 <input type="text" class="form-control" id="product_code"
                                                     name="product_code"><span id="get_code" class="input-group-text"
                                                     style="border:1px solid black;"><i class="fa fa-refresh"></i></span>
-                                                
+
                                             </div>
                                             <span class="text-danger err-mgs-product_code"></span>
                                         </div>
@@ -139,7 +139,7 @@
                                                 <option value="">{{ __('admin_local.Please Select') }}</option>
                                                 @foreach ($parent_categories as $parent_category)
                                                     <option value="{{ $parent_category->id }}">
-                                                        {{ $parent_category->parent_category_name }}</option> 
+                                                        {{ $parent_category->parent_category_name }}</option>
                                                 @endforeach
                                             </select>
                                             <span class="text-danger err-mgs-category"></span>
@@ -149,7 +149,7 @@
                                             <select class="js-example-basic-single form-control" id="category"
                                                 name="category" onchange="getCategoryDetails(this.value,'sub_category')">
                                                 <option value="">{{ __('admin_local.Please Select') }}</option>
-                                                
+
                                             </select>
                                             <span class="text-danger err-mgs-category"></span>
                                         </div>
@@ -158,7 +158,7 @@
                                             <select class="js-example-basic-single form-control" id="sub_category"
                                                 name="sub_category">
                                                 <option value="">{{ __('admin_local.Please Select') }}</option>
-                                                
+
                                             </select>
                                             <span class="text-danger err-mgs-category"></span>
                                         </div>
@@ -192,7 +192,7 @@
                                                     <input type="text" class="form-control" name="add_combo_product"
                                                     id="add_combo_product" style="width: 100% !important;">
                                                 </div>
-                                                
+
                                             </div>
                                             <span class="text-danger err-mgs-add_combo_product"></span>
                                         </div>
@@ -209,11 +209,11 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        
+
                                                     </tbody>
                                                 </table>
                                             </div>
-                                            
+
                                         </div>
                                     </div>
                                     <div class="row" id="visible_unit">
@@ -343,7 +343,7 @@
                                     </div>
                                     <div class="row variant_option_row" id="variant_option_row"
                                         style="margin-bottom: -30px;">
-                                        
+
                                         <div class="form-group col-md-8 mx-auto d-none" id="variant_error">
                                             <div class="alert alert-warning alert-dismissible bg-warning text-white border-0 fade show"
                                                 role="alert">
@@ -474,6 +474,90 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <hr>
+
+                                    <div class="row">
+                                        <h5 class="text-center my-3">Filter Options</h5>
+                                        <div class="form-group col-md-4" id="tags_div">
+                                            <label for="category">{{ __('admin_local.Tags') }} *</label>
+                                            <select class="js-example-basic-single form-control" id="tags"
+                                                onchange="" required>
+                                                <option value="">{{ __('admin_local.Please Select') }}</option>
+                                                @foreach ($tags as $tag)
+                                                    <option value="{{ $tag->id }}">{{ $tag->tag }}</option>
+                                                @endforeach
+                                            </select>
+                                            <span class="text-danger err-mgs-category"></span>
+                                        </div>
+                                        <div class="form-group col-md-6" id="sub_tags_div">
+                                            <label for="category">{{ __('admin_local.Sub-Tags') }} *</label>
+                                            <select class="js-example-basic-single form-control" id="sub_tags"
+                                                multiple="multiple" required>
+                                                <option value="">{{ __('admin_local.Please Select') }}</option>
+
+                                            </select>
+                                            <span class="text-danger err-mgs-category"></span>
+                                        </div>
+                                        <div class="form-group col-md-2 pt-2" >
+                                            <label for=""> </label>
+                                            <button type="button" id="add_filter_btn" class="btn btn-info form-control">Add</button>
+                                        </div>
+                                    </div>
+                                    <div class="row" >
+                                        <div class="form-group col-md-3">
+                                            <h5 class="text-center">Filter Tags</h5>
+                                        </div>
+                                        <div class="form-group col-md-9">
+                                            <h5 class="text-center">Filter Sub-tags</h5>
+                                        </div>
+                                    </div>
+                                    <div class="row" id="filter_option_append_div">
+
+                                    </div>
+
+                                    <div class="row">
+                                        <h5 class="text-center my-3">Specifications Options</h5>
+                                        <div class="form-group col-md-4" id="tags_div">
+                                            <label for="category">{{ __('admin_local.Tags') }} *</label>
+                                            <select class="js-example-basic-single form-control" id="spec_tags"
+                                                onchange="" required>
+                                                <option value="">{{ __('admin_local.Please Select') }}</option>
+                                                @foreach ($tags as $tag)
+                                                    <option value="{{ $tag->id }}">{{ $tag->tag }}</option>
+                                                @endforeach
+                                            </select>
+                                            <span class="text-danger err-mgs-category"></span>
+                                        </div>
+                                        <div class="form-group col-md-6" id="sub_tags_div">
+                                            <label for="category">{{ __('admin_local.Sub-Tags') }} *</label>
+                                            <select class="js-example-basic-single form-control" id="spec_sub_tags" required>
+                                                <option value="">{{ __('admin_local.Please Select') }}</option>
+
+                                            </select>
+                                            <span class="text-danger err-mgs-category"></span>
+                                        </div>
+                                        <div class="form-group col-md-2 pt-2" >
+                                            <label for=""> </label>
+                                            <button type="button" id="add_spec_btn" class="btn btn-info form-control">Add</button>
+                                        </div>
+                                    </div>
+                                    <div class="row" >
+                                        <div class="form-group col-md-3">
+                                            <h5 class="text-center">Specification Tags</h5>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <h5 class="text-center">Specification Sub-tags</h5>
+                                        </div>
+                                        <div class="form-group col-md-5">
+                                            <h5 class="text-center">Description</h5>
+                                        </div>
+                                        <div class="form-group col-md-1">
+                                            <h5 class="text-center">Action</h5>
+                                        </div>
+                                    </div>
+                                    <div class="row" id="spec_option_append_div">
+
+                                    </div>
                                     <div class="row">
                                         <div class="form-group col-md-8">
                                             <button class="btn btn-primary" id="submit-btn" type="submit">{{ __('admin_local.Add Product')}}</button>
@@ -490,7 +574,7 @@
             </div>
         </div>
     </div>
-    
+
 @endsection
 @push('js')
     <script src="{{ asset(env('ASSET_DIRECTORY').'/'.'admin/assets/js/sweet-alert/sweetalert.min.js') }}"></script>
@@ -549,6 +633,7 @@
         });
 
         var form_url = "{{ route('admin.product.store') }}";
+        var base_url = `{{ URL::to('/') }}`;
         var submit_btn_after = `{{ __('admin_local.Submitting') }}`;
         var submit_btn_before = `{{ __('admin_local.Submit') }}`;
         var no_permission_mgs = `{{ __('admin_local.No Permission') }}`;

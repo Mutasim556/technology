@@ -1,39 +1,36 @@
 @extends('frontend.layouts.front_layouts')
-
+@section('title')
+    {{-- {{ __('admin_login.Home') }} --}}
+    Homepage
+@endsection
 @section('body')
 <main class="main">
     <section class="home-slider position-relative mb-30">
         <div class="container">
             <div class="home-slide-cover mt-30">
                 <div class="hero-slider-1 style-4 dot-style-1 dot-style-1-position-1">
-                    <div class="single-hero-slider single-animation-wrap"
-                        style="background-image: url(assets/imgs/slider/slider-1.png)">
-                        <div class="slider-content">
-                            <h1 class="display-2 mb-40">
-                                Don’t miss amazing<br />
-                                grocery deals
-                            </h1>
-                            <p class="mb-65">Sign up for the daily newsletter</p>
-                            <form class="form-subcriber d-flex">
-                                <input type="email" placeholder="Your emaill address" />
-                                <button class="btn" type="submit">Subscribe</button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="single-hero-slider single-animation-wrap"
-                        style="background-image: url(assets/imgs/slider/slider-2.png)">
-                        <div class="slider-content">
-                            <h1 class="display-2 mb-40">
-                                Fresh Vegetables<br />
-                                Big discount
-                            </h1>
-                            <p class="mb-65">Save up to 50% off on your first order</p>
-                            <form class="form-subcriber d-flex">
-                                <input type="email" placeholder="Your emaill address" />
-                                <button class="btn" type="submit">Subscribe</button>
-                            </form>
-                        </div>
-                    </div>
+                    @php
+                        $sliders = DB::table('homepage_silders')->where([['status',1],['delete',0]])->get();
+                    @endphp
+                    @if(count($sliders)>0)
+                        @foreach ($sliders as $slider)
+                            <div class="single-hero-slider single-animation-wrap"
+                            style="background-image: url({{ env('ASSET_DIRECTORY')."/".$slider->slider_image}})">
+                                <div class="slider-content">
+                                    <h3 class="display-2 mb-40">
+                                        {{ $slider->slider_title }}
+                                    </h3>
+                                    <p class="mb-65">{{ $slider->slider_short_description }}</p>
+                                    <form class="form-subcriber d-flex">
+                                        {{-- <input type="email" placeholder="Your emaill address" /> --}}
+                                        @if ($slider->slider_link)
+                                            <a target="__blank" class="btn" href="{{ $slider->slider_link }}">{{ $slider->slider_button_text }}</a>
+                                        @endif
+                                    </form>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
                 </div>
                 <div class="slider-arrow hero-slider-1-arrow"></div>
             </div>
@@ -93,14 +90,14 @@
                         </div>
                     </div>
                 </div>
-                
-                
+
+
             </div>
         </div>
     </section>
     <!--End category slider-->
-    
-    
+
+
     <!--Products Tabs-->
     <section class="section-padding pb-5">
         <div class="container">
@@ -128,7 +125,7 @@
                 <div class="col-lg-3 d-none d-lg-flex wow animate__animated animate__fadeIn">
                     <div class="banner-img style-2">
                         <div class="banner-text">
-                            <h2 class="mb-60" style="font-size:20px;font-weight:700;">Explore Our Advancements 
+                            <h2 class="mb-60" style="font-size:20px;font-weight:700;">Explore Our Advancements
                                 in AIoT Techs</h2>
                             <a href="shop-grid-right.html" class="btn btn-xs">Explore Now <i
                                     class="fi-rs-arrow-small-right"></i></a>
@@ -173,7 +170,7 @@
                                                 <a href="shop-grid-right.html">Hodo Foods</a>
                                             </div>
                                             <h2><a href="shop-product-right.html">Seeds of Change Organic Quinoa,
-                                                    Brown</a></h2> 
+                                                    Brown</a></h2>
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 80%"></div>
                                             </div>
@@ -952,7 +949,7 @@
         </div>
     </section>
     <!--End Best Sales-->
-    
-   
+
+
 </main>
 @endsection

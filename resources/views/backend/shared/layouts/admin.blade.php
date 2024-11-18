@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
+@php
+    use App\Models\Admin\Settings\Logo;
+    $logo_admin = Logo::where([['status',1],['delete',0],['logo_type','admin_main_logo']])->orderBy('id','DESC')->first();
+@endphp
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -58,9 +61,10 @@
                 <div class="header-logo-wrapper col-auto p-0">
                     <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="grid"> </i>
                     </div>
+
                     <div class="logo-header-main"><a href="index.html"><img class="img-fluid for-light img-100"
-                                src="{{ asset(env('ASSET_DIRECTORY').'/'.'admin/assets/images/logo/logo2.png') }}" alt=""><img
-                                class="img-fluid for-dark" src="{{ asset(env('ASSET_DIRECTORY').'/'.'admin/assets/images/logo/logo.png') }}"
+                                src="{{ asset($logo_admin?env('ASSET_DIRECTORY').'/'.$logo_admin->logo:'') }}" alt="{{ $logo_admin?$logo_admin->logo_alt_text:'Nexyos' }}"><img
+                                class="img-fluid for-dark" src="{{ asset($logo_admin?env('ASSET_DIRECTORY').'/'.$logo_admin->logo:'') }}" alt="{{ $logo_admin?$logo_admin->logo_alt_text:'Nexyos' }}"
                                 alt=""></a></div>
                 </div>
                 <div class="left-header col horizontal-wrapper ps-0">
@@ -181,8 +185,8 @@
             <!-- Page Sidebar Start-->
             <div class="sidebar-wrapper">
                 <div>
-                    <div class="logo-wrapper"><a href="index.html"><img class="img-fluid for-light"
-                                src="{{ asset(env('ASSET_DIRECTORY').'/'.'admin/assets/images/logo/logo.png') }}" alt=""></a>
+                    <div class="logo-wrapper"><a href="index.html"><img class="img-fluid for-light"  height="40px"
+                                src="{{ asset($logo_admin?env('ASSET_DIRECTORY').'/'.$logo_admin->logo:'') }}" alt="{{ $logo_admin?$logo_admin->logo_alt_text:'Nexyos' }}"></a>
                         <div class="back-btn"><i data-feather="grid"></i></div>
                         <div class="toggle-sidebar icon-box-sidebar"><i class="status_toggle middle sidebar-toggle"
                                 data-feather="grid"> </i></div>

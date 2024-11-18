@@ -160,7 +160,7 @@ $('#add_new_variant').click(function () {
     // $('<div class="row append_variant_option_row"><div class="form-group col-md-5"><label for="variant_option">Option</label><input type="text" class="form-control" name="variant_option[]" id="variant_option" > </div><div class="form-group col-md-5"> <label for="variant_value">Value</label><input type="text" class="form-control variant_value" name="variant_value[]" id="variant_value" data-role="tagsinput"></div></div>').insertAfter("div").hide().show(300);
 
     $('#variant_option_row').next('div').append('<div class="row variant_option_row"><div class="form-group col-md-5"><label for="variant_option">Option *</label><input type="text" class="form-control" name="variant_option[]" id="variant_option"> </div><div class="form-group col-md-5"> <label for="variant_value">Value *</label><input type="text" class="form-control variant_value" name="variant_value[]" id="variant_value" data-role="tagsinput"></div><div class="form-group col-md-2" style="line-height: 100px;"><button type="button" class="btn btn-danger py-2 px-2" id="remove_varient_div"><i class="fa fa-trash"></i></button></div></div>');
-    
+
 
     $(".variant_value").tagsinput();
 })
@@ -202,7 +202,7 @@ $(document).on('change', '.variant_option_row .variant_value', function (e) {
     $.each(firstVariantRow, function (rid, value) {
         let split_value = value.split('/');
         let expected_value = split_value.slice(0, split_value.length-1).join('/') + '-'+product_code + split_value[split_value.length-1];
-        $('#variant_option_table table tbody').append('<tr><td>' + expected_value + '</td><td><input type="text" name="variant_item_code[]" class="form-control" value="' + expected_value + '" readonly></td> <td><input type="text" name="variant_additional_cost[]" class="form-control" value=""></td><td class="text-center"><input type="text" class="form-control"  name="variant_additional_price[]"></td></tr>'); 
+        $('#variant_option_table table tbody').append('<tr><td>' + expected_value + '</td><td><input type="text" name="variant_item_code[]" class="form-control" value="' + expected_value + '" readonly></td> <td><input type="text" name="variant_additional_cost[]" class="form-control" value=""></td><td class="text-center"><input type="text" class="form-control"  name="variant_additional_price[]"></td></tr>');
     });
 
 })
@@ -216,11 +216,11 @@ $(document).on('click','#remove_varient_div',function(){
 var pid_array = [];
 $('#add_combo_product').on('keypress',function(e){
     if(e.which==13){
-        
+
         let pid = $('#add_combo_product').val().split("@")[0];
         let pname = $('#add_combo_product').val().split("@")[1];
         // pid_array.push(pid);
-        
+
         if(jQuery.inArray(pid, pid_array) != -1){
             swal({
                 icon: "warning",
@@ -229,7 +229,7 @@ $('#add_combo_product').on('keypress',function(e){
                 confirmButtonText: "Ok",
             }).then(function(){
                 $('#add_combo_product').val('');
-                $('#add_combo_product')[0].focus(); 
+                $('#add_combo_product')[0].focus();
             });
         }else{
             if($('#add_combo_product').val()==''){
@@ -240,7 +240,7 @@ $('#add_combo_product').on('keypress',function(e){
                     confirmButtonText: "Ok",
                 }).then(function(){
                     $('#add_combo_product').val('');
-                    $('#add_combo_product')[0].focus(); 
+                    $('#add_combo_product')[0].focus();
                 });
             }else{
                 if(jQuery.inArray($('#add_combo_product').val(), products) != -1){
@@ -301,7 +301,7 @@ $('#add_combo_product').on('keypress',function(e){
                             });
                         }
                     });
-                    
+
                     $(this).val('');
                 }else{
                     swal({
@@ -311,12 +311,12 @@ $('#add_combo_product').on('keypress',function(e){
                         confirmButtonText: "Ok",
                     }).then(function(){
                         $('#add_combo_product').val('');
-                        $('#add_combo_product')[0].focus(); 
+                        $('#add_combo_product')[0].focus();
                     });
                 }
-                
+
             }
-           
+
         }
     }
 })
@@ -403,11 +403,11 @@ var myDropzone = new Dropzone("div#dropzoneDragArea", {
             // e.stopPropagation();
             // console.log(myDropzone.getQueuedFiles().length);
             if (myDropzone.getQueuedFiles().length > 0)
-            {                     
-                myDropzone.processQueue();  
-            } else {    
+            {
+                myDropzone.processQueue();
+            } else {
                     let fData =  new FormData(this);
-                    fData.append('_token',$('#csrf_token').val());            
+                    fData.append('_token',$('#csrf_token').val());
                     $.ajax({
                         type: 'POST',
                         url: form_url,
@@ -437,7 +437,7 @@ var myDropzone = new Dropzone("div#dropzoneDragArea", {
                             $('#add_product_form .text-danger').each(function(id,val){
                                 $(this).empty();
                             })
-                           
+
                             $.each(err.responseJSON.errors,function(idx,val){
                                 let splitVal = idx.split('.');
                                 if(splitVal.length>1 ){
@@ -456,7 +456,7 @@ var myDropzone = new Dropzone("div#dropzoneDragArea", {
                             })
                         },
                     });
-            }   
+            }
         });
         this.on('sending', function (file, xhr, formData) {
             // Append all form inputs to the formData Dropzone will POST
@@ -479,7 +479,7 @@ var myDropzone = new Dropzone("div#dropzoneDragArea", {
         $('#add_product_form .text-danger').each(function(id,val){
             $(this).empty();
         })
-       
+
         $.each(err.errors,function(idx,val){
             $('#add_product_form #'+idx).addClass('border-danger is-invalid')
             $('#add_product_form .err-mgs-'+idx).empty().append(val);
@@ -496,7 +496,7 @@ var myDropzone = new Dropzone("div#dropzoneDragArea", {
         }).then(function(){
             window.location.reload()
         })
-        
+
     },
     completemultiple: function (file, response) {
         console.log(file, response, "completemultiple");
@@ -533,6 +533,115 @@ function getCategoryDetails(x,target){
         }
     })
 }
+
+
+$('#tags').on('change',function(){
+    $.ajax({
+        method:'get',
+        url:base_url+'/admin/tags/get/sub-tags',
+        data: {'tag':$(this).val()},
+        success : function(data){
+            console.log(data);
+            $('#sub_tags').empty();
+            var options = '';
+            $.each(data,function(key,val){
+                options = options + '<option value="' + val.id +'-'+ val.name +'">' + val.name + '</option>';
+            })
+            $('#sub_tags').append(options).trigger('change');
+        }
+    })
+});
+
+$(document).on('click','#delete_colsest_filter_option',function(){
+    $(this).closest('.row').remove();
+})
+
+$(document).on('click','#add_filter_btn',function(){
+    var tag = $('#tags').val();
+    var tag_text = $('#tags option:selected').text();
+
+    var sub_tag = $('#sub_tags').val();
+    var sub_tag_text = $('#sub_tags option:selected').text();
+
+    sub_tag_id = '';
+    sub_tag_value ='';
+    $.each(sub_tag,function(key,val){
+        var sub_tag_array = val.split('-');
+        if(sub_tag_id==''){
+            sub_tag_id = sub_tag_array[0];
+            sub_tag_value = sub_tag_array[1];
+        }else{
+            sub_tag_id = sub_tag_id+'|'+sub_tag_array[0];
+            sub_tag_value = sub_tag_value+','+sub_tag_array[1];
+        }
+    });
+    $('#filter_option_append_div').append(`
+            <div class="row">
+                <div class="form-group col-md-3">
+                    <input type="text" value="${tag_text}" class="form-control" readonly>
+                    <input type="hidden" name="tag_groups[]" value="${tag}" class="form-control">
+                </div>
+                <div class="form-group col-md-8">
+                    <input type="text" value="${sub_tag_value}" class="form-control" readonly>
+                    <input type="hidden" name="sub_tag_groups[]" value="${sub_tag_id}" class="form-control">
+                </div>
+                <div class="form-group col-md-1">
+                    <button id="delete_colsest_filter_option" type="button" class="btn btn-danger">-</button>
+                </div>
+            </div>
+
+        `);
+})
+$('#spec_tags').on('change',function(){
+    $.ajax({
+        method:'get',
+        url:base_url+'/admin/tags/get/sub-tags',
+        data: {'tag':$(this).val()},
+        success : function(data){
+            console.log(data);
+            $('#spec_sub_tags').empty().append('<option value="" disabled>Select Please</option>');
+            var options = '';
+            $.each(data,function(key,val){
+                options = options + '<option value="' + val.id +'">' + val.name + '</option>';
+            })
+            $('#spec_sub_tags').append(options).trigger('change');
+        }
+    })
+});
+
+
+$(document).on('click','#add_spec_btn',function(){
+    var tag = $('#spec_tags').val();
+    var tag_text = $('#spec_tags option:selected').text();
+
+    var sub_tag = $('#spec_sub_tags').val();
+    var sub_tag_text = $('#spec_sub_tags option:selected').text();
+
+
+    $('#spec_option_append_div').append(`
+            <div class="row">
+                <div class="form-group col-md-3">
+                    <input type="text" value="${tag_text}" class="form-control" readonly>
+                    <input type="hidden" name="tag_groups[]" value="${tag}" class="form-control">
+                </div>
+                <div class="form-group col-md-3">
+                    <input type="text" value="${sub_tag_text}" class="form-control" readonly>
+                    <input type="hidden" name="sub_tag_groups[]" value="${sub_tag}" class="form-control">
+                </div>
+                <div class="form-group col-md-5">
+                    <input type="text" value="" name="spec_description[]" class="form-control">
+                </div>
+                <div class="form-group col-md-1">
+                    <button id="delete_colsest_spec_option" type="button" class="btn btn-danger">-</button>
+                </div>
+            </div>
+
+        `);
+});
+
+$(document).on('click','#delete_colsest_spec_option',function(){
+    $(this).closest('.row').remove();
+})
 
 
 

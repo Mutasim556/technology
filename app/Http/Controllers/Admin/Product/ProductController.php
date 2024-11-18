@@ -9,11 +9,13 @@ use App\Models\Admin\Product\Brand;
 use App\Models\Admin\Product\Category;
 use App\Models\Admin\Product\ParentCategory;
 use App\Models\Admin\Product\Product;
+use App\Models\Admin\Product\SubTag;
+use App\Models\Admin\Product\Tag;
 use App\Models\Admin\Product\Unit;
 use App\Models\Admin\Settings\Warehouse;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response; 
+use Illuminate\Http\Response;
 use Intervention\Image\Drivers\Gd\Driver;
 use Intervention\Image\ImageManager;
 use Milon\Barcode\DNS1D;
@@ -23,7 +25,7 @@ class ProductController extends Controller
 {
     public function __construct()
     {
-       
+
         $this->middleware('permission:product-store,admin')->only(['create','store']);
         $this->middleware('permission:product-index,admin')->only(['index','show']);
         $this->middleware('permission:product-delete,admin')->only(['destroy']);
@@ -36,7 +38,7 @@ class ProductController extends Controller
     public function index() :View
     {
         $products = Product::with('productVariant','warehousePrice','brand','category')->where('delete',0)->get();
-       
+
         return view('backend.blade.product.index',compact('products'));
     }
 
@@ -58,8 +60,9 @@ class ProductController extends Controller
         }
 
         $warehouses = Warehouse::where([['delete',0],['status',1]])->get();
+        $tags = Tag::get();
         // dd(implode(',',$product_prices));
-        return view('backend.blade.product.create',compact('brands','parent_categories','categories','units','product_name','product_prices','warehouses'));
+        return view('backend.blade.product.create',compact('brands','parent_categories','categories','units','product_name','product_prices','warehouses','tags'));
     }
 
     /**
@@ -80,7 +83,7 @@ class ProductController extends Controller
                 'confirmButtonText'=>__('admin_local.Ok'),
             ],403);
         }
-       
+
     }
 
     /**
@@ -111,7 +114,7 @@ class ProductController extends Controller
                 $editproduct->warehousePrice[$key]->warehouse_name = $value->warehouse()->first()->name;
             }
         }
-        
+
         $brands = Brand::where('brand_status',1)->get();
         $parent_categories = ParentCategory::where([['parent_category_status',1],['parent_category_delete',0]])->get();
         $units = Unit::where([['unit_status',1]])->get();
@@ -136,7 +139,7 @@ class ProductController extends Controller
             $combop_qty_list = [];
             $combop_price_list = [];
         }
-         
+
         return view('backend.blade.product.edit',compact('editproduct','brands','parent_categories','units','products','warehouses','product_name','product_prices','combop_id','combop_variant_id','combop_qty_list','combop_price_list'));
     }
 
@@ -203,7 +206,7 @@ class ProductController extends Controller
         }else{
             return response(['variant'=>'No','product'=>$product]);
         }
-        
+
     }
 
     public function printBarcode() : View {
@@ -219,7 +222,7 @@ class ProductController extends Controller
 
     public function generateBarcode(Request $data){
         // dd($data->all());
-        $barcode_details = []; 
+        $barcode_details = [];
         foreach($data->product_id as $key => $product_id){
             $product = Product::findOrFail($product_id);
             $barcode_details[$key]['barcode'] = DNS1D::getBarcodePNG($product->code,$product->barcode_symbology);

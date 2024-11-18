@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\Product\ParentCategoryController;
 use App\Http\Controllers\Admin\Product\ProductController;
 use App\Http\Controllers\Admin\Product\SizeController;
 use App\Http\Controllers\Admin\Product\SubCategoryController;
+use App\Http\Controllers\Admin\Product\TagController;
 use App\Http\Controllers\Admin\Product\UnitController;
 use Illuminate\Support\Facades\Route;
 
@@ -65,4 +66,7 @@ Route::controller(AdjustmentController::class)->prefix('product')->group(functio
    Route::get('/get/product/{id}/{wid}', 'getProduct')->name('product.getProduct');
    Route::get('/get/adjustment/product/{id}', 'getAdjustmentProduct')->name('product.getAdjustmentProduct');
 });
+
+Route::resource('tags',TagController::class);
+Route::get('/tags/get/sub-tags',[TagController::class,'getSubTags']);
 

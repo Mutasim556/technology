@@ -56,6 +56,14 @@
                         </a>
                     </li>
                 @endif
+                @if (hasPermission(['tags-index']))
+                    <li>
+                        <a href="{{ route('admin.tags.index') }}" class="sidebar-link">
+
+                            <span> {{ __('admin_local.Tags') }} </span>
+                        </a>
+                    </li>
+                @endif
                 @if (hasPermission(['parent-category-index']))
                     <li>
                         <a href="{{ route('admin.product.parent-category.index') }}" class="sidebar-link">
@@ -366,7 +374,7 @@
                 @endif
                 @if (hasPermission(['warehouse-index']))
                     <li>
-                        <a href="{{ route('admin.settings.warehouse.index') }}" class="sidebar-link"> 
+                        <a href="{{ route('admin.settings.warehouse.index') }}" class="sidebar-link">
                             <span> {{ __('admin_local.Warehouses') }} </span>
                         </a>
                     </li>
