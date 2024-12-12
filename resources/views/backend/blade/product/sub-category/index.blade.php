@@ -235,7 +235,7 @@
                                     @foreach ($sub_categories as $sub_category)
                                         <tr id="trid-{{ $sub_category->id }}" data-id="{{ $sub_category->id }}">
                                             <td>{{ $sub_category->sub_category_name }}</td>
-                                            <td>{{ $sub_category->category->category_name? $sub_category->category->category_name: 'N/A' }}
+                                            <td>{{ $sub_category->category? $sub_category->category->category_name: 'N/A' }}
                                             <td>{{ $sub_category->parentCategory->parent_category_name?$sub_category->parentCategory->parent_category_name : 'N/A' }}
                                             </td>
                                             <td>
@@ -341,6 +341,35 @@
                     })
                     // $('#add-category-modal #category');
                     $('#add-category-modal #category').append(options).trigger('change');
+                },
+                error: function () {
+
+                }
+            })
+        })
+        $(document).on('change','#edit_sub_category_form #parent_category',function(){
+            var id = $(this).val()==''?'empty':$(this).val();
+            $.ajax({
+                type: "GET",
+                url: 'category/get/category-details/' +id+'/category',
+                dataType: "JSON",
+                success: function (data) {
+                    var category = $('#edit_sub_category_form #category').val();
+                    $('#edit_sub_category_form #category').empty();
+                    
+
+                    var options = '<option>Select Please</option>';
+                    $.each(data,function(key,val){
+                        if(category==val.id){
+                            select = 'selected';
+                        }else{
+                            select = '';
+                        }
+                        
+                        
+                        options = options + '<option value="' + val.id + '" '+select+'>' + val.category_name + '</option>';
+                    })
+                    $('#edit_sub_category_form #category').append(options).trigger('change');
                 },
                 error: function () {
 
