@@ -27,7 +27,7 @@
     <meta property="og:url" content="" />
     <meta property="og:image" content="" />
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('public/assets/imgs/theme/favicon.svg')}}" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('public/assets/imgs/theme/favicon.png')}}" />
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('public/assets/css/plugins/animate.min.css')}}" />
     <link rel="stylesheet" href="{{ asset('public/assets/css/main.css')}}" />
@@ -46,13 +46,13 @@
                                         <strong>Contact Details</strong>
                                     </div>
                                     <div class="col-md-9 py-1" style="background: #3BB77E;color:black">
-                                        Email : nexyos@gmail.com ,
-                                        Mobile : +8899001122334 , +8899001122335
+                                        Email : Info@nexyos.com,
+                                        Mobile : +918008008841 , 8008008841
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4" style="background: #f74b81;color:rgb(255, 253, 253)">
-                                <marquee class="" behavior="" direction="up" height="24px;" scrollamount="1">Hikvision is committed to serving various industries through its cutting-edge technologies of machine perception, artificial intelligence, and big data, leading the future of AIoT: through comprehensive machine perception technologies, we aim to help people better connect with the world around them; with a wealth of intelligent products, we strive to identify and satisfy diverse demands by delivering intelligence at your fingertips; through innovative AIoT applications, we are dedicated to empowering every individual to enjoy a better future by building an intelligent world that is more convenient, efficient and secure.</marquee>
+                                <marquee class="" behavior="" direction="up" height="24px;" scrollamount="1">At Nexyos, we transform security and automation with AI, IoT, and smart solutions. From advanced monitoring to effortless home automation, our systems make spaces safer and smarter. Experience innovation, affordability, and elegance with Nexyos.</marquee>
                             </div>
                         </div>
                     </div>
@@ -68,7 +68,7 @@
                     </div>
                     <div class="header-nav d-none d-lg-flex">
                         <div class="main-categori-wrap d-none d-lg-block">
-                            <img height="55px" src="{{ asset($logo_main?env('ASSET_DIRECTORY').'/'.$logo_main->logo:'') }}" alt="{{ $logo_main?$logo_main->logo_alt_text:'Nexyos' }}" />
+                            <img height="55px" style="cursor: pointer" onclick="window.location=$(location).attr('origin')" src="{{ asset($logo_main?env('ASSET_DIRECTORY').'/'.$logo_main->logo:'') }}" alt="{{ $logo_main?$logo_main->logo_alt_text:'Nexyos' }}" />
                         </div>
                         <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block font-heading">
                             @include('frontend.layouts.nav.menu_desktop')
@@ -97,7 +97,7 @@
             <div class="mobile-header-top">
 
                 <div class="mobile-header-logo">
-                    <a href="index.html"><img src="{{ asset($logo_main?env('ASSET_DIRECTORY').'/'.$logo_main->logo:'') }}" alt="{{ $logo_main?$logo_main->logo_alt_text:'Nexyos' }}" /></a>
+                    <a href="{{ url('/') }}"><img src="{{ asset($logo_main?env('ASSET_DIRECTORY').'/'.$logo_main->logo:'') }}" alt="{{ $logo_main?$logo_main->logo_alt_text:'Nexyos' }}" /></a>
                 </div>
                 <div class="mobile-menu-close close-style-wrap close-style-position-inherit">
                     <button class="close-style search-close">
@@ -120,13 +120,13 @@
                 </div>
                 <div class="mobile-header-info-wrap">
                     <div class="single-mobile-header-info">
-                        <a href="page-contact.html"><i class="fi-rs-marker"></i> Our location </a>
+                        <a href="page-contact.html"><i class="fi-rs-marker"></i> Office 106, Al Muntazah Business Center, Doha-Qatar</a>
                     </div>
                     <div class="single-mobile-header-info">
-                        <a href="page-login.html"><i class="fi-rs-user"></i>Log In / Sign Up </a>
+                        <a href="page-login.html"><i class="fi-rs-user"></i>info@nexyos.com</a>
                     </div>
                     <div class="single-mobile-header-info">
-                        <a href="#"><i class="fi-rs-headphones"></i>(+01) - 2345 - 6789 </a>
+                        <a href="#"><i class="fi-rs-headphones"></i>+918008008841</a>
                     </div>
                 </div>
                 <div class="mobile-social-icon mb-50">
@@ -140,7 +140,7 @@
                             alt="" /></a>
                     <a href="#"><img src="{{ asset('public/assets/imgs/theme/icons/icon-youtube-white.svg') }}" alt="" /></a>
                 </div>
-                <div class="site-copyright">Copyright 2022 © Nest. All rights reserved. Powered by AliThemes.</div>
+                <div class="site-copyright">&copy; {{ date('Y') }}, <strong class="text-brand">{{ env('COMPANY_NAME') }}</strong> <br />All rights reserved</div>
             </div>
         </div>
     </div>
@@ -156,19 +156,18 @@
                         <div class="widget-about font-md mb-md-3 mb-lg-3 mb-xl-0 wow animate__animated animate__fadeInUp"
                             data-wow-delay="0">
                             <div class="logo mb-30">
-                                <a href="index.html" class="mb-15"><img src="{{ asset('public/assets/imgs/theme/logo.svg') }}"
+                                <a href="{{ url('/') }}" class="mb-15"><img src="{{ asset($logo_main?env('ASSET_DIRECTORY').'/'.$logo_main->logo:'') }}" alt="{{ $logo_main?$logo_main->logo_alt_text:'Nexyos' }}"
                                         alt="logo" /></a>
-                                <p class="font-lg text-heading">Awesome grocery store website template</p>
+                                <p class="font-lg text-heading">At Nexyos, we transform security and automation with AI, IoT, and smart solutions. From advanced monitoring to effortless home automation, our systems make spaces safer and smarter. Experience innovation, affordability, and elegance with Nexyos.</p>
                             </div>
                             <ul class="contact-infor">
                                 <li><img src="{{ asset('public/assets/imgs/theme/icons/icon-location.svg') }}"
-                                        alt="" /><strong>Address: </strong> <span>5171 W Campbell Ave
-                                        undefined Kent, Utah 53127 United States</span></li>
+                                        alt="" /><strong>Address: </strong> <span>Office 106, Al Muntazah Business Center, Doha-Qatar</span></li>
                                 <li><img src="{{ asset('public/assets/imgs/theme/icons/icon-contact.svg') }}"
-                                        alt="" /><strong>Call Us:</strong><span>(+91) - 540-025-124553</span>
+                                        alt="" /><strong>Call Us:</strong><span>+918008008841 , 8008008841</span>
                                 </li>
                                 <li><img src="{{ asset('public/assets/imgs/theme/icons/icon-email-2.svg') }}"
-                                        alt="" /><strong>Email:</strong><span>sale@Nest.com</span></li>
+                                        alt="" /><strong>Email:</strong><span>info@nexyos.com</span></li>
                                 <li><img src="{{ asset('public/assets/imgs/theme/icons/icon-clock.svg') }}"
                                         alt="" /><strong>Hours:</strong><span>10:00 - 18:00, Mon - Sat</span>
                                 </li>
@@ -204,14 +203,14 @@
                         <h4 class="widget-title">Events</h4>
                         <ul class="footer-list mb-sm-5 mb-md-0">
                             <li><a href="#">Event List</a></li>
-                            <li><a href="#">Hikvision Live</a></li>
+                            <li><a href="#">Nexyos Live</a></li>
                         </ul>
                     </div>
                     <div class="footer-link-widget col wow animate__animated animate__fadeInUp"
                         data-wow-delay=".4s">
                         <h4 class="widget-title">Quick Links</h4>
                         <ul class="footer-list mb-sm-5 mb-md-0">
-                            <li><a href="#">Hikvision eLearning</a></li>
+                            <li><a href="#">Nexyos eLearning</a></li>
                             <li><a href="#">Where to Buy</a></li>
                             <li><a href="#">Discontinued Products</a></li>
                             <li><a href="#">Core Technologies</a></li>
@@ -231,11 +230,7 @@
                 <div class="col-xl-4 col-lg-6 text-center d-none d-xl-block">
                     <div class="hotline d-lg-inline-flex mr-30">
                         <img src="{{ asset('public/assets/imgs/theme/icons/phone-call.svg')}}" alt="hotline" />
-                        <p>1900 - 6666<span>Working 8:00 - 22:00</span></p>
-                    </div>
-                    <div class="hotline d-lg-inline-flex">
-                        <img src="{{ asset('public/assets/imgs/theme/icons/phone-call.svg')}}" alt="hotline" />
-                        <p>1900 - 8888<span>24/7 Support Center</span></p>
+                        <p>8008008841<span>Working 8:00 - 22:00</span></p>
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-6 col-md-6 text-end d-none d-md-block">
@@ -252,7 +247,6 @@
                         <a href="#"><img src="{{ asset('public/assets/imgs/theme/icons/icon-youtube-white.svg') }}"
                                 alt="" /></a>
                     </div>
-                    <p class="font-sm">Up to 15% discount on your first subscribe</p>
                 </div>
             </div>
         </div>
@@ -278,6 +272,7 @@
     <script src="{{ asset('public/assets/js/plugins/jquery.theia.sticky.js')}}"></script>
     <script src="{{ asset('public/assets/js/plugins/jquery.elevatezoom.js')}}"></script>
     <!-- Template  JS -->
+    
     <script src="{{ asset('public/assets/js/main.js')}}"></script>
     <script src="{{ asset('public/assets/js/shop.js')}}"></script>
 

@@ -4,7 +4,7 @@ function getCategoryDetails(value,target_id){
         url: '' + value+"?target="+target_id,
         dataType: "JSON",
         success: function (data) {
-            console.log(data);
+            console.log(data); 
             $('#'+target_id).empty().append(`<option value="" >Please Select</option>`);
             $.each(data,function(ley,value){
                 $('#'+target_id).append('<option value="' + value.id + '">' + value.category_name + '</option>');

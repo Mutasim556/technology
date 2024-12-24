@@ -427,7 +427,7 @@
                     <!-- Fillter By Price -->
                     <div class="sidebar-widget price_range range mb-30">
                         <h5 class="section-title style-1 mb-30">Fill by price</h5>
-                        <div class="price-filter">
+                        {{-- <div class="price-filter">
                             <div class="price-filter-inner">
                                 <div id="slider-range" class="mb-20"></div>
                                 <div class="d-flex justify-content-between">
@@ -437,7 +437,7 @@
                                             class="text-brand"></strong></div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="list-group">
                             <div class="list-group-item mb-10 mt-10">
                                 <label class="fw-900">Color</label>

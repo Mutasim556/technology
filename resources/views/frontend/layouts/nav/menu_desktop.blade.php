@@ -3,7 +3,7 @@
         {{-- <li class="hot-deals"><img src="assets/imgs/theme/icons/icon-hot.svg"
                 alt="hot deals" /><a href="shop-grid-right.html">Deals</a></li> --}}
         <li>
-            <a class="active" href="index.html">Home </a>
+            <a class="active" href="{{ url('/') }}">Home </a>
         </li>
         <li class="position-static">
             <a href="#">Products <i class="fi-rs-angle-down"></i></a>
@@ -90,7 +90,7 @@
             </ul>
         </li>
         <li>
-            <a class="active" href="index.html">Customize Switches </a>
+            <a class="active" href="#">Customize Switches </a>
         </li>
         <li class="position-static">
             <a href="#">Partners <i class="fi-rs-angle-down"></i></a>
@@ -121,7 +121,7 @@
         </li>
 
         <li>
-            <a class="active" href="index.html">Vendors </a>
+            <a class="active" href="#">Vendors </a>
         </li>
     </ul>
 </nav>

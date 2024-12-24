@@ -30,7 +30,7 @@ class HomepageSettingController extends Controller
             'slider_title'=>'required',
             'slider_short_description'=>'required',
             'slider_button_text'=>'required',
-            'slider_image'=>'required|mimes:png,jpg,jpeg|dimensions:min_width=2376,min_height=807',
+            'slider_image'=>'required|mimes:png,jpg,jpeg',
         ]);
         $slider = new HomepageSilder();
         $slider->slider_title= $data->slider_title;
